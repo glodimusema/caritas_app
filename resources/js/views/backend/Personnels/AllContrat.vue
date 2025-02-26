@@ -453,10 +453,10 @@
                   <td>{{ item.nom_poste }}</td>
                   <td>{{ item.nom_lieu }}</td>
                   <td>{{ item.nom_mutuelle }}</td> -->
-                  <td>{{ item.dateAffectation }}</td>
-                  <td>{{ item.dateFin }}</td>
-                  <td>{{ item.dateDebutEssaie }}</td>
-                  <td>{{ item.dateFinEssaie }}</td>
+                  <td>{{ item.dateAffectation | formatDate }}</td>
+                  <td>{{ item.dateFin | formatDate }}</td>
+                  <td>{{ item.dateDebutEssaie | formatDate}}</td>
+                  <td>{{ item.dateFinEssaie | formatDate}}</td>
                   <td>{{ item.dureecontrat }}</td>
                   <td>{{ item.dureerestante }}</td>
                   <td>

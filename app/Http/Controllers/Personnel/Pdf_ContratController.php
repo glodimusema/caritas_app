@@ -10676,6 +10676,7 @@ function GetBulletinPaieSalaire($id)
             }
             //
             $nbr_dependant=0;
+            $idAgent=0;
             $noms_agent='';
             $datenaissance_agent='';
             $lieunaissnce_agent='';
@@ -10796,6 +10797,7 @@ function GetBulletinPaieSalaire($id)
             'PersRef_agent','nomAvenue','nomQuartier','nomCommune','nomVille','nomProvince','nomPays',
             'tperso_detail_paie_salaire.created_at')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+            ->selectRaw('ROUND(((salaire_base_paie/22)/8),3) as salaire_heure')
             ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie') 
             ->selectRaw('(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)) as netPaieCash')
             ->selectRaw('((inss_qpo_paie + ipr_paie)+(avance_paie)+(soins_paie)) as totalRetenu')
@@ -10805,6 +10807,7 @@ function GetBulletinPaieSalaire($id)
             foreach ($data2 as $row) 
             {
                 $noms_agent=$row->noms_agent;
+                $idAgent=$row->refAgent;
                 $datenaissance_agent=$row->datenaissance_agent;
                 $lieunaissnce_agent=$row->lieunaissnce_agent;
                 $provinceOrigine_agent=$row->provinceOrigine_agent;
@@ -10859,7 +10862,7 @@ function GetBulletinPaieSalaire($id)
                 $avance_paie=$row->avance_paie;
                 $soins_paie=$row->soins_paie;
                 $jourpreste_paie=$row->jourpreste_paie;
-                $salaire_horaire=$row->salaire_horaire;
+                $salaire_horaire=$row->salaire_heure;
                 $heure_supp1_paie=$row->heure_supp1_paie;
                 $heure_supp2_paie=$row->heure_supp2_paie;
                 $heure_supp3_paie=$row->heure_supp3_paie;
@@ -10869,6 +10872,20 @@ function GetBulletinPaieSalaire($id)
                 $totalRetenu=$row->totalRetenu;
                 
             }   
+
+            $nbrEnfant=0;
+            // 
+            $data7 =  DB::table('tperso_dependant')         
+            ->select(DB::raw('IFNULL(ROUND(COUNT(tperso_dependant.id),0),0) as nbrEnfant'))
+            ->where([
+               ['tperso_dependant.refAgent','=', $idAgent]
+           ])    
+            ->first();
+            if ($data7) 
+            {                                
+               $nbrEnfant=$data7->nbrEnfant;                           
+            }
+
             
             $aps="'";
     
@@ -11186,13 +11203,13 @@ function GetBulletinPaieSalaire($id)
                     <td class="csE1C721DA" colspan="7" style="width:214px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>T&#233;lephone&nbsp;:&nbsp;'.$contact_agent.'</nobr></td>
                     <td class="csE1C721DA" colspan="6" style="width:200px;height:19px;"><!--[if lte IE 7]><div class="csF7D3565D"></div><![endif]--></td>
                     <td class="cs1D279BBD" colspan="4" style="width:142px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Jours&nbsp;prest&#233;s&nbsp;:</nobr></td>
-                    <td class="csA5530C12" colspan="2" style="width:73px;height:17px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>'.$jourpreste_paie.'</nobr></td>
+                    <td class="csA5530C12" colspan="2" style="width:73px;height:17px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>22</nobr></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:19px;"></td>
                     <td></td>
-                    <td class="csE1C721DA" colspan="7" style="width:214px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>ID&nbsp;Nat&nbsp;:</nobr></td>
-                    <td class="csE1C721DA" colspan="6" style="width:200px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Situation&nbsp;familliale&nbsp;:&nbsp;2 Enfants</nobr></td>
+                    <td class="csE1C721DA" colspan="7" style="width:214px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>N° Impot: '.$numImpotEse.'</nobr></td>
+                    <td class="csE1C721DA" colspan="6" style="width:200px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Situation&nbsp;familliale&nbsp;:&nbsp;'.$nbrEnfant.' Enfants</nobr></td>
                     <td class="cs1D279BBD" colspan="4" style="width:142px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Salaire&nbsp;horaire&nbsp;:</nobr></td>
                     <td class="csA5530C12" colspan="2" style="width:73px;height:17px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>'.$salaire_horaire.'</nobr></td>
                 </tr>

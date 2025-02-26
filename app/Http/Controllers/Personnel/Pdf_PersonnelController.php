@@ -8921,6 +8921,7 @@ function getInfoBulletinPaie($id)
             $refAnne=0;
             $refMois=0;
             $refAffectation=0;
+            $idAgent=0;
             //
             $data2 = DB::table('tperso_entete_paiement')
             ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_entete_paiement.refAffectation')
@@ -8975,6 +8976,7 @@ function getInfoBulletinPaie($id)
                 $refAnne=$row->refAnne;
                 $refMois=$row->refMois;
                 $refAffectation=$row->refAffectation;
+                $idAgent=$row->refAgent;
             } 
             
             $totalBase=0;
@@ -9096,6 +9098,20 @@ function getInfoBulletinPaie($id)
             $ags="'Agent";
             //    
     
+            $nbrEnfant=0;
+            // 
+            $data7 =  DB::table('tperso_dependant')         
+            ->select(DB::raw('IFNULL(ROUND(COUNT(tperso_dependant.id),0),0) as nbrEnfant'))
+            ->where([
+               ['tperso_dependant.refAgent','=', $idAgent]
+           ])    
+            ->first();
+            if ($data7) 
+            {                                
+               $nbrEnfant=$data7->nbrEnfant;                           
+            }
+
+
             $output=' 
 
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

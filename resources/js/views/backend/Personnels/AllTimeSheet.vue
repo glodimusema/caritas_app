@@ -163,13 +163,19 @@
                                 <tbody>
                                     <tr v-for="item in fetchData" :key="item.id">
                                         <td>{{ item.noms_agent }}</td>
-                                        <td>{{ item.date_tache }}</td>
+                                        <td>{{ item.date_tache | formatDate }}</td>
                                         <td>{{ item.jour_preste }}</td>
                                         <td>{{ item.perdieme }}</td>
                                         <td>{{ item.activite }}</td>
-                                        <td>{{ item.heure_debut }}</td>
-                                        <td>{{ item.heure_fin }}</td>
-                                        <td>{{ item.nbr_heure }}</td>
+                                        <td>
+                                            {{ item.heure_debut | formatDate }}
+                                            {{ item.heure_debut | formatHour }}
+                                        </td>
+                                        <td>
+                                            {{ item.heure_fin | formatDate }}
+                                            {{ item.heure_fin | formatHour }}
+                                        </td>
+                                        <td>{{ item.nbr_heure | formatDate }}</td>
                                         <td>
                                             <v-btn elevation="2" x-small class="white--text"
                                                 :color="item.ateste_projet == 'NON' ? '#F13D17' : item.ateste_projet == 'OUI' ? '#3DA60C' : 'error'"

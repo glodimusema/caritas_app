@@ -169,9 +169,9 @@
                               <tbody>
                                 <tr v-for="item in fetchData" :key="item.id">
                                   <td>{{ item.description_tache }}</td>
-                                  <td>{{ item.date_debut_tache }}</td>
+                                  <td>{{ item.date_debut_tache | formatDate}}</td>
                                   <td>{{ item.duree_tache }}</td>
-                                  <td>{{ item.date_fin_tache }}</td>
+                                  <td>{{ item.date_fin_tache | formatDate}}</td>
                                   <td>{{ item.nbr_heureJour }}</td>
                                   <td>{{ item.cout_heure }}</td>
                                   <td>{{ item.statut_tache }}</td>

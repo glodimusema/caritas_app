@@ -168,7 +168,7 @@
                     </thead>
                     <tbody>
                       <tr v-for="item in fetchData" :key="item.id">
-                        <td>{{ item.dateFiche }}</td>
+                        <td>{{ item.dateFiche | formatDate }}</td>
                         <td>{{ item.name_mois }}</td>
                         <td>{{ item.name_annee }}</td>
                         <td>{{ item.nom_mode }}</td>

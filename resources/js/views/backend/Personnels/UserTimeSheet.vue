@@ -168,8 +168,14 @@
                                         <td>{{ item.jour_preste }}</td>
                                         <td>{{ item.perdieme }}</td>
                                         <td>{{ item.activite }}</td>
-                                        <td>{{ item.heure_debut }}</td>
-                                        <td>{{ item.heure_fin }}</td>
+                                        <td>
+                                            {{ item.heure_debut | formatDate }}
+                                            {{ item.heure_debut | formatHour }}
+                                        </td>
+                                        <td>
+                                            {{ item.heure_fin | formatDate }}
+                                            {{ item.heure_fin | formatHour }}
+                                        </td>
                                         <td>{{ item.nbr_heure }}</td>
                                         <td>
                                             <v-btn elevation="2" x-small class="white--text"

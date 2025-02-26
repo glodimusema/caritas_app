@@ -145,8 +145,7 @@
                                   <td>{{ item.statut_livrable }}</td>
                                   <td>{{ item.fichiers }}</td>
                                   <td>{{ item.description_tache }}</td>
-                                  <td>
-  
+                                  <td>  
                                     <v-menu bottom rounded offset-y transition="scale-transition">
                                       <template v-slot:activator="{ on }">
                                         <v-btn icon v-on="on" small fab depressed text>
