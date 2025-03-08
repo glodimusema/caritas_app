@@ -35,7 +35,7 @@
                   <div class="mr-1">
                     <v-autocomplete label="Selectionnez le Service" prepend-inner-icon="mdi-map"
                         :rules="[(v) => !!v || 'Ce champ est requis']" :items="serviceList" dense
-                        item-text="name_service" item-value="id" outlined v-model="svData.service_id">
+                        item-text="name_service" item-value="refService" outlined v-model="svData.service_id">
                     </v-autocomplete>
                   </div>
                 </v-flex>              
@@ -115,7 +115,7 @@
               <v-flex md6>
                 <v-autocomplete label="Selectionnez le Service" prepend-inner-icon="mdi-map"
                         :rules="[(v) => !!v || 'Ce champ est requis']" :items="serviceList" dense
-                        item-text="name_service" item-value="id" outlined v-model="svData.service_id">
+                        item-text="name_service" item-value="refService" outlined v-model="svData.service_id">
                     </v-autocomplete>
               </v-flex> 
              
@@ -370,11 +370,10 @@
         };
       },
         fetchListServices() {
-            this.editOrFetch(`${this.apiBaseURL}/fetch_service_archivage2`).then(
+            this.editOrFetch(`${this.apiBaseURL}/fetch_service_user_by_user/${this.userData.id}`).then(
                 ({ data }) => {
                     var donnees = data.data;
                     this.serviceList = donnees;
-                    //serviceList
                 }
             );
         },
@@ -441,22 +440,6 @@
       fetchDataList() {
         this.fetch_data(`${this.apiBaseURL}/fetch_all_archivages?page=`);
         //
-      },
-      desactiverData(valeurs,user_created,date_entree,noms) {
-  //
-        var tables='tperso_dependant';
-        var user_name=this.userData.name;
-        var user_id=this.userData.id;
-        var detail_information="Suppression de la fiche des dependants de l'agent : "+noms+" par l'utilisateur "+user_name+"" ;
-  
-        this.confirmMsg().then(({ res }) => {
-          this.delGlobal(`${this.apiBaseURL}/desactiver_data?tables=${tables}&user_name=${user_name}&user_id=${user_id}&valeurs=${valeurs}&user_created=${user_created}&date_entree=${date_entree}&detail_information=${detail_information}`).then(
-            ({ data }) => {
-              this.showMsg(data.data);
-              this.onPageChange();
-            }
-          );
-        });
       }
   
   

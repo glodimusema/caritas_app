@@ -498,11 +498,6 @@ export default {
               href: "/admin/sous_service",
             },
 
-
-
-
-
-
           ],
           links_systems: [
             {
@@ -774,6 +769,8 @@ export default {
             },
           ],
           listArchivages: [
+          // ArchiveByServiceUser
+          // ArchiveUserService
             {
               text: "Archivages",
               icon: "mdi-email-open",
@@ -781,6 +778,14 @@ export default {
                 {
                   text: "Archivages",
                   href: "/admin/Archivages", 
+                },
+                {
+                  text: "Archivage/Servive",
+                  href: "/admin/ArchiveByServiceUser",
+                },
+                {
+                  text: "User-Service",
+                  href: "/admin/ArchiveUserService",
                 },
                 {
                   text: "Division",
@@ -1654,6 +1659,10 @@ export default {
                   text: "Archivages",
                   href: "/admin/Archivages", 
                 },
+                {
+                  text: "Archivage/Servive",
+                  href: "/admin/ArchiveByServiceUser",
+                },
                 // {
                 //   text: "Division",
                 //   href: "/admin/DivisionArchive",
@@ -2526,6 +2535,10 @@ export default {
                   text: "Archivages",
                   href: "/admin/Archivages", 
                 },
+                {
+                  text: "Archivage/Servive",
+                  href: "/admin/ArchiveByServiceUser",
+                },
                 // {
                 //   text: "Division",
                 //   href: "/admin/DivisionArchive",
@@ -3397,6 +3410,10 @@ export default {
                 {
                   text: "Archivages",
                   href: "/admin/Archivages", 
+                },
+                {
+                  text: "Archivage/Servive",
+                  href: "/admin/ArchiveByServiceUser",
                 },
                 // {
                 //   text: "Division",
@@ -5150,6 +5167,10 @@ export default {
                 {
                   text: "Archivages",
                   href: "/admin/Archivages", 
+                },
+                {
+                  text: "Archivage/Servive",
+                  href: "/admin/ArchiveByServiceUser",
                 },
                 // {
                 //   text: "Division",

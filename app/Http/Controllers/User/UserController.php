@@ -47,6 +47,18 @@ class UserController extends Controller
         
     }
 
+    function fetch_user_2()
+    {
+        $data = DB::table('users')
+        ->join('roles','users.id_role','=','roles.id')
+        ->select('users.id as user_id','users.id as id','users.avatar','users.name','users.email',
+        'users.id_role','roles.nom as role_name','users.sexe','users.telephone','users.adresse')
+        ->get();
+        return response()->json([
+            'data'  =>  $data
+        ]);        
+    }
+
     function fetch_user_ceo()
     {
         $data = DB::table('users')

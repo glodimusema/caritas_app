@@ -116,7 +116,7 @@
                                           <v-list-item-icon>
                                             <v-icon color="  blue">description</v-icon>
                                           </v-list-item-icon>
-                                          <v-list-item-title style="margin-left: -20px">Les Taches pour le Projet
+                                          <v-list-item-title style="margin-left: -20px">Les Archives pour ce Service
                                           </v-list-item-title>
                                         </v-list-item>
                                         

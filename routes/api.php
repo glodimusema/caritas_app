@@ -52,6 +52,7 @@ use App\Http\Controllers\Personnel\tperso_affectation_tacheController;
 use App\Http\Controllers\Personnel\tperso_presences_agentController;
 use App\Http\Controllers\Personnel\tperso_timesheetController;
 use App\Http\Controllers\Personnel\tperso_correspondanceController;
+use App\Http\Controllers\Personnel\tarchive_user_serviceController;
 
 use App\Http\Controllers\Personnel\categorieRubriqueController;
 use App\Http\Controllers\Personnel\tperso_anneeController;
@@ -150,6 +151,7 @@ Route::group(['namespace'   =>  "User"], function(){
     Route::post("insert_user", 'UserController@store');
     Route::post("change_pwd_user", 'UserController@ChangePassword');
     Route::post("change_role_user", 'UserController@ChangeRole');
+    Route::get("fetch_user_2", 'UserController@fetch_user_2');
 
     Route::post("insertion_user", 'UserController@insert_user');
 
@@ -900,6 +902,7 @@ Route::group(['namespace'   =>  "Vehicule"], function(){
 
 
 
+
 //pdf_fiche_stock_vente_categorie
 
 Route::group(['namespace'   =>  "Hotel"], function(){
@@ -1438,6 +1441,16 @@ Route::get("fetch_single_appreciation_agent/{id}",[tperso_appreciation_agentCont
 Route::post('insert_appreciation_agentt',[tperso_appreciation_agentController::class, 'insert_data']);
 Route::post('update_appreciation_agent/{id}', [tperso_appreciation_agentController::class, 'update_data']);
 Route::get("delete_appreciation_agent/{id}", [tperso_appreciation_agentController::class, 'delete_data']);
+//======================== USER SERVICE- ARCHIVE ========================================================
+
+Route::get("fetch_archive_user_service", [tarchive_user_serviceController::class, 'index']);
+Route::get("fetch_service_archive_user_by_user/{refUser}", [tarchive_user_serviceController::class, 'entete_data']);
+Route::get("fetch_service_user_by_user/{refUser}", [tarchive_user_serviceController::class, 'fetch_service_user_by_user']);
+Route::get("fetch_single_archive_user_service/{id}", [tarchive_user_serviceController::class, 'edit']);
+Route::get("delete_archive_user_service/{id}", [tarchive_user_serviceController::class, 'destroy']);
+Route::post("insert_archive_user_service", [tarchive_user_serviceController::class, 'store']);
+Route::get("fetch_tarchive_user_service_2", [tarchive_user_serviceController::class, 'fetch_tarchive_user_service_2']);
+
 //=====================RAPPORT PERSONNELS===================================  
 //fetch_rapport_paiement_date_mois_poste
  

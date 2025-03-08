@@ -88,53 +88,7 @@
                                 solo outlined rounded hide-details v-model="query" @keyup="fetchDataList"
                                 clearable></v-text-field>
                             </v-flex>
-                            <hr />      
-                            <hr />
-                            <hr />
-                            <hr />
-                            <hr />      
-                            <hr />
-                            <hr />
-                            <hr />                    
-                            <v-flex md6>
-                                <v-text-field type="date" label="Du" prepend-inner-icon="event" dense
-                                    :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.date1">
-                                </v-text-field>
-                            </v-flex>
-                            <hr />
-                            <hr />
-                            <hr />
-                            <v-flex md6>
-                                <v-text-field type="date" label="Au" prepend-inner-icon="event" dense
-                                    :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.date2">
-                                </v-text-field>
-                            </v-flex> 
-                            <hr />
-                            <hr />
-                            <hr />
-                
-                            <v-flex md6>
-                                <v-autocomplete label="Selectionnez le Service" prepend-inner-icon="mdi-map"
-                                        :rules="[(v) => !!v || 'Ce champ est requis']" :items="serviceList" dense
-                                        item-text="name_service" item-value="id" outlined v-model="svData.service_id">
-                                    </v-autocomplete>
-                            </v-flex> 
-                            
-                            <hr />
-                            <hr />
-                            <hr />
-                            <v-flex md4>
-                                <v-btn color="blue" dark :loading="loading" @click="fetchDataListFilter">
-                                    {{ "Filtrer" }}
-                                </v-btn>
-                            </v-flex> 
-                            <hr />
-                            <v-flex md4>
-                                <v-btn color="blue" dark :loading="loading" @click="fetchDataList">
-                                    {{ "Refresh" }}
-                                </v-btn>
-                            </v-flex> 
-                
+                                           
                             <v-flex md5>
                             <div>
                                 <!-- {{ this.don }} -->

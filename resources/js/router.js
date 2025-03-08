@@ -127,6 +127,10 @@ import ServiceLog from './views/backend/Logistique/Services.vue'
 import Emplacements from './views/backend/Logistique/Emplacements.vue'
 //TypeStage
 
+
+
+import ArchiveByServiceUser from './views/backend/Personnels/ArchiveByServiceUser.vue'
+import ArchiveUserService from './views/backend/Personnels/ArchiveUserService.vue'
 import CategorieAgent from './views/backend/Personnels/CategorieAgent.vue'
 import FonctionAgent from './views/backend/Personnels/FonctionAgent.vue'
 import Agent from './views/backend/Personnels/Agent.vue'
@@ -1122,10 +1126,20 @@ const Router = new VueRouter({
         name: 'Agent',
         component: Agent,
     },
-    {
-        path: '/admin/CategorieAgent',
+    { 
+      path: '/admin/CategorieAgent',
         name: 'CategorieAgent',
         component: CategorieAgent,
+    },
+    { 
+      path: '/admin/ArchiveByServiceUser',
+        name: 'ArchiveByServiceUser',
+        component: ArchiveByServiceUser,
+    },
+    {
+      path: '/admin/ArchiveUserService',
+        name: 'ArchiveUserService',
+        component: ArchiveUserService,
     },
     {
         path: '/admin/FonctionAgent',
