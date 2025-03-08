@@ -1,7 +1,7 @@
 <template>
     <div>
 
-
+        <ArchivageByCategorie ref="ArchivageByCategorie" />
         <v-layout>
             <v-flex md12>
                 <v-dialog v-model="dialog" max-width="400px" persistent>
@@ -111,6 +111,14 @@
                                     </template>
 
                                     <v-list dense width="">
+
+                                        <v-list-item link @click="showArchivageByCategorie(item.id, item.name_service)">
+                                          <v-list-item-icon>
+                                            <v-icon color="  blue">description</v-icon>
+                                          </v-list-item-icon>
+                                          <v-list-item-title style="margin-left: -20px">Les Taches pour le Projet
+                                          </v-list-item-title>
+                                        </v-list-item>
                                         
                                       <v-list-item link @click="editData(item.id)">
                                         <v-list-item-icon>
@@ -158,8 +166,11 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import ArchivageByCategorie from "./ArchivageByCategorie.vue";
+
 export default {
-    components:{        
+    components:{ 
+        ArchivageByCategorie       
     },
     data() {
         return {
@@ -280,7 +291,26 @@ export default {
                     //categorieList
                 }
             );
-        }
+        },
+    showArchivageByCategorie(service_id, name) {
+
+      if (service_id != '') {
+
+        this.$refs.ArchivageByCategorie.$data.etatModal = true;
+        this.$refs.ArchivageByCategorie.$data.service_id = service_id;
+        this.$refs.ArchivageByCategorie.$data.svData.service_id = service_id;
+        this.$refs.ArchivageByCategorie.fetchDataList();
+        this.fetchDataList();
+
+        this.$refs.ArchivageByCategorie.$data.titleComponent =
+          "Les taches pour le projet " + name;
+
+      } else {
+        this.showError("Personne n'a fait cette action");
+      }
+
+
+    }
 
     },
     filters: {

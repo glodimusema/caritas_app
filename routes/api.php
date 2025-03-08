@@ -1396,7 +1396,8 @@ Route::get("fetch_all_filter_archivages",[tperso_archivagesController::class, 'a
 Route::get("fetch_all_service_filter_archivages",[tperso_archivagesController::class, 'all_service_filter']);
 Route::get("fetch_all_categorie_filter_archivages",[tperso_archivagesController::class, 'all_categorie_filter']);
 Route::get("fetch_all_categorie_service_filter_archivages",[tperso_archivagesController::class, 'all_categorie_service_filter']);
-Route::get("fetch_archivages/{activite_id}",[tperso_archivagesController::class, 'fetch_detail_entete']);
+Route::get("fetch_archivages_by_service/{service_id}",[tperso_archivagesController::class, 'fetch_detail_entete']);
+Route::get("fetch_archivages_by_categorie/{categorie_id}",[tperso_archivagesController::class, 'fetch_detail_entete_cat']);
 Route::get("fetch_single_archivages/{id}",[tperso_archivagesController::class,'fetch_single']);
 Route::post('insert_archivages',[tperso_archivagesController::class, 'insert_data']);
 Route::post('update_archivages/{id}', [tperso_archivagesController::class, 'update_data']);

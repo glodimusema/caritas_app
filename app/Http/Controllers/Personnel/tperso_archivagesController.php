@@ -323,6 +323,48 @@ class tperso_archivagesController extends Controller
     }    
 
 
+    public function fetch_detail_entete_cat(Request $request,$categorie_id)
+    { 
+
+        if (!is_null($request->get('query'))) {
+            # code...
+            $query = $this->Gquery($request);
+            $data = DB::table('tperso_archivages')
+            ->join('tperso_service_archivage','tperso_service_archivage.id','=','tperso_archivages.service_id')
+            ->join('tperso_categorie_archivage','tperso_categorie_archivage.id','=','tperso_service_archivage.categorie_id')
+            ->join('tperso_division','tperso_division.id','=','tperso_service_archivage.division_id')
+            ->select("tperso_archivages.id","name_archive","description_archive","fichier_archive","service_id",
+            "tperso_archivages.author","tperso_archivages.created_at","name_service","description_service","categorie_id","division_id",
+            "tperso_categorie_archivage.name_categorie","description_categorie","name_division","description_division") 
+            ->where([
+                ['name_archive', 'like', '%'.$query.'%'],
+                ['categorie_id',$categorie_id]
+            ])                    
+            ->orderBy("tperso_archivages.id", "desc")
+            ->paginate(10);
+
+            return response($data, 200);        
+
+        }
+        else{
+      
+            $data = DB::table('tperso_archivages')
+            ->join('tperso_service_archivage','tperso_service_archivage.id','=','tperso_archivages.service_id')
+            ->join('tperso_categorie_archivage','tperso_categorie_archivage.id','=','tperso_service_archivage.categorie_id')
+            ->join('tperso_division','tperso_division.id','=','tperso_service_archivage.division_id')
+            ->select("tperso_archivages.id","name_archive","description_archive","fichier_archive","service_id",
+            "tperso_archivages.author","tperso_archivages.created_at","name_service","description_service","categorie_id","division_id",
+            "tperso_categorie_archivage.name_categorie","description_categorie","name_division","description_division")                  
+            ->Where('categorie_id',$categorie_id)    
+            ->orderBy("tperso_archivages.id", "desc")
+            ->paginate(10);
+
+            return response($data, 200);         
+ 
+        }
+
+    } 
+
     function fetch_single($id)
     {
 

@@ -2,8 +2,7 @@
     <v-row justify="center">
       <v-dialog v-model="etatModal" persistent max-width="1200px">
         <v-card>
-          <!-- container -->
-  
+          <!-- container -->  
           <v-card-title class="primary">
             {{ titleComponent }} <v-spacer></v-spacer>
             <v-btn depressed text small fab @click="etatModal = false">
