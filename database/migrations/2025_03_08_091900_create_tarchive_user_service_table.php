@@ -15,8 +15,10 @@ class CreateTarchiveUserServiceTable extends Migration
     {
         Schema::create('tarchive_user_service', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('refUser')->constrained('users')->restrictOnUpdate()->restrictOnDelete();
-            $table->foreignId('refService')->constrained('tperso_service_archivage')->restrictOnUpdate()->restrictOnDelete();
+            $table->Integer('refUser');
+            $table->Integer('refService');
+            // $table->foreignId('refUser')->constrained('users')->restrictOnUpdate()->restrictOnDelete();
+            // $table->foreignId('refService')->constrained('tperso_service_archivage')->restrictOnUpdate()->restrictOnDelete();
             $table->string('active')->default('OUI');
             $table->string('author',100);
             $table->timestamps();

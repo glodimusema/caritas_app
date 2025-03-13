@@ -16,7 +16,7 @@ class CreateTpersoAnnexeProjetTable extends Migration
         Schema::create('tperso_annexe_projet', function (Blueprint $table) {
             $table->id();
             $table->string('noms_annexe');
-            $table->foreignId('refAgent')->constrained('tagent')->restrictOnUpdate()->restrictOnDelete();
+            $table->Integer('refAgent');
             $table->string('annexe');
             $table->string('author');
             $table->string('deleted')->default('NON');
