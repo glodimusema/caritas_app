@@ -58,9 +58,9 @@ class tperso_demandecongeController extends Controller
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_demandeconge.id",'affectation_id','annee_id','name_annee','typecircintance_id','description_conge',
-            'date_demande','date_depart','nbr_joursollicite','date_reprise','superviseur_conge','interimaire_conge',
+            'date_demande','date_depart','nbr_joursollicite','superviseur_conge','interimaire_conge',
             'resumetache_conge','nom_circontstance','description_circons','rh_conge', 'coordinateur_conge','directeur_conge',
-            'congess','admin_fin_conge','date_debut_accord','date_fin_accord','nbr_jouraccord','cumul_conge_annee',
+            'congess','admin_fin_conge','date_debut_accord','nbr_jouraccord','cumul_conge_annee',
             'solde_conge_datedu','solde_conge_reprise','nbrjour_cirscons','nom_categorie',
             'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
             'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -80,6 +80,8 @@ class tperso_demandecongeController extends Controller
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
             ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')  
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")
             ->where([
                 ['noms_agent', 'like', '%'.$query.'%']
             ])               
@@ -113,9 +115,9 @@ class tperso_demandecongeController extends Controller
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_demandeconge.id",'affectation_id','annee_id','name_annee','typecircintance_id','description_conge',
-            'date_demande','date_depart','nbr_joursollicite','date_reprise','superviseur_conge','interimaire_conge',
+            'date_demande','date_depart','nbr_joursollicite','superviseur_conge','interimaire_conge',
             'resumetache_conge','nom_circontstance','description_circons','rh_conge', 'coordinateur_conge','directeur_conge',
-            'congess','admin_fin_conge','date_debut_accord','date_fin_accord','nbr_jouraccord','cumul_conge_annee',
+            'congess','admin_fin_conge','date_debut_accord','nbr_jouraccord','cumul_conge_annee',
             'solde_conge_datedu','solde_conge_reprise','nbrjour_cirscons','nom_categorie',
             'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
             'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -134,7 +136,9 @@ class tperso_demandecongeController extends Controller
             "adresse_org","contact_org","rccm_org", "idnat_org")
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
-            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')   
+            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')  
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")   
             ->orderBy("tperso_demandeconge.id", "desc")          
             ->paginate(10);
 
@@ -174,9 +178,9 @@ class tperso_demandecongeController extends Controller
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_demandeconge.id",'affectation_id','annee_id','name_annee','typecircintance_id','description_conge',
-            'date_demande','date_depart','nbr_joursollicite','date_reprise','superviseur_conge','interimaire_conge',
+            'date_demande','date_depart','nbr_joursollicite','superviseur_conge','interimaire_conge',
             'resumetache_conge','nom_circontstance','description_circons','rh_conge', 'coordinateur_conge','directeur_conge',
-            'congess','admin_fin_conge','date_debut_accord','date_fin_accord','nbr_jouraccord','cumul_conge_annee',
+            'congess','admin_fin_conge','date_debut_accord','nbr_jouraccord','cumul_conge_annee',
             'solde_conge_datedu','solde_conge_reprise','nbrjour_cirscons','nom_categorie',
             'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
             'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -195,7 +199,9 @@ class tperso_demandecongeController extends Controller
             "adresse_org","contact_org","rccm_org", "idnat_org")
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
-            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie') 
+            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')  
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord") 
             ->where([
                 ['noms_agent', 'like', '%'.$query.'%'],
                 ['affectation_id',$affectation_id]
@@ -231,9 +237,9 @@ class tperso_demandecongeController extends Controller
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_demandeconge.id",'affectation_id','annee_id','name_annee','typecircintance_id','description_conge',
-            'date_demande','date_depart','nbr_joursollicite','date_reprise','superviseur_conge','interimaire_conge',
+            'date_demande','date_depart','nbr_joursollicite','superviseur_conge','interimaire_conge',
             'resumetache_conge','nom_circontstance','description_circons','rh_conge', 'coordinateur_conge','directeur_conge',
-            'congess','admin_fin_conge','date_debut_accord','date_fin_accord','nbr_jouraccord','cumul_conge_annee',
+            'congess','admin_fin_conge','date_debut_accord','nbr_jouraccord','cumul_conge_annee',
             'solde_conge_datedu','solde_conge_reprise','nbrjour_cirscons','nom_categorie',
             'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
             'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -252,7 +258,9 @@ class tperso_demandecongeController extends Controller
             "adresse_org","contact_org","rccm_org", "idnat_org")
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
-            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')             
+            ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')  
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")             
             ->Where('affectation_id',$affectation_id)    
             ->orderBy("tperso_demandeconge.id", "desc")
             ->paginate(10);
@@ -290,9 +298,9 @@ class tperso_demandecongeController extends Controller
         ->join('provinces' , 'provinces.id','=','villes.idProvince')
         ->join('pays' , 'pays.id','=','provinces.idPays')
         ->select("tperso_demandeconge.id",'affectation_id','annee_id','name_annee','typecircintance_id','description_conge',
-        'date_demande','date_depart','nbr_joursollicite','date_reprise','superviseur_conge','interimaire_conge',
+        'date_demande','date_depart','nbr_joursollicite','superviseur_conge','interimaire_conge',
         'resumetache_conge','nom_circontstance','description_circons','rh_conge', 'coordinateur_conge','directeur_conge',
-        'congess','admin_fin_conge','date_debut_accord','date_fin_accord','nbr_jouraccord','cumul_conge_annee',
+        'congess','admin_fin_conge','date_debut_accord','nbr_jouraccord','cumul_conge_annee',
         'solde_conge_datedu','solde_conge_reprise','nbrjour_cirscons','nom_categorie',
         'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
         'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -312,6 +320,8 @@ class tperso_demandecongeController extends Controller
         ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
         ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
         ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')  
+        ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+        ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")  
         ->where('tperso_demandeconge.id', $id)
         ->get();
 

@@ -446,7 +446,6 @@ public function fetch_rapport_fincontrat_date(Request $request)
     }  
     
 }
-
 function printRapportFinContratDate($date1, $date2)
 {
 
@@ -761,7 +760,6 @@ function printRapportFinContratDate($date1, $date2)
         return $output; 
 
 }
-
 function showRapportFinContratDate($date1, $date2)
 {
         $count=0;
@@ -829,8 +827,6 @@ function showRapportFinContratDate($date1, $date2)
 
 }
 
-//
-
 //==================== RAPPORT DES CONTRAT PAR DATE TYPE CONTRAT =======================================
 
 public function fetch_rapport_contrat_date_typecontrat(Request $request)
@@ -854,7 +850,6 @@ public function fetch_rapport_contrat_date_typecontrat(Request $request)
     }  
     
 }
-
 function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
 {
 
@@ -1171,7 +1166,6 @@ function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
         return $output; 
 
 }
-
 function showRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
 {
     $count=0;
@@ -1262,7 +1256,6 @@ public function fetch_rapport_contrat_date_poste(Request $request)
     }  
     
 }
-
 function printRapportContratDatePoste($date1, $date2, $refPoste)
 {
 
@@ -1579,7 +1572,6 @@ function printRapportContratDatePoste($date1, $date2, $refPoste)
         return $output; 
 
 }
-
 function showRapportContratDatePoste($date1, $date2, $refPoste)
 {
     $count=0;
@@ -1647,8 +1639,6 @@ function showRapportContratDatePoste($date1, $date2, $refPoste)
     return $output;
 }
 
-
-
 //==================== RAPPORT DES CONTRAT PAR DATE LIEU AFFECTATION =======================================
 
 public function fetch_rapport_contrat_date_LieuAffectation(Request $request)
@@ -1671,7 +1661,6 @@ public function fetch_rapport_contrat_date_LieuAffectation(Request $request)
     }  
     
 }
-
 function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectation)
 {
 
@@ -1988,7 +1977,6 @@ function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectat
         return $output; 
 
 }
-
 function showRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectation)
 {
     $count=0;
@@ -2055,9 +2043,6 @@ function showRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectati
 
     return $output;
 }
-
-
-
 //==================== RAPPORT DES CONTRAT PAR DATE MUTUELLE =======================================
 
 public function fetch_rapport_contrat_date_mutuelle(Request $request)
@@ -2080,7 +2065,6 @@ public function fetch_rapport_contrat_date_mutuelle(Request $request)
     }  
     
 }
-
 function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
 {
 
@@ -2397,7 +2381,6 @@ function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
         return $output; 
 
 }
-
 function showRapportContratDateMutuelle($date1, $date2, $refMutuelle)
 {
     $count=0;
@@ -2488,7 +2471,6 @@ public function fetch_rapport_contrat_date_projet(Request $request)
     }  
     
 }
-
 function printRapportContratDateProjet($date1, $date2, $projet_id)
 {
 
@@ -2805,7 +2787,6 @@ function printRapportContratDateProjet($date1, $date2, $projet_id)
         return $output; 
 
 }
-
 function showRapportContratDateProjet($date1, $date2, $projet_id)
 {
     $count=0;
@@ -2882,7 +2863,6 @@ function showRapportContratDateProjet($date1, $date2, $projet_id)
     return $output;
 }
 
-
 //==================== RAPPORT DES CONTRAT PAR DATE SEXE =======================================
 
 public function fetch_rapport_contrat_date_sexe(Request $request)
@@ -2905,7 +2885,6 @@ public function fetch_rapport_contrat_date_sexe(Request $request)
     }  
     
 }
-
 function printRapportContratDateSexe($date1, $date2, $sexe_agent)
 {
 
@@ -3222,7 +3201,6 @@ function printRapportContratDateSexe($date1, $date2, $sexe_agent)
         return $output; 
 
 }
-
 function showRapportContratDateSexe($date1, $date2, $sexe_agent)
 {
     $count=0;
@@ -3299,7 +3277,6 @@ function showRapportContratDateSexe($date1, $date2, $sexe_agent)
     return $output;
 }
 
-
 //==================== RAPPORT DES CONGE PAR DATE MUTUELLE =======================================
 
 public function fetch_rapport_contrat_date_conge(Request $request)
@@ -3322,7 +3299,6 @@ public function fetch_rapport_contrat_date_conge(Request $request)
     }  
     
 }
-
 function printRapportContratDateConge($date1, $date2, $conge)
 {
 
@@ -3639,7 +3615,6 @@ function printRapportContratDateConge($date1, $date2, $conge)
         return $output; 
 
 }
-
 function showRapportContratDateConge($date1, $date2, $conge)
 {
     $count=0;
@@ -3729,7 +3704,6 @@ public function fetch_rapport_conge_encours_date(Request $request)
     } 
     
 }
-
 function printRapportCongeEncoursDate($date1, $date2)
 {
 
@@ -4051,7 +4025,6 @@ function printRapportCongeEncoursDate($date1, $date2)
         return $output; 
 
 }
-
 function showRapportCongetEncoursDate($date1, $date2)
 {
         $count=0;
@@ -4145,7 +4118,6 @@ public function fetch_rapport_stagiaires_date(Request $request)
     } 
     
 }
-
 function printRapportStagiairessDate($date1, $date2)
 {
 
@@ -4472,7 +4444,6 @@ function printRapportStagiairessDate($date1, $date2)
         return $output; 
 
 }
-
 function showRapportStagiairesDate($date1, $date2)
 {
         $count=0;
@@ -4557,7 +4528,6 @@ public function fetch_rapport_stagiaires_date_institution(Request $request)
     } 
     
 }
-
 function printRapportStagiairessDateInstitution($date1, $date2,$institution_id)
 {
 
@@ -4884,7 +4854,6 @@ function printRapportStagiairessDateInstitution($date1, $date2,$institution_id)
         return $output; 
 
 }
-
 function showRapportStagiairesDateInstitution($date1, $date2,$institution_id)
 {
         $count=0;
@@ -4972,7 +4941,6 @@ public function fetch_rapport_stagiaires_date_typestage(Request $request)
     } 
     
 }
-
 function printRapportStagiairessDateTypestage($date1, $date2,$typestage_id)
 {
 
@@ -5299,7 +5267,6 @@ function printRapportStagiairessDateTypestage($date1, $date2,$typestage_id)
         return $output; 
 
 }
-
 function showRapportStagiairesDateTypestage($date1, $date2,$typestage_id)
 {
         $count=0;
@@ -7347,6 +7314,7 @@ function GetContratTravailAgent($id)
             $description_lieu='';
             $nom_mutuelle='';
             $code_contrat='';
+            $autresDetail='';
 
 
             $nomAvenue='';
@@ -7418,11 +7386,11 @@ function GetContratTravailAgent($id)
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-            'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+            'refMutuelle','refTypeContrat','dureecontrat','dureeLettre',
+            'JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
             'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
             'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
-            "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
+            "noms_agent","sexe_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
             "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
@@ -7436,6 +7404,13 @@ function GetContratTravailAgent($id)
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
             ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')
             ->selectRaw('((salaire_base +fammiliale + logement + tperso_affectation_agent.transport) - inss_qpo - ipr) as netPaie')
+            ->selectRaw("DATE_FORMAT(DATE_SUB(dateFin, INTERVAL 1 DAY),'%d/%m/%Y') as dateFin")
+            ->selectRaw("DATE_FORMAT(datenaissance_agent,'%d/%m/%Y') as datenaissance_agent")
+            ->selectRaw("DATE_FORMAT(dateDebutEssaie,'%d/%m/%Y') as dateDebutEssaie")
+            ->selectRaw("DATE_FORMAT(dateFinEssaie,'%d/%m/%Y') as dateFinEssaie")
+            ->selectRaw("DATE_FORMAT(dateAffectation,'%d/%m/%Y') as dateAffectation")
+            ->selectRaw("DATE_FORMAT(date_debut_projet,'%d/%m/%Y') as date_debut_projet")
+            ->selectRaw("DATE_FORMAT(date_fin_projet,'%d/%m/%Y') as date_fin_projet")
             ->where('tperso_affectation_agent.id','=', $id)    
             ->get(); 
             $output='';
@@ -7496,6 +7471,8 @@ function GetContratTravailAgent($id)
                 $idAgent=$row->refAgent;
                 $numCNSS = $row->numCNSS;
 
+                $autresDetail = $row->autresDetail;
+
 
                 $salaire_base=$row->salaire_base;
                 $fammiliale= $row->fammiliale;
@@ -7512,6 +7489,8 @@ function GetContratTravailAgent($id)
                 $netPaie=$row->netPaie;
                 
             }  
+
+            $net_lettre = $this->chiffreEnLettre($netPaie);
 
             $contratSoin='';
 
@@ -7549,11 +7528,25 @@ function GetContratTravailAgent($id)
          ->where([
             ['tperso_dependant.refAgent','=', $idAgent]
         ])    
-         ->get(); 
+         ->first(); 
          $output='';
-         foreach ($data2 as $row) 
+         if ($data2) 
          {                                
-            $nbrEnfant=$row->nbrEnfant;                           
+            $nbrEnfant=$data2->nbrEnfant;                           
+         }
+
+
+         $data_represente=0;
+         // 
+         $data5 =  DB::table('tagent')         
+         ->select('fonction_agent as data_represente')
+         ->where([
+            ['tagent.noms_agent','=', $directeur]
+        ])    
+         ->first(); 
+         if ($data5) 
+         {                                
+            $data_represente=$data5->data_represente;                           
          }
     
 
@@ -7724,7 +7717,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="2" rowspan="2" style="width:70px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Directeur,</nobr></td>
+                        <td class="cs1698ECB3" colspan="2" rowspan="2" style="width:70px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>'.$data_represente.',  </nobr></td>
                         <td class="cs9E712815" colspan="12" style="width:398px;height:20px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Monsieur&nbsp;'.$directeur.',</nobr></td>
                         <td class="cs5DE5F832" colspan="4" style="width:151px;height:20px;line-height:18px;text-align:right;vertical-align:top;"><nobr>ci-apr&#232;s&nbsp;d&#233;nomm&#233;e&nbsp;&nbsp;&#171;</nobr></td>
                         <td></td>
@@ -7871,7 +7864,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:118px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fils/Fille&nbsp;de.'.$nomPere_agent.'&nbsp;et&nbsp;'.$nomMere_agent.'</nobr><br/><nobr>N&#233;e&nbsp;&#224;.&nbsp;'.$lieunaissnce_agent.'&nbsp;Le&nbsp;'.$datenaissance_agent.'..</nobr><br/><nobr>Etat&nbsp;civil&nbsp;:&nbsp;.'.$etatcivil_agent.' '.$conjoint_agent.'.</nobr><br/><nobr>Nationalit&#233;&nbsp;:&nbsp;.'.$Nationalite_agent.'.</nobr><br/><nobr>Nombre&nbsp;d'.$aps.'enfants&nbsp;&#224;&nbsp;charge&nbsp;:&nbsp;.'.$nbrEnfant.'.</nobr><br/><nobr>Num&#233;ro&nbsp;CNSS&nbsp;:&nbsp;'.$numCNSS.'</nobr></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:118px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fils/Fille&nbsp;de.'.$nomPere_agent.'&nbsp;et&nbsp;'.$nomMere_agent.'</nobr><br/><nobr>N&#233;e&nbsp;&#224;.&nbsp;'.$lieunaissnce_agent.'&nbsp;Le&nbsp;'.$datenaissance_agent.'..</nobr><br/><nobr>Etat&nbsp;civil&nbsp;:&nbsp;.'.$etatcivil_agent.' à '.$conjoint_agent.'.</nobr><br/><nobr>Nationalit&#233;&nbsp;:&nbsp;.'.$Nationalite_agent.'.</nobr><br/><nobr>Nombre&nbsp;d'.$aps.'enfants&nbsp;&#224;&nbsp;charge&nbsp;:&nbsp;.'.$nbrEnfant.'.</nobr><br/><nobr>Num&#233;ro&nbsp;CNSS&nbsp;:&nbsp;'.$numCNSS.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -8040,7 +8033,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:76px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de.......SUS.'.$netPaie.'.dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(….&nbsp;&#224;&nbsp;......%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:</nobr><br/></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de.......SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(….&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8325,7 +8318,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:96px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs9E712815" colspan="20" style="width:626px;height:96px;line-height:18px;text-align:left;vertical-align:top;"><nobr>OFFICE&nbsp;NATIONAL&nbsp;DE&nbsp;L'.$aps.'EMPLOI</nobr><br/><nobr>Nom,&nbsp;postnom&nbsp;et&nbsp;qualit&#233;.&nbsp;...........&nbsp;............&nbsp;et&nbsp;...........</nobr><br/><nobr>Sous&nbsp;le&nbsp;num&#233;ro...000000.</nobr><br/><nobr>Signature&nbsp;et&nbsp;sceau....................................................................................................................</nobr><br/></td>
+                        <td class="cs9E712815" colspan="20" style="width:626px;height:96px;line-height:18px;text-align:left;vertical-align:top;"><nobr>OFFICE&nbsp;NATIONAL&nbsp;DE&nbsp;L'.$aps.'EMPLOI</nobr><br/><nobr>Nom,&nbsp;postnom&nbsp;et&nbsp;qualit&#233;.&nbsp;...........&nbsp;............&nbsp;et&nbsp;...........</nobr><br/><nobr>Sous&nbsp;le&nbsp;num&#233;ro..........</nobr><br/><nobr>Signature&nbsp;et&nbsp;sceau....................................................................................................................</nobr><br/></td>
                         <td></td>
                     </tr>
                 </table>
@@ -8349,14 +8342,15 @@ function showDependants($idAgent)
         ->join('villes' , 'villes.id','=','communes.idVille')
         ->join('provinces' , 'provinces.id','=','villes.idProvince')
         ->join('pays' , 'pays.id','=','provinces.idPays')
-        ->select("tperso_dependant.id","noms_dependant","sexe","date_naissance","etat_civile","degre_parente","annexe",
+        ->select("tperso_dependant.id","noms_dependant","sexe","etat_civile","degre_parente","annexe",
         "refAgent","matricule_agent",'tperso_dependant.author',
         "noms_agent","sexe_agent","datenaissance_agent",
         "lieunaissnce_agent","provinceOrigine_agent","etatcivil_agent","refAvenue_agent",
         "contact_agent","mail_agent","grade_agent","fonction_agent","specialite_agent",
         "Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
         "tagent.slug as slug_agent")
-        ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
+        ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+        ->selectRaw("DATE_FORMAT(date_naissance,'%d/%m/%Y') as date_naissance")  
         ->where('tperso_dependant.refAgent', $idAgent)
         ->orderBy("noms_dependant", "asc")
         ->get();
@@ -8604,11 +8598,15 @@ function GetFicheCongeAgent($id)
             ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie') 
             ->selectRaw("DATE_FORMAT(date_demande, '%d/%m/%Y') AS date_demande") 
             ->selectRaw("DATE_FORMAT(date_depart, '%d/%m/%Y') AS date_depart") 
-            ->selectRaw("DATE_FORMAT(date_reprise, '%d/%m/%Y') AS date_reprise")
+            // ->selectRaw("DATE_FORMAT(date_reprise, '%d/%m/%Y') AS date_reprise")
             ->selectRaw("DATE_FORMAT(date_debut_accord, '%d/%m/%Y') AS date_debut_accord")
-            ->selectRaw("DATE_FORMAT(date_fin_accord, '%d/%m/%Y') AS date_fin_accord") 
+            // ->selectRaw("DATE_FORMAT(date_fin_accord, '%d/%m/%Y') AS date_fin_accord") 
             ->selectRaw("DATE_FORMAT(dateAffectation, '%d/%m/%Y') AS dateAffectation") 
-            ->selectRaw("DATE_FORMAT(dateFin, '%d/%m/%Y') AS dateFin")            
+            ->selectRaw("DATE_FORMAT(dateFin, '%d/%m/%Y') AS dateFin")  
+            
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
+            ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")
+
             ->where('tperso_demandeconge.id','=', $id)    
             ->get(); 
             $output='';
@@ -9596,7 +9594,7 @@ function showRapportPresenceDate($date1, $date2)
          "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
          'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
          ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 
-         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%M/%Y') as jour_presence")
+         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%m/%Y') as jour_presence")
          ->selectRaw("DATE_FORMAT(date_entree,'%H:%i:%s') as heure_entree") 
          ->selectRaw("DATE_FORMAT(date_sortie,'%H:%i:%s') as heure_sortie") 
          ->selectRaw("DAYNAME(tperso_presences_agent.created_at) as jour_name")
@@ -10064,7 +10062,7 @@ function showRapportPresenceServiceDate($date1, $date2,$refServicePerso)
          "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
          'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
          ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 
-         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%M/%Y') as jour_presence")
+         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%m/%Y') as jour_presence")
          ->selectRaw("DATE_FORMAT(date_entree,'%H:%i:%s') as heure_entree") 
          ->selectRaw("DATE_FORMAT(date_sortie,'%H:%i:%s') as heure_sortie") 
          ->selectRaw("DAYNAME(tperso_presences_agent.created_at) as jour_name")
@@ -10534,7 +10532,7 @@ function showRapportLieuAffectationServiceDate($date1, $date2,$refLieuAffectatio
          "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
          'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
          ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 
-         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%M/%Y') as jour_presence")
+         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%m/%Y') as jour_presence")
          ->selectRaw("DATE_FORMAT(date_entree,'%H:%i:%s') as heure_entree") 
          ->selectRaw("DATE_FORMAT(date_sortie,'%H:%i:%s') as heure_sortie") 
          ->selectRaw("DAYNAME(tperso_presences_agent.created_at) as jour_name")
@@ -12020,7 +12018,7 @@ function showRapportTimeSheetDate($date1, $date2,$affectation_id)
          "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
          'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
          ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(heure_debut), TIME(heure_fin)) as nbr_heure') 
-         ->selectRaw("DATE_FORMAT(tperso_timesheet.created_at,'%d/%M/%Y') as jour_presence")
+         ->selectRaw("DATE_FORMAT(tperso_timesheet.created_at,'%d/%m/%Y') as jour_presence")
          ->selectRaw("DATE_FORMAT(heure_debut,'%H:%i:%s') as heure_entree") 
          ->selectRaw("DATE_FORMAT(heure_fin,'%H:%i:%s') as heure_sortie") 
          ->selectRaw("DAYNAME(tperso_timesheet.created_at) as jour_name")

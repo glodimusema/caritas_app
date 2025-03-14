@@ -383,7 +383,7 @@
                           </v-flex>
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
-                              <v-text-field label="Autres Détails" prepend-inner-icon="event" dense
+                              <v-text-field label="Autres Détails(Pourcentage Temps de Travail)" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.autresDetail">
                               </v-text-field>
                             </div>
