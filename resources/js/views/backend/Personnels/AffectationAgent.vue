@@ -390,9 +390,15 @@
                           </v-flex>
 
 
-
-
-                          <v-flex xs12 sm12 md12 lg12>
+                          
+                          <v-flex xs12 sm12 md6 lg6>
+                            <div class="mr-1">
+                              <v-text-field label="Indemnité de Transport" prepend-inner-icon="event" dense
+                                :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.transport">
+                              </v-text-field>
+                            </div>
+                          </v-flex>
+                          <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-autocomplete label="Etat du Contrat" :items="[
                                 { designation: 'Encours' },
@@ -741,6 +747,7 @@ export default {
         postnomOffice: '',
         qualifieOffice: '',
         directeur: '',
+        transport : 0,
 
         codeAgent: '',
         numCNSS: '',

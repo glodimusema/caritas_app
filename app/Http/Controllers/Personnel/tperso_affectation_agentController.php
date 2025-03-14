@@ -511,22 +511,28 @@ class tperso_affectation_agentController extends Controller
         ->join('provinces' , 'provinces.id','=','villes.idProvince')
         ->join('pays' , 'pays.id','=','provinces.idPays')
         ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-        'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateDebutEssaie',
-        'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+        'refMutuelle','refTypeContrat','dureecontrat','dureeLettre',
+        'JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
         'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
         'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
-        "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
+        "noms_agent","sexe_agent","lieunaissnce_agent","provinceOrigine_agent",
         "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
         "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
         "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
         'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
         'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
         'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
-        "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+        "partenaire_id","description_projet","chef_projet","nom_org",
         "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
         ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
         ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante') 
-        ->selectRaw('DATE_SUB(dateFin, INTERVAL 1 DAY) as dateFin')
+        ->selectRaw("DATE_FORMAT(DATE_SUB(dateFin, INTERVAL 1 DAY),'%d/%M/%Y') as dateFin")
+        ->selectRaw("DATE_FORMAT(datenaissance_agent,'%d/%M/%Y') as datenaissance_agent")
+        ->selectRaw("DATE_FORMAT(dateDebutEssaie,'%d/%M/%Y') as dateDebutEssaie")
+        ->selectRaw("DATE_FORMAT(dateFinEssaie,'%d/%M/%Y') as dateFinEssaie")
+        ->selectRaw("DATE_FORMAT(dateAffectation,'%d/%M/%Y') as dateAffectation")
+        ->selectRaw("DATE_FORMAT(date_debut_projet,'%d/%M/%Y') as date_debut_projet")
+        ->selectRaw("DATE_FORMAT(date_fin_projet,'%d/%M/%Y') as date_fin_projet")
         //->selectRaw('((salaire_base +fammiliale + logement + tperso_affectation_agent.transport) - inss_qpo - ipr) as netPaie')
         ->where('tperso_affectation_agent.dateFin','>=', $current)
         ->get();
@@ -590,19 +596,20 @@ class tperso_affectation_agentController extends Controller
         }
 
 
-        $data4 =  DB::table('tperso_poste')       
-        ->select("tperso_poste.id","tperso_poste.transport")
-        ->where('tperso_poste.id', '=', $poste_id) 
-        ->get(); 
-        $output='';
-        foreach ($data4 as $row) 
-        {  
-            $transport=$row->transport;                  
-        }
+        // $data4 =  DB::table('tperso_poste')       
+        // ->select("tperso_poste.id","tperso_poste.transport")
+        // ->where('tperso_poste.id', '=', $poste_id) 
+        // ->get(); 
+        // $output='';
+        // foreach ($data4 as $row) 
+        // {  
+        //     $transport=$row->transport;                  
+        // }
 
-        $fammiliale = (int)$nombre_enfant * 5;
+        $transport=$request->transport;
+        // $fammiliale = (int)$nombre_enfant * 5;
+        $fammiliale = 0;
         $logement=((floatval($salaire_base)*30)/100);
-        // $transport=0;
         $sal_brut=(($salaire_base)+($fammiliale)+($logement)+($transport));        
         $inss_qpo=((floatval($salaire_base)*5)/100);
         $inss_qpp=((floatval($salaire_base)*13)/100);
@@ -625,7 +632,8 @@ class tperso_affectation_agentController extends Controller
         }
         else if($sal_brut_imposable >= 2133.1 && $sal_brut_imposable<=3600000)
         {
-            $ipr = (((((floatval($sal_brut_imposable) - 3296))*40)/100)+468.51);
+            $ipr = (((((floatval($sal_brut_imposable) - 1163))*30)/100)+148.49);
+            // $ipr = (((((floatval($sal_brut_imposable) - 3296))*40)/100)+468.51);
         }
         else if($sal_brut_imposable > 3600000)
         {            
@@ -730,19 +738,20 @@ class tperso_affectation_agentController extends Controller
         }
 
 
-        $data4 =  DB::table('tperso_poste')       
-        ->select("tperso_poste.id","tperso_poste.transport")
-        ->where('tperso_poste.id', '=', $request->refPoste) 
-        ->get(); 
-        $output='';
-        foreach ($data4 as $row) 
-        {  
-            $transport=$row->transport;                  
-        }
+        // $data4 =  DB::table('tperso_poste')       
+        // ->select("tperso_poste.id","tperso_poste.transport")
+        // ->where('tperso_poste.id', '=', $poste_id) 
+        // ->get(); 
+        // $output='';
+        // foreach ($data4 as $row) 
+        // {  
+        //     $transport=$row->transport;                  
+        // }
 
-        $fammiliale = (int)$nombre_enfant * 5;
+        $transport=$request->transport;
+        // $fammiliale = (int)$nombre_enfant * 5;
+        $fammiliale = 0;
         $logement=((floatval($salaire_base)*30)/100);
-        // $transport=0;
         $sal_brut=(($salaire_base)+($fammiliale)+($logement)+($transport));        
         $inss_qpo=((floatval($salaire_base)*5)/100);
         $inss_qpp=((floatval($salaire_base)*13)/100);
