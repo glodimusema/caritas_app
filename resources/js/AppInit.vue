@@ -620,7 +620,102 @@ export default {
                   text: "Param.SalaireBase",
                   href: "/admin/ParametreSalairebBase",
                 },
-                //ParametreSalairebBase
+                
+
+
+                {
+                  text: "Type Agent",
+                  href: "/admin/TypeAgent",
+                },
+                {
+                  text: "Fonctions",
+                  href: "/admin/FonctionAgent",
+                },
+                {
+                  text: "Catégorie Agent",
+                  href: "/admin/CategorieAgent",
+                },
+                {
+                  text: "Type RubriquesPaies",
+                  href: "/admin/CategorieRubriquePers",
+                },
+                {//CategorieCirconstance
+                  text: "Type Contrat",
+                  href: "/admin/TypeContrat",
+                },
+                {//TypeStage
+                  text: "Type Stage",
+                  href: "/admin/TypeStage",
+                },
+                {//CategorieCirconstance
+                  text: "Categorie Circontance",
+                  href: "/admin/CategorieCirconstance",
+                },
+                {
+                  text: "Type Circonstance",
+                  href: "/admin/TypeCirconstance",
+                },
+                {
+                  text: "Les Postes",
+                  href: "/admin/Postes",
+                },
+                {
+                  text: "Les Mutuelles",
+                  href: "/admin/Mutuelle",
+                },
+                {
+                  text: "Lieu Affectation",
+                  href: "/admin/LieuAffectation",
+                },
+                {
+                  text: "RubriquesPaies",
+                  href: "/admin/RubriquePaie",
+                },
+                {
+                  text: "Param. RubriquesPaies",
+                  href: "/admin/ParametreRubrique",
+                },
+                {
+                  text: "Departements",
+                  href: "/admin/CategorieServicePers",
+                },
+                {
+                  text: "Service Pers.",
+                  href: "/admin/ServicePersonnel",
+                },
+                {
+                  text: "Année Civile",
+                  href: "/admin/Annee",
+                },
+                {
+                  text: "Mois",
+                  href: "/admin/Mois",
+                },
+                {
+                  text: "PromotionAcadémique",
+                  href: "/admin/Promotion",
+                },
+                {
+                  text: "DomaineAcadémique",
+                  href: "/admin/DomaineStage",
+                },
+                {
+                  text: "OptionAcadémique",
+                  href: "/admin/OptionStage",
+                },
+                {
+                  text: "AnnéeAcadémique",
+                  href: "/admin/AnneeStage",
+                },
+                {
+                  text: "InstitutionsAC",
+                  href: "/admin/Institution",
+                },
+                {
+                  text: "Raison Familliale",
+                  href: "/admin/RaisonFamilliale",
+                }
+
               ],
             },
           ],
@@ -1508,7 +1603,99 @@ export default {
                   text: "Param.SalaireBase",
                   href: "/admin/ParametreSalairebBase",
                 },
-                //ParametreSalairebBase
+                {
+                  text: "Type Agent",
+                  href: "/admin/TypeAgent",
+                },
+                {
+                  text: "Fonctions",
+                  href: "/admin/FonctionAgent",
+                },
+                {
+                  text: "Catégorie Agent",
+                  href: "/admin/CategorieAgent",
+                },
+                {
+                  text: "Type RubriquesPaies",
+                  href: "/admin/CategorieRubriquePers",
+                },
+                {//CategorieCirconstance
+                  text: "Type Contrat",
+                  href: "/admin/TypeContrat",
+                },
+                {//TypeStage
+                  text: "Type Stage",
+                  href: "/admin/TypeStage",
+                },
+                {//CategorieCirconstance
+                  text: "Categorie Circontance",
+                  href: "/admin/CategorieCirconstance",
+                },
+                {
+                  text: "Type Circonstance",
+                  href: "/admin/TypeCirconstance",
+                },
+                {
+                  text: "Les Postes",
+                  href: "/admin/Postes",
+                },
+                {
+                  text: "Les Mutuelles",
+                  href: "/admin/Mutuelle",
+                },
+                {
+                  text: "Lieu Affectation",
+                  href: "/admin/LieuAffectation",
+                },
+                {
+                  text: "RubriquesPaies",
+                  href: "/admin/RubriquePaie",
+                },
+                {
+                  text: "Param. RubriquesPaies",
+                  href: "/admin/ParametreRubrique",
+                },
+                {
+                  text: "Departements",
+                  href: "/admin/CategorieServicePers",
+                },
+                {
+                  text: "Service Pers.",
+                  href: "/admin/ServicePersonnel",
+                },
+                {
+                  text: "Année Civile",
+                  href: "/admin/Annee",
+                },
+                {
+                  text: "Mois",
+                  href: "/admin/Mois",
+                },
+                {
+                  text: "PromotionAcadémique",
+                  href: "/admin/Promotion",
+                },
+                {
+                  text: "DomaineAcadémique",
+                  href: "/admin/DomaineStage",
+                },
+                {
+                  text: "OptionAcadémique",
+                  href: "/admin/OptionStage",
+                },
+                {
+                  text: "AnnéeAcadémique",
+                  href: "/admin/AnneeStage",
+                },
+                {
+                  text: "InstitutionsAC",
+                  href: "/admin/Institution",
+                },
+                {
+                  text: "Raison Familliale",
+                  href: "/admin/RaisonFamilliale",
+                }
+
               ],
             },
           ],
@@ -2384,7 +2571,99 @@ export default {
                   text: "Param.SalaireBase",
                   href: "/admin/ParametreSalairebBase",
                 },
-                //ParametreSalairebBase
+                {
+                  text: "Type Agent",
+                  href: "/admin/TypeAgent",
+                },
+                {
+                  text: "Fonctions",
+                  href: "/admin/FonctionAgent",
+                },
+                {
+                  text: "Catégorie Agent",
+                  href: "/admin/CategorieAgent",
+                },
+                {
+                  text: "Type RubriquesPaies",
+                  href: "/admin/CategorieRubriquePers",
+                },
+                {//CategorieCirconstance
+                  text: "Type Contrat",
+                  href: "/admin/TypeContrat",
+                },
+                {//TypeStage
+                  text: "Type Stage",
+                  href: "/admin/TypeStage",
+                },
+                {//CategorieCirconstance
+                  text: "Categorie Circontance",
+                  href: "/admin/CategorieCirconstance",
+                },
+                {
+                  text: "Type Circonstance",
+                  href: "/admin/TypeCirconstance",
+                },
+                {
+                  text: "Les Postes",
+                  href: "/admin/Postes",
+                },
+                {
+                  text: "Les Mutuelles",
+                  href: "/admin/Mutuelle",
+                },
+                {
+                  text: "Lieu Affectation",
+                  href: "/admin/LieuAffectation",
+                },
+                {
+                  text: "RubriquesPaies",
+                  href: "/admin/RubriquePaie",
+                },
+                {
+                  text: "Param. RubriquesPaies",
+                  href: "/admin/ParametreRubrique",
+                },
+                {
+                  text: "Departements",
+                  href: "/admin/CategorieServicePers",
+                },
+                {
+                  text: "Service Pers.",
+                  href: "/admin/ServicePersonnel",
+                },
+                {
+                  text: "Année Civile",
+                  href: "/admin/Annee",
+                },
+                {
+                  text: "Mois",
+                  href: "/admin/Mois",
+                },
+                {
+                  text: "PromotionAcadémique",
+                  href: "/admin/Promotion",
+                },
+                {
+                  text: "DomaineAcadémique",
+                  href: "/admin/DomaineStage",
+                },
+                {
+                  text: "OptionAcadémique",
+                  href: "/admin/OptionStage",
+                },
+                {
+                  text: "AnnéeAcadémique",
+                  href: "/admin/AnneeStage",
+                },
+                {
+                  text: "InstitutionsAC",
+                  href: "/admin/Institution",
+                },
+                {
+                  text: "Raison Familliale",
+                  href: "/admin/RaisonFamilliale",
+                }
+
               ],
             },
           ],
