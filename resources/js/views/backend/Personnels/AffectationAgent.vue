@@ -307,7 +307,7 @@
 
 
 
-                          <v-flex xs12 sm12 md6 lg6>
+                          <!-- <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="nom Office" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.nomOffice">
@@ -329,7 +329,7 @@
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.qualifieOffice">
                               </v-text-field>
                             </div>
-                          </v-flex>
+                          </v-flex> -->
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-autocomplete label="Selectionnez le Directeur" prepend-inner-icon="mdi-map"
@@ -557,12 +557,12 @@
                                       </v-list-item>
 
                                       <!-- <v-list-item link @click="showControleConge(item.id, item.noms_agent)">
-                            <v-list-item-icon>
-                              <v-icon color="  blue">description</v-icon>
-                            </v-list-item-icon>
-                            <v-list-item-title style="margin-left: -20px">Congé annuel(Nombre)
-                            </v-list-item-title>
-                          </v-list-item> -->
+                                        <v-list-item-icon>
+                                          <v-icon color="  blue">description</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-title style="margin-left: -20px">Congé annuel(Nombre)
+                                        </v-list-item-title>
+                                      </v-list-item> -->
 
                                       <v-list-item link @click="showDemandeSoinAgent(item.id, item.noms_agent)">
                                         <v-list-item-icon>
@@ -597,9 +597,17 @@
                                         </v-list-item-title>
                                       </v-list-item>
 
+                                      <v-list-item link @click="editDataCopier(item.id)">
+                                        <v-list-item-icon>
+                                          <v-icon color="blue">add</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-title style="margin-left: -20px">Copier
+                                        </v-list-item-title>
+                                      </v-list-item>
+
                                       <v-list-item link @click="editData(item.id)">
                                         <v-list-item-icon>
-                                          <v-icon color="  blue">edit</v-icon>
+                                          <v-icon color="blue">edit</v-icon>
                                         </v-list-item-icon>
                                         <v-list-item-title style="margin-left: -20px">Modifier
                                         </v-list-item-title>
@@ -806,6 +814,9 @@ export default {
         if (this.edit) {
           this.svData.refAgent = this.refAgent;
           this.svData.author = this.userData.name;
+          this.svData.nomOffice="-";
+          this.svData.postnomOffice="-";
+          this.svData.qualifieOffice="-";
           this.insertOrUpdate(
             `${this.apiBaseURL}/update_AffectationAgent/${this.svData.id}`,
             JSON.stringify(this.svData)
@@ -826,6 +837,9 @@ export default {
         else {
           this.svData.refAgent = this.refAgent;
           this.svData.author = this.userData.name;
+          this.svData.nomOffice="-";
+          this.svData.postnomOffice="-";
+          this.svData.qualifieOffice="-";
           this.insertOrUpdate(
             `${this.apiBaseURL}/insert_AffectationAgent`,
             JSON.stringify(this.svData)
@@ -863,6 +877,17 @@ export default {
 
           this.getSvData(this.svData, data[0]);
           this.edit = true;
+          this.dialog = true;
+        }
+      );
+    },
+    editDataCopier(id) {
+      this.editOrFetch(`${this.apiBaseURL}/fetch_single_AffectationAgent/${id}`).then(
+        ({ data }) => {
+          this.titleComponent = "Enregistrement des informations";
+
+          this.getSvData(this.svData, data[0]);
+          this.edit = false;
           this.dialog = true;
         }
       );
