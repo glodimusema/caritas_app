@@ -336,7 +336,7 @@ function printRapportContratDate($date1, $date2)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -361,31 +361,37 @@ function showRapportContratDate($date1, $date2)
         $count=0;
 
         $data = DB::table('tperso_affectation_agent')
-        ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
-        ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-        ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
-        ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-        ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
-        ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
-        ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
-        ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
-        ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
-        ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
-        ->join('communes' , 'communes.id','=','quartiers.idCommune')
-        ->join('villes' , 'villes.id','=','communes.idVille')
-        ->join('provinces' , 'provinces.id','=','villes.idProvince')
-        ->join('pays' , 'pays.id','=','provinces.idPays')
-        ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-        'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-        'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-        'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-        'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent",
-        "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
-        "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
-        "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-        "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
-        'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-        'nom_contrat','code_contrat')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+    ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
+    ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
+    ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
+    ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+    ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
+    ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
+    ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
+    ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
+    ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
+    ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
+    ->join('communes' , 'communes.id','=','quartiers.idCommune')
+    ->join('villes' , 'villes.id','=','communes.idVille')
+    ->join('provinces' , 'provinces.id','=','villes.idProvince')
+    ->join('pays' , 'pays.id','=','provinces.idPays')
+    ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
+    'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+    'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+    'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent",
+    "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
+    "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
+    "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
+    "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
+    'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
         ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
         ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
         ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -408,9 +414,9 @@ function showRapportContratDate($date1, $date2)
                     <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                     <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                    <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                    <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                     <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                     <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -741,7 +747,7 @@ function printRapportFinContratDate($date1, $date2)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -812,9 +818,9 @@ function showRapportFinContratDate($date1, $date2)
                     <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                     <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                    <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                    <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                     <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                     <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -1146,7 +1152,7 @@ function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -1171,6 +1177,9 @@ function showRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
     $count=0;
 
     $data = DB::table('tperso_affectation_agent')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
     ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
     ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -1195,7 +1204,11 @@ function showRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat')
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
+    
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
     ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -1219,9 +1232,9 @@ function showRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -1552,7 +1565,7 @@ function printRapportContratDatePoste($date1, $date2, $refPoste)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -1577,6 +1590,9 @@ function showRapportContratDatePoste($date1, $date2, $refPoste)
     $count=0;
 
     $data = DB::table('tperso_affectation_agent')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
     ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
     ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -1601,7 +1617,11 @@ function showRapportContratDatePoste($date1, $date2, $refPoste)
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat')
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
+
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
     ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -1625,9 +1645,9 @@ function showRapportContratDatePoste($date1, $date2, $refPoste)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -1957,7 +1977,7 @@ function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectat
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -1982,6 +2002,9 @@ function showRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectati
     $count=0;
 
     $data = DB::table('tperso_affectation_agent')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
     ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
     ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -2006,7 +2029,10 @@ function showRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectati
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat')
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
     ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -2030,9 +2056,9 @@ function showRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectati
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -2361,7 +2387,7 @@ function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -2386,6 +2412,9 @@ function showRapportContratDateMutuelle($date1, $date2, $refMutuelle)
     $count=0;
 
     $data = DB::table('tperso_affectation_agent')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
     ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
     ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -2410,7 +2439,10 @@ function showRapportContratDateMutuelle($date1, $date2, $refMutuelle)
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat')
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
     ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -2434,9 +2466,9 @@ function showRapportContratDateMutuelle($date1, $date2, $refMutuelle)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -2767,7 +2799,7 @@ function printRapportContratDateProjet($date1, $date2, $projet_id)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -2813,17 +2845,16 @@ function showRapportContratDateProjet($date1, $date2, $projet_id)
     'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
     'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
     'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
+    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent",
     "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
     "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat','conjoint_agent','nomMere_agent','nomPere_agent','Nationalite_agent',
-    'Collectivite_agent','Territoire_agent','EmployeurAnt_agent','PersRef_agent','nomAvenue','nomQuartier','nomCommune','nomVille','nomProvince','nomPays',
-    'tperso_affectation_agent.created_at','nomOffice','postnomOffice','qualifieOffice','fammiliale','logement',
-    'tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
-    'inss_qpo','inss_qpp','cnss','inpp','onem','ipr',"salaire_base")
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
     ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')
@@ -2849,9 +2880,9 @@ function showRapportContratDateProjet($date1, $date2, $projet_id)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -3181,7 +3212,7 @@ function printRapportContratDateSexe($date1, $date2, $sexe_agent)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -3227,17 +3258,16 @@ function showRapportContratDateSexe($date1, $date2, $sexe_agent)
     'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
     'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
     'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
+    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent",
     "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
     "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat','conjoint_agent','nomMere_agent','nomPere_agent','Nationalite_agent',
-    'Collectivite_agent','Territoire_agent','EmployeurAnt_agent','PersRef_agent','nomAvenue','nomQuartier','nomCommune','nomVille','nomProvince','nomPays',
-    'tperso_affectation_agent.created_at','nomOffice','postnomOffice','qualifieOffice','fammiliale','logement',
-    'tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
-    'inss_qpo','inss_qpp','cnss','inpp','onem','ipr',"salaire_base")
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
     ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')
@@ -3263,9 +3293,9 @@ function showRapportContratDateSexe($date1, $date2, $sexe_agent)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -3595,7 +3625,7 @@ function printRapportContratDateConge($date1, $date2, $conge)
                         <td class="cs479D8C74" colspan="2" style="width:95px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>TYPE&nbsp;CONTRAT</nobr></td>
                         <td class="cs479D8C74" colspan="2" style="width:124px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>POSTE</nobr></td>
                         <td class="cs479D8C74" style="width:113px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>LIEU</nobr></td>
-                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>MUTUELLE</nobr></td>
+                        <td class="cs479D8C74" colspan="2" style="width:92px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>PROJET</nobr></td>
                         <td class="cs479D8C74" style="width:90px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>DEBUT&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" colspan="4" style="width:78px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>FIN&nbsp;CONT.</nobr></td>
                         <td class="cs479D8C74" style="width:79px;height:22px;line-height:13px;text-align:center;vertical-align:middle;"><nobr>CONTRAT</nobr></td>
@@ -3620,6 +3650,9 @@ function showRapportContratDateConge($date1, $date2, $conge)
     $count=0;
 
     $data = DB::table('tperso_affectation_agent')
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
     ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
     ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -3644,7 +3677,10 @@ function showRapportContratDateConge($date1, $date2, $conge)
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    'nom_contrat','code_contrat')
+    'nom_contrat','code_contrat',    
+    
+    "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+    "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
     ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
     ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
     ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -3668,9 +3704,9 @@ function showRapportContratDateConge($date1, $date2, $conge)
                 <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                 <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                 <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_lieu.'</nobr></td>
-                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_mutuelle.'</nobr></td>
+                <td class="csD06EB5B2" colspan="2" style="width:92px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->description_projet.'</td>
                 <td class="csD06EB5B2" style="width:90px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateAffectation.'</nobr></td>
                 <td class="csD06EB5B2" colspan="4" style="width:78px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->dateFin.'</nobr></td>
                 <td class="csD06EB5B2" style="width:79px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->Statut.'</nobr></td>
@@ -4082,7 +4118,7 @@ function showRapportCongetEncoursDate($date1, $date2)
                     <td class="cs86F8EF7F" style="width:41px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:187px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:95px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->code_contrat.'</nobr></td>
-                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->nom_poste.'</nobr></td>
+                    <td class="csD06EB5B2" colspan="2" style="width:124px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
                     <td class="csD06EB5B2" style="width:113px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_lieu.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:121px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_circontstance.'</td>
                     <td class="csD06EB5B2" style="width:58px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->date_depart.'</td>
@@ -8352,7 +8388,7 @@ function showDependants($idAgent)
         ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
         ->selectRaw("DATE_FORMAT(date_naissance,'%d/%m/%Y') as date_naissance")  
         ->where('tperso_dependant.refAgent', $idAgent)
-        ->orderBy("noms_dependant", "asc")
+        ->orderBy("datenaissance_agent", "asc")
         ->get();
         $output='';
 

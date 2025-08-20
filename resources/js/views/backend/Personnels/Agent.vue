@@ -170,7 +170,10 @@
                                             { designation: 'Grade' },
                                             { designation: 'Diplomé(e)' },
                                             { designation: 'Certificat' },
-                                            { designation: 'D6' }
+                                            { designation: 'D6' },
+                                            { designation: 'D4' },
+                                            { designation: 'Brevet' },
+                                            { designation: 'Autres Formations' }
                                         ]" prepend-inner-icon="extension"
                                             :rules="[(v) => !!v || 'Ce champ est requis']" outlined dense
                                             item-text="designation" item-value="designation"
