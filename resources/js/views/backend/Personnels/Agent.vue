@@ -75,8 +75,8 @@
                                 <v-flex xs12 sm12 md6 lg6>
                                     <div class="mr-1">
                                         <v-select label="Genre" :items="[
-                                            { designation: 'Homme' },
-                                            { designation: 'Femme' }
+                                            { designation: 'Masculin' },
+                                            { designation: 'Feminin' }
                                         ]" prepend-inner-icon="extension"
                                             :rules="[(v) => !!v || 'Ce champ est requis']" outlined dense
                                             item-text="designation" item-value="designation"

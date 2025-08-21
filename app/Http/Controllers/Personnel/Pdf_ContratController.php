@@ -7392,6 +7392,10 @@ function GetContratTravailAgent($id)
             $onem= 0;
             $ipr= 0;
             $netPaie=0;
+            $date_created = '';
+
+            $description_projet ='';
+            $nom_org ='';
 
             $urgence="'URGENCE";
             $identi="'IDENTIFICATION";
@@ -7433,13 +7437,27 @@ function GetContratTravailAgent($id)
             'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
             'nom_contrat','code_contrat','conjoint_agent','nomMere_agent','nomPere_agent','Nationalite_agent',
             'Collectivite_agent','Territoire_agent','EmployeurAnt_agent','PersRef_agent','nomAvenue','nomQuartier','nomCommune','nomVille','nomProvince','nomPays',
-            'tperso_affectation_agent.created_at','nomOffice','postnomOffice','qualifieOffice','fammiliale','logement',
-            'tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
-            'inss_qpo','inss_qpp','cnss','inpp','onem','ipr',"salaire_base")
-            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
+            'tperso_affectation_agent.created_at','nomOffice','postnomOffice','qualifieOffice',
+
+            "partenaire_id","description_projet","chef_projet","nom_org",
+            "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu"
+            )
+            ->selectRaw('ROUND(tperso_affectation_agent.fammiliale, 2) as fammiliale') 
+            ->selectRaw('ROUND(tperso_affectation_agent.logement, 2) as logement')
+            ->selectRaw('ROUND(tperso_affectation_agent.transport, 2) as transport')
+            ->selectRaw('ROUND(sal_brut, 2) as sal_brut')
+            ->selectRaw('ROUND(sal_brut_imposable, 2) as sal_brut_imposable')
+            ->selectRaw('ROUND(inss_qpo, 2) as inss_qpo')
+            ->selectRaw('ROUND(inss_qpp, 2) as inss_qpp')
+            ->selectRaw('ROUND(cnss, 2) as cnss')
+            ->selectRaw('ROUND(inpp, 2) as inpp')
+            ->selectRaw('ROUND(onem, 2) as onem')
+            ->selectRaw('ROUND(ipr, 2) as ipr')
+            ->selectRaw('ROUND(salaire_base, 2) as salaire_base') 
+            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
             ->selectRaw('TIMESTAMPDIFF(MONTH, dateDebutEssaie, dateFinEssaie) as dureeessaie')
-            ->selectRaw('((salaire_base +fammiliale + logement + tperso_affectation_agent.transport) - inss_qpo - ipr) as netPaie')
+            ->selectRaw('ROUND(((salaire_base +fammiliale + logement + tperso_affectation_agent.transport) - inss_qpo - ipr),2) as netPaie')
             ->selectRaw("DATE_FORMAT(DATE_SUB(dateFin, INTERVAL 1 DAY),'%d/%m/%Y') as dateFin")
             ->selectRaw("DATE_FORMAT(datenaissance_agent,'%d/%m/%Y') as datenaissance_agent")
             ->selectRaw("DATE_FORMAT(dateDebutEssaie,'%d/%m/%Y') as dateDebutEssaie")
@@ -7447,6 +7465,7 @@ function GetContratTravailAgent($id)
             ->selectRaw("DATE_FORMAT(dateAffectation,'%d/%m/%Y') as dateAffectation")
             ->selectRaw("DATE_FORMAT(date_debut_projet,'%d/%m/%Y') as date_debut_projet")
             ->selectRaw("DATE_FORMAT(date_fin_projet,'%d/%m/%Y') as date_fin_projet")
+            ->selectRaw("DATE_FORMAT(tperso_affectation_agent.created_at,'%d/%m/%Y') as date_created")
             ->where('tperso_affectation_agent.id','=', $id)    
             ->get(); 
             $output='';
@@ -7523,6 +7542,11 @@ function GetContratTravailAgent($id)
                 $onem= $row->onem;
                 $ipr= $row->ipr;
                 $netPaie=$row->netPaie;
+
+                $date_created = $row->date_created;
+
+                $description_projet = $row->description_projet;
+                $nom_org = $row->nom_org;
                 
             }  
 
@@ -7569,6 +7593,19 @@ function GetContratTravailAgent($id)
          if ($data2) 
          {                                
             $nbrEnfant=$data2->nbrEnfant;                           
+         }
+
+         $libelle_duree = '';
+         $data_duree = "";
+         if($code_contrat == "CDD")
+         {
+            $libelle_duree = "déterminée de ".$dureecontrat." Mois";
+            // $data_duree = "de '.$dureecontrat.' Mois";
+         }
+         else if($code_contrat == "CDI")
+         {
+            $libelle_duree = "indéterminée";
+            // $data_duree = "";
          }
 
 
@@ -7995,7 +8032,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:113px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'empoy&#233;.e,&nbsp;qui&nbsp;se&nbsp;d&#233;clare&nbsp;libre&nbsp;de&nbsp;toute&nbsp;obligation&nbsp;professionnelle,&nbsp;est&nbsp;engag&#233;.e&nbsp;&#224;&nbsp;la&nbsp;Caritas</nobr><br/><nobr>D&#233;veloppement&nbsp;Dioc&#232;se&nbsp;de&nbsp;Goma&nbsp;en&nbsp;qualit&#233;&nbsp;de&nbsp;.'.$nom_poste.'.sous&nbsp;le&nbsp;contr&#244;le&nbsp;de&nbsp;ses</nobr><br/><nobr>chefs&nbsp;hi&#233;rarchiques.&nbsp;Il/Elle&nbsp;est&nbsp;affect&#233;e&nbsp;&#224;.'.$nom_lieu.'.Il/Elle&nbsp;certifie&nbsp;avoir&nbsp;lu,</nobr><br/><nobr>compris&nbsp;et&nbsp;approuv&#233;&nbsp;les&nbsp;termes&nbsp;et&nbsp;les&nbsp;conditions&nbsp;de&nbsp;sa&nbsp;description&nbsp;de&nbsp;poste&nbsp;et&nbsp;du&nbsp;r&#232;glement</nobr><br/><nobr>d'.$aps.'ordre&nbsp;int&#233;rieur&nbsp;de&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma&nbsp;qui&nbsp;font&nbsp;partie&nbsp;int&#233;grante&nbsp;du&nbsp;pr&#233;sent</nobr><br/><nobr>contrat.</nobr></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:113px;line-height:18px;text-align:left;vertical-align:top;"> L'.$aps.'employ&#233;, qui se déclare libre de toute obligation professionnelle, est engagé à la Caritas-Développement Diocèse de Goma en qualité de '.$nom_poste.', sous le contrôle de ses chefs hiérarchiques. Il est affecté au projet '.$description_projet.' financé par '.$nom_org.'. Il certifie avoir lu, compris et approuvé les termes et les conditions de la description de poste, le code de conduite et le Règlement du personnel de la Caritas-Développement Goma qui font partie intégrante du présent contrat. Il reconnait, par ailleurs, avoir pris connaissance du code de conduite du personnel et signé le formulaire de reconnaissance et d'.$aps.'acceptation des politiques de sauvegarde de la Caritas-Développement Diocèse de Goma. </td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8033,7 +8070,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;d&#233;termin&#233;e&nbsp;de&nbsp;.'.$dureecontrat.'&nbsp;Mois.&nbsp;&#224;&nbsp;compter</nobr><br/><nobr>du&nbsp;.'.$dateAffectation.'.&nbsp;au&nbsp;.'.$dateFin.'.&nbsp;La&nbsp;p&#233;riode&nbsp;probatoire&nbsp;y&nbsp;comprise.</nobr></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.'.&nbsp;&#224;&nbsp;compter</nobr><br/><nobr>du&nbsp;.'.$dateAffectation.'.&nbsp;au&nbsp;.'.$dateFin.'.&nbsp;La&nbsp;p&#233;riode&nbsp;probatoire&nbsp;y&nbsp;comprise.</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -8322,7 +8359,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:148px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="21" style="width:627px;height:148px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fait&nbsp;&#224;&nbsp;Goma,&nbsp;Le&nbsp;....../....../20....</nobr><br/><br/><nobr>Pour&nbsp;l'.$aps.'employ&#233;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma</nobr><br/><br/><nobr>.................................</nobr><br/><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directeur</nobr><br/></td>
+                        <td class="cs1698ECB3" colspan="21" style="width:627px;height:148px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fait&nbsp;&#224;&nbsp;Goma,&nbsp;Le&nbsp;'.$date_created.'</nobr><br/><br/><nobr>Pour&nbsp;l'.$aps.'employ&#233;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma</nobr><br/><br/><nobr>.................................</nobr><br/><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directeur</nobr><br/></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:15px;"></td>
@@ -10773,6 +10810,7 @@ function GetBulletinPaieSalaire($id)
             $netPaie=0;
             $netPaieCash=0;
             $totalRetenu=0;
+            $date_created = '';
 
             $numCNSS=0;
 
@@ -10809,9 +10847,9 @@ function GetBulletinPaieSalaire($id)
             ->join('pays' , 'pays.id','=','provinces.idPays')
             ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
             'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie',
-            "name_mois","name_annee","dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
+            "name_mois","name_annee","dateFiche","refAnne","refMois","codeAgent","numCNSS","numcpteBanque",
             "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-            'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+            'refMutuelle','refTypeContrat','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
             'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
             'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
             'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
@@ -10831,6 +10869,8 @@ function GetBulletinPaieSalaire($id)
             'PersRef_agent','nomAvenue','nomQuartier','nomCommune','nomVille','nomProvince','nomPays',
             'tperso_detail_paie_salaire.created_at')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+            ->selectRaw("DATE_FORMAT(dateAffectation,'%d/%M/%Y') as dateAffectation")
+            ->selectRaw("DATE_FORMAT(tperso_detail_paie_salaire.created_at,'%d/%M/%Y') as date_created")
             ->selectRaw('ROUND(((salaire_base_paie/22)/8),3) as salaire_heure')
             ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie') 
             ->selectRaw('(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)) as netPaieCash')
@@ -10877,6 +10917,8 @@ function GetBulletinPaieSalaire($id)
                 $dateAffectation=$row->dateAffectation;
                 $dureecontrat=$row->dureecontrat;
                 $numCNSS=$row->numCNSS;
+
+                $date_created = $row->date_created;
 
 
                 $salaire_base_paie=$row->salaire_base_paie;
@@ -11228,7 +11270,7 @@ function GetBulletinPaieSalaire($id)
                     <td style="width:0px;height:20px;"></td>
                     <td></td>
                     <td class="csE1C721DA" colspan="7" style="width:214px;height:20px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>'.$nomProvince.',&nbsp;'.$nomPays.'</nobr></td>
-                    <td class="csE1C721DA" colspan="6" style="width:200px;height:20px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Fonction&nbsp;:&nbsp;'.$nom_poste.'</nobr></td>
+                    <td class="csE1C721DA" colspan="6" style="width:200px;height:20px;line-height:13px;text-align:left;vertical-align:middle;">Fonction&nbsp;:&nbsp;'.$nom_poste.'</td>
                     <td class="cs1D279BBD" colspan="6" style="width:221px;height:20px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>INSS&nbsp;N&#176;&nbsp;:&nbsp;'.$numCNSS.'</nobr></td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -11459,7 +11501,7 @@ function GetBulletinPaieSalaire($id)
                     <td></td>
                     <td class="csA6BC666F" colspan="9" style="width:263px;height:17px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Date</nobr></td>
                     <td class="csFFC1C457" colspan="6" style="width:250px;height:19px;"><!--[if lte IE 7]><div class="csF7D3565D"></div><![endif]--></td>
-                    <td class="csB318F1BB" colspan="4" style="width:123px;height:17px;line-height:13px;text-align:right;vertical-align:middle;"><nobr>Date&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                    <td class="csB318F1BB" colspan="4" style="width:123px;height:17px;line-height:13px;text-align:right;vertical-align:middle;"><nobr>Date&nbsp;le&nbsp;'.$date_created.'</nobr></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:21px;"></td>
@@ -11468,8 +11510,7 @@ function GetBulletinPaieSalaire($id)
                 </tr>
             </table>
             </body>
-            </html>
-              
+            </html>              
             '; 
 
     return $output;
