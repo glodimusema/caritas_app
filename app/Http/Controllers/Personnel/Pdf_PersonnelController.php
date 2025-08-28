@@ -10086,12 +10086,12 @@ function printRapportPaiement($date1, $date2)
          ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
 
          ->select(DB::raw('ROUND(SUM(salaire_base_paie),0) as salaire_base_paie, ROUND(SUM(fammiliale_paie),0) as fammiliale_paie,
-         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),0) as transport_paie,
-         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),0) as sal_brut_imposable_paie,
-         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),0) as inss_qpp_paie,
-         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),0) as inpp_paie,
-         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),0) as ipr_paie,
-         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),0) as net_paie'))
+         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),2) as transport_paie,
+         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),2) as sal_brut_imposable_paie,
+         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),2) as inss_qpp_paie,
+         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),2) as inpp_paie,
+         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),2) as ipr_paie,
+         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),2) as net_paie'))
          ->where([
             ['tperso_detail_paie_salaire.created_at','>=', $date1],
             ['tperso_detail_paie_salaire.created_at','<=', $date2]
@@ -10228,7 +10228,7 @@ function printRapportPaiement($date1, $date2)
                     <td></td>
                     <td></td>
                     <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                        <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -10411,7 +10411,7 @@ function printRapportPaiement($date1, $date2)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Abb&#233;&nbsp;Toussaint&nbsp;SERUTOKE</nobr></td>
+                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:31px;"></td>
@@ -10696,12 +10696,12 @@ function printRapportPaiementMois($refMois,$refAnne)
          ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
 
          ->select(DB::raw('ROUND(SUM(salaire_base_paie),0) as salaire_base_paie, ROUND(SUM(fammiliale_paie),0) as fammiliale_paie,
-         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),0) as transport_paie,
-         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),0) as sal_brut_imposable_paie,
-         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),0) as inss_qpp_paie,
-         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),0) as inpp_paie,
-         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),0) as ipr_paie,
-         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),0) as net_paie'))
+         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),2) as transport_paie,
+         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),2) as sal_brut_imposable_paie,
+         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),2) as inss_qpp_paie,
+         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),2) as inpp_paie,
+         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),2) as ipr_paie,
+         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),2) as net_paie'))
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne]
@@ -10728,13 +10728,15 @@ function printRapportPaiementMois($refMois,$refAnne)
            
          $name_annee='';
          $name_mois='';
+         $directeur = '';
          $data3 =  DB::table('tperso_detail_paie_salaire')            
          ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
          ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
          ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
          ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
          ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
-          ->select("name_mois","name_annee")
+         ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
+          ->select("name_mois","name_annee","directeur")
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne]
@@ -10744,7 +10746,8 @@ function printRapportPaiementMois($refMois,$refAnne)
          foreach ($data3 as $row) 
          {                                
             $name_annee=$row->name_annee;
-            $name_mois=$row->name_mois;                           
+            $name_mois=$row->name_mois; 
+            $directeur=$row->directeur;                          
          }
 
 
@@ -10862,7 +10865,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -11045,7 +11048,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Abb&#233;&nbsp;Toussaint&nbsp;SERUTOKE</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -11109,31 +11112,10 @@ function showPaiementMois($refMois,$refAnne)
 {
     $data = DB::table('tperso_detail_paie_salaire')            
     ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
-    // ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
-    // ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
-    // ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
-    // ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
     ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
-    // ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-    // ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-    // ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
-    // ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-    // ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
-    // ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-    // ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
-    // ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
-    // ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
     ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
-    // ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
-    // ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
-    // ->join('communes' , 'communes.id','=','quartiers.idCommune')
-    // ->join('villes' , 'villes.id','=','communes.idVille')
-    // ->join('provinces' , 'provinces.id','=','villes.idProvince')
-    // ->join('pays' , 'pays.id','=','provinces.idPays')
-    ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-    'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie',
-    // "name_mois","name_annee",
+    ->select("tperso_detail_paie_salaire.id","refAffectation",
     "dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
     "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent',
     'refPoste','refLieuAffectation',
@@ -11145,18 +11127,23 @@ function showPaiementMois($refMois,$refAnne)
     "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent",
-    // "name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste',
-    // 'nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    // 'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport',
-    // 'sal_brut','sal_brut_imposable','inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
-    // "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
-    // "adresse_org","contact_org","rccm_org", "idnat_org",'refBanque',
-    // "tconf_banque.nom_banque","tconf_banque.numerocompte",'tconf_banque.nom_mode',"refSscompte",
-    // 'refSousCompte','nom_ssouscompte','numero_ssouscompte'
     )
-    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
-    ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie')
+    
+    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent') 
+    ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+        ROUND(fammiliale_paie,2) as fammiliale_paie,
+        ROUND(logement_paie,2) as logement_paie,
+        ROUND(transport_paie,2) as transport_paie,
+        ROUND(sal_brut_paie,2) as sal_brut_paie,
+        ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+        ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+        ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+        ROUND(cnss_paie,2) as cnss_paie,
+        ROUND(inpp_paie,2) as inpp_paie,
+        ROUND(onem_paie,2) as onem_paie,
+        ROUND(ipr_paie,2) as ipr_paie') 
+    ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')
     // ->selectRaw('CONCAT("PAIE",YEAR(tperso_detail_paie_salaire.created_at),"",MONTH(tperso_detail_paie_salaire.created_at),"00",tperso_detail_paie_salaire.id) as codeBS')
     ->where([
         ['refMois','=', $refMois],
@@ -11338,12 +11325,12 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
          ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
 
          ->select(DB::raw('ROUND(SUM(salaire_base_paie),0) as salaire_base_paie, ROUND(SUM(fammiliale_paie),0) as fammiliale_paie,
-         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),0) as transport_paie,
-         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),0) as sal_brut_imposable_paie,
-         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),0) as inss_qpp_paie,
-         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),0) as inpp_paie,
-         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),0) as ipr_paie,
-         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),0) as net_paie'))
+         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),2) as transport_paie,
+         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),2) as sal_brut_imposable_paie,
+         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),2) as inss_qpp_paie,
+         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),2) as inpp_paie,
+         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),2) as ipr_paie,
+         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),2) as net_paie'))
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne],
@@ -11371,6 +11358,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
            
          $name_annee='';
          $name_mois='';
+         $directeur='';
          $data3 =  DB::table('tperso_detail_paie_salaire')            
          ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
          ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
@@ -11383,7 +11371,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
          ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
          ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
          ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-          ->select("name_mois","name_annee")
+          ->select("name_mois","name_annee","directeur")
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne],
@@ -11394,7 +11382,8 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
          foreach ($data3 as $row) 
          {                                
             $name_annee=$row->name_annee;
-            $name_mois=$row->name_mois;                           
+            $name_mois=$row->name_mois;
+            $directeur=$row->directeur;                           
          }
 
 
@@ -11512,7 +11501,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -11695,7 +11684,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Abb&#233;&nbsp;Toussaint&nbsp;SERUTOKE</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -11759,31 +11748,10 @@ function showPaiementMoisPoste($refMois,$refAnne,$refPoste)
 {
     $data = DB::table('tperso_detail_paie_salaire')            
     ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
-    // ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
-    // ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
-    // ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
-    // ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
     ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
-    // ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-    // ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-    // ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
-    // ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-    // ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
-    // ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-    // ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
-    // ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
-    // ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
     ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
-    // ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
-    // ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
-    // ->join('communes' , 'communes.id','=','quartiers.idCommune')
-    // ->join('villes' , 'villes.id','=','communes.idVille')
-    // ->join('provinces' , 'provinces.id','=','villes.idProvince')
-    // ->join('pays' , 'pays.id','=','provinces.idPays')
-    ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-    'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie',
-    // "name_mois","name_annee",
+    ->select("tperso_detail_paie_salaire.id","refAffectation",
     "dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
     "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent',
     'refPoste','refLieuAffectation',
@@ -11795,19 +11763,23 @@ function showPaiementMoisPoste($refMois,$refAnne,$refPoste)
     "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent",
-    // "name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste',
-    // 'nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    // 'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport',
-    // 'sal_brut','sal_brut_imposable','inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
-    // "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
-    // "adresse_org","contact_org","rccm_org", "idnat_org",'refBanque',
-    // "tconf_banque.nom_banque","tconf_banque.numerocompte",'tconf_banque.nom_mode',"refSscompte",
-    // 'refSousCompte','nom_ssouscompte','numero_ssouscompte'
     )
-    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
-    ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie')
-    // ->selectRaw('CONCAT("PAIE",YEAR(tperso_detail_paie_salaire.created_at),"",MONTH(tperso_detail_paie_salaire.created_at),"00",tperso_detail_paie_salaire.id) as codeBS')
+    
+    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent') 
+    ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+        ROUND(fammiliale_paie,2) as fammiliale_paie,
+        ROUND(logement_paie,2) as logement_paie,
+        ROUND(transport_paie,2) as transport_paie,
+        ROUND(sal_brut_paie,2) as sal_brut_paie,
+        ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+        ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+        ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+        ROUND(cnss_paie,2) as cnss_paie,
+        ROUND(inpp_paie,2) as inpp_paie,
+        ROUND(onem_paie,2) as onem_paie,
+        ROUND(ipr_paie,2) as ipr_paie') 
+    ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')
     ->where([
         ['refMois','=', $refMois],
         ['refAnne','=', $refAnne],
@@ -11986,12 +11958,12 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
          ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
 
          ->select(DB::raw('ROUND(SUM(salaire_base_paie),0) as salaire_base_paie, ROUND(SUM(fammiliale_paie),0) as fammiliale_paie,
-         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),0) as transport_paie,
-         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),0) as sal_brut_imposable_paie,
-         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),0) as inss_qpp_paie,
-         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),0) as inpp_paie,
-         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),0) as ipr_paie,
-         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),0) as net_paie'))
+         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),2) as transport_paie,
+         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),2) as sal_brut_imposable_paie,
+         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),2) as inss_qpp_paie,
+         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),2) as inpp_paie,
+         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),2) as ipr_paie,
+         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),2) as net_paie'))
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne],
@@ -12019,6 +11991,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
            
          $name_annee='';
          $name_mois='';
+         $directeur='';
          $data3 =  DB::table('tperso_detail_paie_salaire')            
          ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
          ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
@@ -12031,18 +12004,19 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
          ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
          ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
          ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-          ->select("name_mois","name_annee")
+          ->select("name_mois","name_annee","directeur")
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne],
             ['projet_id','=', $projet_id]
         ])    
-         ->get(); 
+         ->first(); 
          $output='';
-         foreach ($data3 as $row) 
+         if ($data3) 
          {                                
-            $name_annee=$row->name_annee;
-            $name_mois=$row->name_mois;                           
+            $name_annee=$data3->name_annee;
+            $name_mois=$data3->name_mois; 
+            $directeur = $data3->directeur;                          
          }
 
 
@@ -12160,7 +12134,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -12343,7 +12317,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Abb&#233;&nbsp;Toussaint&nbsp;SERUTOKE</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -12406,31 +12380,12 @@ function showPaiementMoisProjet($refMois,$refAnne,$projet_id)
 {
     $data = DB::table('tperso_detail_paie_salaire')            
     ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
-    // ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
-    // ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
-    // ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
-    // ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
     ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
-    // ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-    // ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-    // ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
     ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
-    // ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-    // ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
-    // ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-    // ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
-    // ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
-    // ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
     ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
-    // ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
-    // ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
-    // ->join('communes' , 'communes.id','=','quartiers.idCommune')
-    // ->join('villes' , 'villes.id','=','communes.idVille')
-    // ->join('provinces' , 'provinces.id','=','villes.idProvince')
-    // ->join('pays' , 'pays.id','=','provinces.idPays')
-    ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-    'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie',
-    // "name_mois","name_annee",
+    ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+    ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+    ->select("tperso_detail_paie_salaire.id","refAffectation",
     "dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
     "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent',
     'refPoste','refLieuAffectation',
@@ -12442,23 +12397,673 @@ function showPaiementMoisProjet($refMois,$refAnne,$projet_id)
     "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
     "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
     "tagent.slug as slug_agent",
-    // "name_serv_perso","name_categorie_service","name_categorie_agent",
     'nom_poste','description_poste',
-    // 'nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-    // 'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport',
-    // 'sal_brut','sal_brut_imposable','inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
-    // "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
-    // "adresse_org","contact_org","rccm_org", "idnat_org",'refBanque',
-    // "tconf_banque.nom_banque","tconf_banque.numerocompte",'tconf_banque.nom_mode',"refSscompte",
-    // 'refSousCompte','nom_ssouscompte','numero_ssouscompte'
     )
-    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
-    ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie')
-    // ->selectRaw('CONCAT("PAIE",YEAR(tperso_detail_paie_salaire.created_at),"",MONTH(tperso_detail_paie_salaire.created_at),"00",tperso_detail_paie_salaire.id) as codeBS')
+    
+    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent') 
+    ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+        ROUND(fammiliale_paie,2) as fammiliale_paie,
+        ROUND(logement_paie,2) as logement_paie,
+        ROUND(transport_paie,2) as transport_paie,
+        ROUND(sal_brut_paie,2) as sal_brut_paie,
+        ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+        ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+        ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+        ROUND(cnss_paie,2) as cnss_paie,
+        ROUND(inpp_paie,2) as inpp_paie,
+        ROUND(onem_paie,2) as onem_paie,
+        ROUND(ipr_paie,2) as ipr_paie') 
+    ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')
     ->where([
         ['refMois','=', $refMois],
         ['refAnne','=', $refAnne],
         ['projet_id','=', $projet_id]
+    ])
+    ->orderBy("noms_agent", "asc")
+    ->get();
+
+    $count=0;
+
+    $output='';
+
+    foreach ($data as $row) 
+    {
+        $count ++;
+        $output .='
+
+            <tr style="vertical-align:top;">
+            <td style="width:0px;height:24px;"></td>
+            <td></td>
+            <td class="cs79F8CBE2" style="width:28px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
+            <td class="cs6738495F" colspan="4" style="width:174px;height:22px;line-height:8px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
+            <td class="cs6738495F" style="width:103px;height:22px;line-height:8px;text-align:center;vertical-align:middle;">'.$row->nom_poste.'</td>
+            <td class="cs6738495F" style="width:46px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->salaire_base_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:41px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->fammiliale_paie.'$</nobr></td>
+            <td class="cs6738495F" colspan="2" style="width:59px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->logement_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->transport_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:58px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->sal_brut_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->sal_brut_imposable_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:39px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->inss_qpo_paie.'$</nobr></td>
+            <td class="cs6738495F" colspan="2" style="width:44px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->inss_qpp_paie.'$</nobr></td>
+            <td class="cs6738495F" colspan="2" style="width:57px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->cnss_paie.'$</nobr></td>
+            <td class="cs6738495F" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->inpp_paie.'$</nobr></td>
+            <td class="cs6738495F" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->onem_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:49px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->ipr_paie.'$</nobr></td>
+            <td class="cs6738495F" style="width:60px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$row->netPaie.'$</nobr></td>
+        </tr>
+        
+        ';
+
+    }
+
+    return $output;
+
+}
+
+
+
+//=== LES PAIEMENT PAR DEPARTEMENT =============================
+
+
+//==================== RAPPORT DETAIL DES PAIEMENTS PAR MOIS POSTE =======================================
+
+public function fetch_rapport_paiement_date_mois_categorie_service(Request $request)
+{
+    //refPoste 
+
+    if ($request->get('refMois')&& $request->get('refAnne') && $request->get('refCatService')) {
+        // code...
+        $refMois = $request->get('refMois');
+        $refAnne = $request->get('refAnne');
+        $refCatService = $request->get('refCatService');
+
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatService);       
+        $html .='<script>window.print()</script>';
+
+        echo($html); 
+
+        // $html = $this->printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste); 
+        // $pdf = \App::make('dompdf.wrapper');
+        // $pdf->loadHTML($html)->setPaper('a4', 'landscape');
+        // return $pdf->download('ListingPaie.pdf');
+        
+        // $html = $this->printRapportPaiementMois($refMois,$refAnne);
+        // $pdf = \App::make('dompdf.wrapper');
+        // $pdf->loadHTML($html)->setPaper('a4', 'landscape');
+        // return $pdf->stream();            
+
+    } else {
+        // code...
+    }
+    
+    
+}
+
+
+function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatService)
+{
+
+        //Info entreprises
+        $nomEse='';
+        $adresseEse='';
+        $Tel1Ese='';
+        $Tel2Ese='';
+        $siteEse='';
+        $emailEse='';
+        $idNatEse='';
+        $numImpotEse='';
+        $rccEse='';
+        $siege='';
+        $busnessName='';
+        $bp='';
+        $pic='';
+        $pic2 = $this->displayImg("fichier", 'logo.png');
+        $logo='';
+
+        $data1 = DB::table('entreprises')
+        ->join('secteurs','secteurs.id','=','entreprises.idsecteur')
+        ->join('forme_juridiques','forme_juridiques.id','=','entreprises.idforme')
+
+        ->join('pays','pays.id','=','entreprises.idPays')
+        ->join('provinces','provinces.id','=','entreprises.idProvince')
+        ->join('users','users.id','=','entreprises.ceo')
+        
+        ->select('entreprises.id as id','entreprises.id as idEntreprise',   
+            //
+
+            'entreprises.ceo','entreprises.nomEntreprise','entreprises.descriptionEntreprise','entreprises.emailEntreprise','entreprises.adresseEntreprise',
+            'entreprises.telephoneEntreprise','entreprises.solutionEntreprise','entreprises.idsecteur','entreprises.idforme','entreprises.etat',
+            'entreprises.idPays','entreprises.idProvince','entreprises.edition','entreprises.facebook','entreprises.linkedin','entreprises.twitter','entreprises.siteweb','entreprises.rccm',
+            'entreprises.invPersonnel','entreprises.invHub','entreprises.invRecherche','entreprises.chiffreAffaire','entreprises.nbremploye','entreprises.slug','entreprises.logo',
+
+            //forme
+            'forme_juridiques.nomForme','secteurs.nomSecteur',
+            //users
+            'users.name','users.email','users.avatar','users.telephone','users.adresse',
+            //
+
+            'provinces.nomProvince','pays.nomPays', 'entreprises.created_at')
+        ->get();
+        $output='';
+        foreach ($data1 as $row) 
+        {                                
+            $nomEse=$row->nomEntreprise;
+            $adresseEse=$row->adresseEntreprise;
+            $Tel1Ese=$row->telephoneEntreprise;
+            $Tel2Ese=$row->telephone;
+            $siteEse=$row->siteweb;
+            $emailEse=$row->emailEntreprise;
+            $idNatEse=$row->rccm;
+            $numImpotEse=$row->rccm;
+            $busnessName=$row->nomSecteur;
+            $bp=$row->rccm;
+            $pic = $this->displayImg("fichier", 'logo.png');
+            $siege=$row->nomForme;         
+        }
+
+
+        $salaire_base_paie=0;
+        $fammiliale_paie= 0;
+        $logement_paie= 0;
+        $transport_paie= 0;
+        $sal_brut_paie= 0;
+        $sal_brut_imposable_paie= 0;
+        $inss_qpo_paie= 0;
+        $inss_qpp_paie= 0;
+        $cnss_paie= 0;
+        $inpp_paie= 0;
+        $onem_paie= 0;
+        $ipr_paie= 0;
+        $net_paie=0;
+                 
+         // 
+         $data2 =  DB::table('tperso_detail_paie_salaire')            
+         ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
+         ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
+         ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
+         ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
+         ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
+         ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
+         ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+         ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+         ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+         ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
+         ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
+         ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
+         ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+         ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
+         ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
+         ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
+         ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
+         
+
+         ->select(DB::raw('ROUND(SUM(salaire_base_paie),0) as salaire_base_paie, ROUND(SUM(fammiliale_paie),0) as fammiliale_paie,
+         ROUND(SUM(logement_paie),0) as logement_paie,ROUND(SUM(transport_paie),2) as transport_paie,
+         ROUND(SUM(sal_brut_paie),0) as sal_brut_paie,ROUND(SUM(sal_brut_imposable_paie),2) as sal_brut_imposable_paie,
+         ROUND(SUM(inss_qpo_paie),0) as inss_qpo_paie,ROUND(SUM(inss_qpp_paie),2) as inss_qpp_paie,
+         ROUND(SUM(cnss_paie),0) as cnss_paie,ROUND(SUM(inpp_paie),2) as inpp_paie,
+         ROUND(SUM(onem_paie),0) as onem_paie,ROUND(SUM(ipr_paie),2) as ipr_paie,
+         ROUND(SUM(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)),2) as net_paie'))
+         ->where([
+            ['refMois','=', $refMois],
+            ['refAnne','=', $refAnne],
+            ['tperso_service_personnel.refCatService','=', $refCatService]
+        ])    
+         ->get(); 
+         $output='';
+         foreach ($data2 as $row) 
+         { 
+            $salaire_base_paie=$row->salaire_base_paie;
+            $fammiliale_paie= $row->fammiliale_paie;
+            $logement_paie= $row->logement_paie;
+            $transport_paie= $row->transport_paie;
+            $sal_brut_paie= $row->sal_brut_paie;
+            $sal_brut_imposable_paie= $row->sal_brut_imposable_paie;
+            $inss_qpo_paie= $row->inss_qpo_paie;
+            $inss_qpp_paie= $row->inss_qpp_paie;
+            $cnss_paie= $row->cnss_paie;
+            $inpp_paie= $row->inpp_paie;
+            $onem_paie= $row->onem_paie;
+            $ipr_paie= $row->ipr_paie;
+            $net_paie=$row->net_paie;                            
+         }
+
+           
+         $name_annee='';
+         $name_mois='';
+         $name_categorie_service='';
+         $directeur = '';
+         $data3 =  DB::table('tperso_detail_paie_salaire')            
+         ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
+         ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
+         ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
+         ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
+         ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
+         ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
+         ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+         ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+         ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+         ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
+         ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
+         ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
+         ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
+          ->select("name_mois","name_annee","name_categorie_service","directeur")
+         ->where([
+            ['refMois','=', $refMois],
+            ['refAnne','=', $refAnne],
+            ['tperso_service_personnel.refCatService','=', $refCatService]
+        ])    
+         ->get(); 
+         $output='';
+         foreach ($data3 as $row) 
+         {   
+            $name_categorie_service = $row->name_categorie_service;                             
+            $name_annee=$row->name_annee;
+            $name_mois=$row->name_mois; 
+            $directeur=$row->directeur;                          
+         }
+
+
+
+
+        $output='
+
+                <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                <!-- saved from url=(0016)http://localhost -->
+                <html>
+                <head>
+                    <title>rptListingPaie</title>
+                    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"/>
+                    <style type="text/css">
+                        .cs96C832E3 {color:#000000;background-color:transparent;border-left:#000000 1px solid;border-top:#000000 1px solid;border-right:#000000 1px solid;border-bottom:#000000 1px solid;font-family:Times New Roman; font-size:8px; font-weight:bold; font-style:normal; }
+                        .cs79F8CBE2 {color:#000000;background-color:transparent;border-left:#000000 1px solid;border-top:#000000 1px solid;border-right:#000000 1px solid;border-bottom:#000000 1px solid;font-family:Times New Roman; font-size:8px; font-weight:normal; font-style:normal; }
+                        .cs302BEDA6 {color:#000000;background-color:transparent;border-left-style: none;border-top:#000000 1px solid;border-right:#000000 1px solid;border-bottom:#000000 1px solid;font-family:Times New Roman; font-size:8px; font-weight:bold; font-style:normal; }
+                        .cs6738495F {color:#000000;background-color:transparent;border-left-style: none;border-top:#000000 1px solid;border-right:#000000 1px solid;border-bottom:#000000 1px solid;font-family:Times New Roman; font-size:8px; font-weight:normal; font-style:normal; }
+                        .cs95B50E2B {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:10px; font-weight:bold; font-style:normal; padding-left:2px;padding-right:2px;}
+                        .cs5B74C6EF {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:10px; font-weight:normal; font-style:normal; padding-left:2px;padding-right:2px;}
+                        .cs101A94F7 {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:13px; font-weight:normal; font-style:normal; }
+                        .cs5DE5F832 {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:16px; font-weight:normal; font-style:normal; padding-left:2px;padding-right:2px;}
+                        .csA67C9637 {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:18px; font-weight:bold; font-style:normal; padding-left:2px;padding-right:2px;}
+                        .csE93F7424 {color:#000000;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:22px; font-weight:bold; font-style:normal; text-decoration: underline;padding-left:2px;padding-right:2px;}
+                        .csECF45065 {color:#0000FF;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Times New Roman; font-size:14px; font-weight:bold; font-style:normal; padding-left:2px;padding-right:2px;}
+                        .cs739196BC {color:#5C5C5C;background-color:transparent;border-left-style: none;border-top-style: none;border-right-style: none;border-bottom-style: none;font-family:Segoe UI; font-size:11px; font-weight:normal; font-style:normal; }
+                        .csF7D3565D {height:0px;width:0px;overflow:hidden;font-size:0px;line-height:0px;}
+                    </style>
+                </head>
+                <body leftMargin=10 topMargin=10 rightMargin=10 bottomMargin=10 style="background-color:#FFFFFF">
+                <table cellpadding="0" cellspacing="0" border="0" style="border-width:0px;empty-cells:show;width:971px;height:362px;position:relative;">
+                    <tr>
+                        <td style="width:0px;height:0px;"></td>
+                        <td style="height:0px;width:10px;"></td>
+                        <td style="height:0px;width:30px;"></td>
+                        <td style="height:0px;width:114px;"></td>
+                        <td style="height:0px;width:11px;"></td>
+                        <td style="height:0px;width:40px;"></td>
+                        <td style="height:0px;width:10px;"></td>
+                        <td style="height:0px;width:104px;"></td>
+                        <td style="height:0px;width:47px;"></td>
+                        <td style="height:0px;width:42px;"></td>
+                        <td style="height:0px;width:1px;"></td>
+                        <td style="height:0px;width:59px;"></td>
+                        <td style="height:0px;width:57px;"></td>
+                        <td style="height:0px;width:59px;"></td>
+                        <td style="height:0px;width:57px;"></td>
+                        <td style="height:0px;width:40px;"></td>
+                        <td style="height:0px;width:24px;"></td>
+                        <td style="height:0px;width:21px;"></td>
+                        <td style="height:0px;width:48px;"></td>
+                        <td style="height:0px;width:10px;"></td>
+                        <td style="height:0px;width:28px;"></td>
+                        <td style="height:0px;width:10px;"></td>
+                        <td style="height:0px;width:4px;"></td>
+                        <td style="height:0px;width:34px;"></td>
+                        <td style="height:0px;width:50px;"></td>
+                        <td style="height:0px;width:61px;"></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:23px;"></td>
+                        <td class="cs739196BC" colspan="10" style="width:409px;height:23px;line-height:14px;text-align:center;vertical-align:middle;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:10px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:24px;"></td>
+                        <td></td>
+                        <td class="cs101A94F7" colspan="2" rowspan="6" style="width:144px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:144px;height:128px;">
+                            <img alt="" src="'.$pic2.'" style="width:144px;height:128px;" /></div>
+                        </td>
+                        <td></td>
+                        <td class="csA67C9637" colspan="16" style="width:643px;height:24px;line-height:21px;text-align:center;vertical-align:middle;">'.$nomEse.'</td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Adresse&nbsp;:'.$adresseEse.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:25px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:24px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:22px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:12px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:9px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:7px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:27px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="csE93F7424" colspan="13" style="width:565px;height:27px;line-height:25px;text-align:center;vertical-align:top;"><nobr>FEUILLE&nbsp;DE&nbsp;PAIE&nbsp;DU&nbsp;MOIS&nbsp;DE&nbsp;:&nbsp;'.$name_mois.'&nbsp;'.$name_annee.' : '.$name_categorie_service.'</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:13px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:24px;"></td>
+                        <td></td>
+                        <td class="cs96C832E3" style="width:28px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>N&#176;</nobr></td>
+                        <td class="cs302BEDA6" colspan="4" style="width:174px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>NOMS</nobr></td>
+                        <td class="cs302BEDA6" style="width:103px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>FONCTION</nobr></td>
+                        <td class="cs302BEDA6" style="width:46px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>SALAIRE</nobr><br/><nobr>DE.BASE</nobr></td>
+                        <td class="cs302BEDA6" style="width:41px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>ALL.&nbsp;FAM.</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:59px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>IDEMNITE&nbsp;DE</nobr><br/><nobr>LOGEMENT</nobr></td>
+                        <td class="cs302BEDA6" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>IDEMNITE&nbsp;DE</nobr><br/><nobr>TRANSPORT</nobr></td>
+                        <td class="cs302BEDA6" style="width:58px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>TRAITEMENT</nobr><br/><nobr>BRUT</nobr></td>
+                        <td class="cs302BEDA6" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>TOTAL&nbsp;BRUT</nobr><br/><nobr>IMPOSABLE</nobr></td>
+                        <td class="cs302BEDA6" style="width:39px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>INSS</nobr><br/><nobr>(QPO5%)</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:44px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>INSS&nbsp;(QPP</nobr><br/><nobr>13%)</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:57px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>INSS&nbsp;TOTAL</nobr><br/><nobr>(18%)</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>INPP&nbsp;2%</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>ONEM</nobr><br/><nobr>0.2%</nobr></td>
+                        <td class="cs302BEDA6" style="width:49px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>CONTRIBUT</nobr><br/><nobr>(IPR)</nobr></td>
+                        <td class="cs302BEDA6" style="width:60px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>NET&nbsp;A&nbsp;PAYER</nobr></td>
+                    </tr>
+                    ';
+                                                                                
+                            $output .= $this->showPaiementMoisCategorieService($refMois,$refAnne,$refCatService); 
+                                                                                
+                            $output.='
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:24px;"></td>
+                        <td></td>
+                        <td class="cs96C832E3" colspan="6" style="width:307px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>TOTAL</nobr></td>
+                        <td class="cs302BEDA6" style="width:46px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$salaire_base_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:41px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$fammiliale_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:59px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$logement_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$transport_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:58px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$sal_brut_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:56px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$sal_brut_imposable_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:39px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$inss_qpo_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:44px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$inss_qpp_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:57px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$cnss_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$inpp_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" colspan="2" style="width:37px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$onem_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:49px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$ipr_paie.'$</nobr></td>
+                        <td class="cs302BEDA6" style="width:60px;height:22px;line-height:8px;text-align:center;vertical-align:middle;"><nobr>'.$net_paie.'$</nobr></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:31px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                    </tr>
+                </table>
+                </body>
+                </html>
+         
+        ';  
+       
+        return $output; 
+
+}
+
+function showPaiementMoisCategorieService($refMois,$refAnne,$refCatService)
+{
+    $data = DB::table('tperso_detail_paie_salaire')            
+    ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
+    ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
+    ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
+    ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
+    ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
+    ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
+    ->select("tperso_detail_paie_salaire.id","refAffectation",
+    "dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
+    "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent',
+    'refPoste','refLieuAffectation',
+    'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+    'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+    'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+    'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
+    "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
+    "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
+    "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
+    "tagent.slug as slug_agent",
+    'nom_poste','description_poste',
+    )
+    
+    // ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent') 
+    ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+        ROUND(fammiliale_paie,2) as fammiliale_paie,
+        ROUND(logement_paie,2) as logement_paie,
+        ROUND(transport_paie,2) as transport_paie,
+        ROUND(sal_brut_paie,2) as sal_brut_paie,
+        ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+        ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+        ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+        ROUND(cnss_paie,2) as cnss_paie,
+        ROUND(inpp_paie,2) as inpp_paie,
+        ROUND(onem_paie,2) as onem_paie,
+        ROUND(ipr_paie,2) as ipr_paie') 
+    ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')
+    ->where([
+        ['refMois','=', $refMois],
+        ['refAnne','=', $refAnne],
+        ['tperso_service_personnel.refCatService','=', $refCatService]
     ])
     ->orderBy("noms_agent", "asc")
     ->get();

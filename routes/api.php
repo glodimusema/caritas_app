@@ -1454,6 +1454,8 @@ Route::get("fetch_tarchive_user_service_2", [tarchive_user_serviceController::cl
 //=====================RAPPORT PERSONNELS===================================  
 //fetch_rapport_paiement_date_mois_poste
  
+//
+Route::get("fetch_rapport_paiement_date_mois_categorie_service",[Pdf_PersonnelController::class, 'fetch_rapport_paiement_date_mois_categorie_service']);
 Route::get("fetch_rapport_paiement_date_mois_poste",[Pdf_PersonnelController::class, 'fetch_rapport_paiement_date_mois_poste']);
 Route::get("fetch_rapport_paiement_date_mois_projet",[Pdf_PersonnelController::class, 'fetch_rapport_paiement_date_mois_projet']);
 Route::get("pdf_bon_soin",[Pdf_PersonnelController::class, 'pdf_bon_soin']);

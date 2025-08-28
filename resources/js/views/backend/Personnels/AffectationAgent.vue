@@ -412,6 +412,15 @@
                             </div>
                           </v-flex>
 
+
+                          <v-flex xs12 sm12 md12 lg12>
+                            <div class="mr-1">
+                              <v-text-field type="date" label="Date Signature Contrat" prepend-inner-icon="event" dense
+                                :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.dateSignatureContrat">
+                              </v-text-field>
+                            </div>
+                          </v-flex>
+
                         </v-layout>
                         
                       </v-card-text>
@@ -474,6 +483,7 @@
                                 <th class="text-left">DuréeRestante</th>
                                 <th class="text-left">Congé</th>
                                 <th class="text-left">Contrat</th>
+                                <th class="text-left">DateSignature</th>
                                 <th class="text-left">MvtContrat</th>
                                 <th class="text-left">Action</th>
                               </tr>
@@ -498,6 +508,7 @@
                                     {{ item.conge == 'NON' ? 'Actif' : item.conge == 'OUI' ? 'Congé' : 'error' }}
                                   </v-btn>
                                 </td>
+                                <td>{{ item.dateSignatureContrat }}</td>
                                 <td>
                                   <v-btn elevation="2" x-small class="white--text"
                                     :color="(item.dureerestante > 0 || item.code_contrat=='CDI') ? '#3DA60C' : item.dureerestante <= 0 ? '#F13D17' : 'error'"
@@ -763,6 +774,7 @@ export default {
         numcpteBanque: '',
         BanqueAgant: '',
         autresDetail: '',
+        dateSignatureContrat:'',
         etat_contrat:'',
         author: "Admin",
       },

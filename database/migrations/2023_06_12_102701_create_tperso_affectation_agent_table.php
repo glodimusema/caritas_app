@@ -58,6 +58,7 @@ class CreateTpersoAffectationAgentTable extends Migration
             $table->string('numcpteBanque',50);
             $table->string('BanqueAgant',50);
             $table->string('autresDetail',50);
+            $table->date('dateSignatureContrat')->default(null);
             $table->string('conge')->default('OUI');
             $table->string('etat_contrat')->default('OUI');
             $table->string('author',50);

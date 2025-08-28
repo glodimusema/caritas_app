@@ -47,7 +47,7 @@
                                 readonly
                             ></v-text-field>
                           
-                            <v-tooltip bottom color="black">
+                            <!-- <v-tooltip bottom color="black">
                                 <template v-slot:activator="{ on, attrs }">
                                     <span v-bind="attrs" v-on="on">
                                         <v-btn @click="showPaiementPersonnelByDate" block color="  blue" dark>
@@ -56,7 +56,7 @@
                                     </span>
                                 </template>
                                 <span>Imprimer le rapport</span>
-                            </v-tooltip>
+                            </v-tooltip> -->
                       
                             <br>                                
                            <v-flex xs12 sm12 md12 lg12>
@@ -110,7 +110,6 @@
 
 
                             <br>
-
                             <v-flex xs12 sm12 md12 lg12>
                                     <div class="mr-1">
                                         <v-autocomplete label="Selectionnez le Projet(Administration)" prepend-inner-icon="mdi-map"
@@ -130,7 +129,26 @@
                                 </template>
                                 <span>Imprimer le rapport</span>
                             </v-tooltip>
-
+                            <br>
+                            <v-flex xs12 sm12 md12 lg12>
+                                    <div class="mr-1">
+                                        <v-autocomplete label="Selectionnez le Departement" prepend-inner-icon="mdi-map" dense
+                                        :rules="[(v) => !!v || 'Ce champ est requis']" :items="categorieList" item-text="name_categorie_service"
+                                        item-value="id" outlined v-model="svData.refCatService">
+                                        </v-autocomplete>
+                                    </div>
+                                </v-flex>     
+                                <!-- <br>                        -->
+                            <v-tooltip bottom color="black">
+                                <template v-slot:activator="{ on, attrs }">
+                                    <span v-bind="attrs" v-on="on">
+                                        <v-btn @click="showPaiementPersonnel_MoisDepartementByDate" block color="  blue" dark>
+                                            <v-icon>print</v-icon> RAPPORT DE PAIEMENT DES AGENTS/MOIS/DEPARTEMENT
+                                        </v-btn>
+                                    </span>
+                                </template>
+                                <span>Imprimer le rapport</span>
+                            </v-tooltip>
 
 
                             </v-col>
@@ -211,6 +229,7 @@ export default {
             moisList: [],
             postList: [],
             projetList: [],
+            categorieList: [],
             filterValue:'',
             dates:[],
             showDate:false, 
@@ -356,6 +375,26 @@ export default {
                     this.showError("Veillez selectionner le mois et l'année svp");
                 }  
         },
+        showPaiementPersonnel_MoisDepartementByDate() {
+            //refRubrique
+            if(this.svData.refMois!="" && this.svData.refAnne!=""&& this.svData.refCatService!="")
+                {
+                    window.open(`${this.apiBaseURL}/fetch_rapport_paiement_date_mois_categorie_service?refMois=` + this.svData.refMois+"&refAnne="+this.svData.refAnne+"&refCatService="+this.svData.refCatService);
+                }else
+                {
+                    this.showError("Veillez selectionner le mois et l'année svp");
+                }  
+        },
+
+    fetchListCategorieService() {
+      this.editOrFetch(`${this.apiBaseURL}/fetch_categorie_service_personnel_2`).then(
+        ({ data }) => {
+          var donnees = data.data;
+          this.categorieList = donnees;
+
+        }
+      );
+    },
         
 
         rechargement()
@@ -375,6 +414,7 @@ export default {
         this.fetchListRubrique();
         this.fetchListPoste();
         this.fetchListProjet();
+        this.fetchListCategorieService();
         this.showDate=true;
     },
 };

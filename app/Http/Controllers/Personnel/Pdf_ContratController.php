@@ -200,7 +200,7 @@ function printRapportContratDate($date1, $date2)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -360,7 +360,7 @@ function showRapportContratDate($date1, $date2)
 {
         $count=0;
 
-        $data = DB::table('tperso_affectation_agent')
+    $data = DB::table('tperso_affectation_agent')
     ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
     ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
     ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
@@ -611,7 +611,7 @@ function printRapportFinContratDate($date1, $date2)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -1016,7 +1016,7 @@ function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -1429,7 +1429,7 @@ function printRapportContratDatePoste($date1, $date2, $refPoste)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -1841,7 +1841,7 @@ function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectat
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -2251,7 +2251,7 @@ function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -2663,7 +2663,7 @@ function printRapportContratDateProjet($date1, $date2, $projet_id)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -3076,7 +3076,7 @@ function printRapportContratDateSexe($date1, $date2, $sexe_agent)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -3489,7 +3489,7 @@ function printRapportContratDateConge($date1, $date2, $conge)
                         <td class="csA67C9637" colspan="12" style="width:623px;height:24px;line-height:21px;text-align:center;vertical-align:middle;"><nobr>'.$nomEse.'</nobr></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="3" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -4321,7 +4321,7 @@ function printRapportStagiairessDate($date1, $date2)
                     <td></td>
                     <td></td>
                     <td class="cs101A94F7" colspan="3" rowspan="7" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                        <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -4731,7 +4731,7 @@ function printRapportStagiairessDateInstitution($date1, $date2,$institution_id)
                     <td></td>
                     <td></td>
                     <td class="cs101A94F7" colspan="3" rowspan="7" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                        <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -5144,7 +5144,7 @@ function printRapportStagiairessDateTypestage($date1, $date2,$typestage_id)
                     <td></td>
                     <td></td>
                     <td class="cs101A94F7" colspan="3" rowspan="7" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                        <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -7396,6 +7396,7 @@ function GetContratTravailAgent($id)
 
             $description_projet ='';
             $nom_org ='';
+            $dateSignatureContrat='';
 
             $urgence="'URGENCE";
             $identi="'IDENTIFICATION";
@@ -7440,7 +7441,8 @@ function GetContratTravailAgent($id)
             'tperso_affectation_agent.created_at','nomOffice','postnomOffice','qualifieOffice',
 
             "partenaire_id","description_projet","chef_projet","nom_org",
-            "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu"
+            "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat",
+            "salaire_prevu"
             )
             ->selectRaw('ROUND(tperso_affectation_agent.fammiliale, 2) as fammiliale') 
             ->selectRaw('ROUND(tperso_affectation_agent.logement, 2) as logement')
@@ -7465,6 +7467,7 @@ function GetContratTravailAgent($id)
             ->selectRaw("DATE_FORMAT(dateAffectation,'%d/%m/%Y') as dateAffectation")
             ->selectRaw("DATE_FORMAT(date_debut_projet,'%d/%m/%Y') as date_debut_projet")
             ->selectRaw("DATE_FORMAT(date_fin_projet,'%d/%m/%Y') as date_fin_projet")
+            ->selectRaw("DATE_FORMAT(dateSignatureContrat,'%d/%m/%Y') as dateSignatureContrat")
             ->selectRaw("DATE_FORMAT(tperso_affectation_agent.created_at,'%d/%m/%Y') as date_created")
             ->where('tperso_affectation_agent.id','=', $id)    
             ->get(); 
@@ -7547,6 +7550,7 @@ function GetContratTravailAgent($id)
 
                 $description_projet = $row->description_projet;
                 $nom_org = $row->nom_org;
+                $dateSignatureContrat = $row->dateSignatureContrat;
                 
             }  
 
@@ -8359,7 +8363,17 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:148px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="21" style="width:627px;height:148px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fait&nbsp;&#224;&nbsp;Goma,&nbsp;Le&nbsp;'.$date_created.'</nobr><br/><br/><nobr>Pour&nbsp;l'.$aps.'employ&#233;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma</nobr><br/><br/><nobr>.................................</nobr><br/><nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Directeur</nobr><br/></td>
+                        <td class="cs1698ECB3" colspan="21" style="width:627px;height:148px;line-height:18px;text-align:left;vertical-align:top;">
+                            <nobr>Fait&nbsp;&#224;&nbsp;Goma,&nbsp;Le&nbsp;'.$dateSignatureContrat.'<?php echo $dateSignatureContrat; ?></nobr><br/><br/>
+                            <nobr>Pour&nbsp;l<?php echo $aps; ?>employ&#233;e
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma</nobr><br/><br/>
+                            
+                            <!-- Alignement à droite uniquement ici -->
+                            <div style="text-align:right;">
+                                <nobr>'.$directeur.'<?php echo $directeur; ?></nobr><br/>
+                                <nobr>Directeur</nobr><br/>
+                            </div>
+                        </td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:15px;"></td>
@@ -9442,7 +9456,7 @@ function printRapportPresenceDate($date1, $date2)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="2" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                         <td></td>
                     </tr>
@@ -9910,7 +9924,7 @@ function printRapportPresenceServiceDate($date1, $date2,$refServicePerso)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="2" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                         <td></td>
                     </tr>
@@ -10380,7 +10394,7 @@ function printRapportPresenceLieuDate($date1, $date2,$refLieuAffectation)
                         <td></td>
                         <td></td>
                         <td class="cs101A94F7" colspan="2" rowspan="6" style="width:145px;height:128px;text-align:left;vertical-align:top;"><div style="overflow:hidden;width:145px;height:128px;">
-                            <img alt="" src="'.$pic2.'" style="width:145px;height:128px;" /></div>
+                            </div>
                         </td>
                         <td></td>
                     </tr>
