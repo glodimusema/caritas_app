@@ -8,6 +8,7 @@ use App\Models\Personnel\tperso_detail_paie_salaire;
 use App\Models\Personnel\tperso_fiche_paie;
 use App\Traits\{GlobalMethod,Slug};
 use DB;
+use Carbon\Carbon;
 
 class tperso_detail_paie_salaireController extends Controller
 {
@@ -737,6 +738,8 @@ class tperso_detail_paie_salaireController extends Controller
 
     function insert_global_data(Request $request)
     {
+        $current = Carbon::now();
+
         $check=$request->check;  
         $mois_id=$request->refMois;
         $annee_id=$request->refAnne;     
@@ -790,6 +793,8 @@ class tperso_detail_paie_salaireController extends Controller
             $onem= 0;
             $ipr= 0;
 
+            
+
             $data2 = DB::table('tperso_affectation_agent')
             ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
             ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
@@ -800,6 +805,9 @@ class tperso_detail_paie_salaireController extends Controller
             'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
             'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
             'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
+            ->where([
+                ['dateFin', '>=', $current]
+            ])
             ->orderBy("tperso_affectation_agent.id", "asc")          
             ->get();
             foreach ($data2 as $list) {
@@ -919,9 +927,10 @@ class tperso_detail_paie_salaireController extends Controller
             ->join('villes' , 'villes.id','=','communes.idVille')
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_affectation_agent.id")               
+            ->select("tperso_affectation_agent.id")   
             ->where([
-                ['tperso_affectation_agent.refServicePerso',$refServicePerso]
+                ['tperso_affectation_agent.refServicePerso',$refServicePerso],
+                ['dateFin', '>=', $current]
             ])         
             ->get();
             foreach ($data2 as $list) {
@@ -949,6 +958,9 @@ class tperso_detail_paie_salaireController extends Controller
                 'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
                 'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
                 'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
+                ->where([                    
+                    ['dateFin', '>=', $current]
+                 ])
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {
@@ -1070,9 +1082,10 @@ class tperso_detail_paie_salaireController extends Controller
             ->join('villes' , 'villes.id','=','communes.idVille')
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_affectation_agent.id")               
-            ->where([
-                ['tperso_service_personnel.refCatService',$refCatService]
+            ->select("tperso_affectation_agent.id")  
+            ->where([   
+                ['tperso_service_personnel.refCatService',$refCatService],                 
+                ['dateFin', '>=', $current]
             ])         
             ->get();
             foreach ($data2 as $list) {
@@ -1100,6 +1113,9 @@ class tperso_detail_paie_salaireController extends Controller
                 'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
                 'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
                 'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
+                ->where([                 
+                    ['dateFin', '>=', $current]
+                ])
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {

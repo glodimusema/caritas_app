@@ -96,7 +96,7 @@ function printRapportContratDate($date1, $date2)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -214,28 +214,28 @@ function printRapportContratDate($date1, $date2)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -507,7 +507,7 @@ function printRapportFinContratDate($date1, $date2)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -625,28 +625,28 @@ function printRapportFinContratDate($date1, $date2)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -768,9 +768,12 @@ function printRapportFinContratDate($date1, $date2)
 }
 function showRapportFinContratDate($date1, $date2)
 {
-        $count=0;
+        $count=0; 
 
         $data = DB::table('tperso_affectation_agent')
+        ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+        ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+        ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
         ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
         ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
         ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
@@ -795,7 +798,11 @@ function showRapportFinContratDate($date1, $date2)
         "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
         "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
         'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-        'nom_contrat','code_contrat')
+        'nom_contrat','code_contrat',
+        
+        
+        "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+        "adresse_org","contact_org","rccm_org", "idnat_org","etat_contrat","salaire_prevu")
         ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
         ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')    
         ->selectRaw("CASE  WHEN (TIMESTAMPDIFF(MONTH, CURDATE(), dateFin))>0 THEN 'Encours' ELSE 'Fini' END as Statut")     
@@ -911,7 +918,7 @@ function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -1030,28 +1037,28 @@ function printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -1324,7 +1331,7 @@ function printRapportContratDatePoste($date1, $date2, $refPoste)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -1443,28 +1450,28 @@ function printRapportContratDatePoste($date1, $date2, $refPoste)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -1736,7 +1743,7 @@ function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectat
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -1855,28 +1862,28 @@ function printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectat
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -2146,7 +2153,7 @@ function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -2265,28 +2272,28 @@ function printRapportContratDateMutuelle($date1, $date2, $refMutuelle)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -2558,7 +2565,7 @@ function printRapportContratDateProjet($date1, $date2, $projet_id)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -2677,28 +2684,28 @@ function printRapportContratDateProjet($date1, $date2, $projet_id)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -2971,7 +2978,7 @@ function printRapportContratDateSexe($date1, $date2, $sexe_agent)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -3090,28 +3097,28 @@ function printRapportContratDateSexe($date1, $date2, $sexe_agent)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -3384,7 +3391,7 @@ function printRapportContratDateConge($date1, $date2, $conge)
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
             $rccmEse=$row->rccm;
-            $bp=$row->edition;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
          }
@@ -3503,28 +3510,28 @@ function printRapportContratDateConge($date1, $date2, $conge)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact :'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:623px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:623px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$emailEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" rowspan="2" style="width:623px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -3795,7 +3802,7 @@ function printRapportCongeEncoursDate($date1, $date2)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -3912,7 +3919,7 @@ function printRapportCongeEncoursDate($date1, $date2)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:621px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:621px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -3920,7 +3927,7 @@ function printRapportCongeEncoursDate($date1, $date2)
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="12" style="width:621px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="12" style="width:621px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -3928,7 +3935,7 @@ function printRapportCongeEncoursDate($date1, $date2)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:621px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:621px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -3936,7 +3943,7 @@ function printRapportCongeEncoursDate($date1, $date2)
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="12" style="width:621px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="12" style="width:621px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -4209,7 +4216,7 @@ function printRapportStagiairessDate($date1, $date2)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -4335,21 +4342,21 @@ function printRapportStagiairessDate($date1, $date2)
                     <td style="width:0px;height:25px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:24px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:22px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -4619,7 +4626,7 @@ function printRapportStagiairessDateInstitution($date1, $date2,$institution_id)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -4745,21 +4752,21 @@ function printRapportStagiairessDateInstitution($date1, $date2,$institution_id)
                     <td style="width:0px;height:25px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:24px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:22px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -5032,7 +5039,7 @@ function printRapportStagiairessDateTypestage($date1, $date2,$typestage_id)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -5158,21 +5165,21 @@ function printRapportStagiairessDateTypestage($date1, $date2,$typestage_id)
                     <td style="width:0px;height:25px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:24px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                    <td class="csECF45065" colspan="11" style="width:626px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:22px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="11" style="width:626px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -5654,19 +5661,19 @@ function GetFicheAgent($id)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="13" style="width:469px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="13" style="width:469px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="13" style="width:469px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="13" style="width:469px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="13" style="width:469px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="13" style="width:469px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
@@ -6800,7 +6807,7 @@ function GetNotificationFinContrat($id)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="2" style="width:477px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="2" style="width:477px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
@@ -6812,7 +6819,7 @@ function GetNotificationFinContrat($id)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="2" style="width:477px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="2" style="width:477px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
@@ -8908,7 +8915,7 @@ function GetFicheCongeAgent($id)
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="cs5DE5F832" colspan="9" style="width:477px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                            <td class="cs5DE5F832" colspan="9" style="width:477px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -9345,7 +9352,7 @@ function printRapportPresenceDate($date1, $date2)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -9473,7 +9480,7 @@ function printRapportPresenceDate($date1, $date2)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -9813,7 +9820,7 @@ function printRapportPresenceServiceDate($date1, $date2,$refServicePerso)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -9941,7 +9948,7 @@ function printRapportPresenceServiceDate($date1, $date2,$refServicePerso)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -10283,7 +10290,7 @@ function printRapportPresenceLieuDate($date1, $date2,$refLieuAffectation)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -10411,7 +10418,7 @@ function printRapportPresenceLieuDate($date1, $date2,$refLieuAffectation)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="13" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -11135,7 +11142,7 @@ function GetBulletinPaieSalaire($id)
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:19px;"></td>
                     <td></td>
-                    <td class="csFFC1C457" colspan="13" style="width:420px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                    <td class="csFFC1C457" colspan="13" style="width:420px;height:19px;line-height:13px;text-align:left;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -11612,7 +11619,7 @@ function printRapportTimeSheetDate($date1, $date2,$affectation_id)
              $numImpotEse=$row->rccm;
              $busnessName=$row->nomSecteur;
              $rccmEse=$row->rccm;
-             $bp=$row->edition;
+             $bp=$row->descriptionEntreprise;
              $pic = $this->displayImg("fichier", 'logo.png');
              $siege=$row->nomForme;         
          }
@@ -11803,7 +11810,7 @@ function printRapportTimeSheetDate($date1, $date2,$affectation_id)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="9" style="width:621px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
+                    <td class="csECF45065" colspan="9" style="width:621px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'   Email&nbsp;:&nbsp;'.$emailEse.'</nobr></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -11819,7 +11826,7 @@ function printRapportTimeSheetDate($date1, $date2,$affectation_id)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="9" style="width:621px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="9" style="width:621px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                 </tr>
                 <tr style="vertical-align:top;">

@@ -10243,7 +10243,7 @@ function printRapportPaiement($date1, $date2)
                     <td style="width:0px;height:25px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                    <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'  Email&nbsp;:'.$emailEse.'</nobr></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -10251,7 +10251,7 @@ function printRapportPaiement($date1, $date2)
                     <td style="width:0px;height:24px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                    <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -10259,7 +10259,7 @@ function printRapportPaiement($date1, $date2)
                     <td style="width:0px;height:22px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -10267,7 +10267,7 @@ function printRapportPaiement($date1, $date2)
                     <td style="width:0px;height:12px;"></td>
                     <td></td>
                     <td></td>
-                    <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                    <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -10459,7 +10459,7 @@ function printRapportPaiement($date1, $date2)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
                 </tr>
             </table>
             </body>
@@ -10655,7 +10655,7 @@ function printRapportPaiementMois($refMois,$refAnne)
             $idNatEse=$row->rccm;
             $numImpotEse=$row->rccm;
             $busnessName=$row->nomSecteur;
-            $bp=$row->rccm;
+            $bp=$row->descriptionEntreprise;
             $pic = $this->displayImg("fichier", 'logo.png');
             $siege=$row->nomForme;         
         }
@@ -10880,7 +10880,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'  Email&nbsp;:'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -10888,7 +10888,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -10896,7 +10896,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -10904,7 +10904,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -11096,7 +11096,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
                     </tr>
                 </table>
                 </body>
@@ -11516,7 +11516,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'  Email&nbsp;:'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -11524,7 +11524,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -11532,7 +11532,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -11540,7 +11540,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -11732,7 +11732,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
                     </tr>
                 </table>
                 </body>
@@ -12149,7 +12149,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'  Email&nbsp;:'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12157,7 +12157,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12165,7 +12165,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12173,7 +12173,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12365,7 +12365,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
                     </tr>
                 </table>
                 </body>
@@ -12794,7 +12794,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td style="width:0px;height:25px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Email&nbsp;:'.$emailEse.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:25px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'  Email&nbsp;:'.$emailEse.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12802,7 +12802,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td style="width:0px;height:24px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>Contact&nbsp;:'.$Tel1Ese.','.$Tel2Ese.'</nobr></td>
+                        <td class="csECF45065" colspan="16" style="width:643px;height:24px;line-height:16px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12810,7 +12810,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -12818,7 +12818,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="16" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -13010,7 +13010,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Admin.&nbsp;G&#233;n.&nbsp;et&nbsp;Mod&#233;rateur&nbsp;du&nbsp;coll&#232;ge&nbsp;de&nbsp;Direction</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
                     </tr>
                 </table>
                 </body>

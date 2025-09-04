@@ -731,6 +731,11 @@ export default {
                 {
                   text: "Toutes les Présences",
                   href: "/admin/AllPresenceAgent",
+                },
+                {
+                  icon: "people",
+                  text: "Import.Presences",
+                  href: "/admin/ImportPresence",
                 }
               ],
             },
@@ -1711,6 +1716,10 @@ export default {
                 {
                   text: "Toutes les Présences",
                   href: "/admin/AllPresenceAgent",
+                },
+                {
+                  text: "Import.Presences",
+                  href: "/admin/ImportPresence",
                 }
               ],
             },
