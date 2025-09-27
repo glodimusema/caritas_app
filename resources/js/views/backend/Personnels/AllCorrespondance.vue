@@ -258,7 +258,7 @@
                 this.edit = false;
                 this.dialog = false;
                 this.resetObj(this.svData);
-                this.fetchDataList();
+                this.onPageChange();
                 })
                 .catch((err) => {
                 this.svErr(), this.isLoading(false);
@@ -278,7 +278,7 @@
                 this.edit = false;
                 this.dialog = false;
                 this.resetObj(this.svData);
-                this.fetchDataList();
+                this.onPageChange();
                 })
                 .catch((err) => {
                 this.svErr(), this.isLoading(false);

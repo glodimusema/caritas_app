@@ -1061,9 +1061,10 @@ export default {
           this.$refs.Stages.fetchListPromotion();
           this.$refs.Stages.fetchListOption();
           this.$refs.Stages.fetchListAnnee();
+          this.$refs.Stages.fetchListTypeStage();
           this.onPageChange();
           
-          this.$refs.AffectationAgent.$data.titleComponent =
+          this.$refs.Stages.$data.titleComponent =
             "Affectation des stage pour " + name;
 
         } else {
