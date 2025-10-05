@@ -43,7 +43,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -69,7 +69,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -101,7 +101,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -128,7 +128,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -164,7 +164,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -192,7 +192,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -228,7 +228,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -256,7 +256,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -293,7 +293,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')
@@ -320,7 +320,7 @@ class tperso_affectation_agentController extends Controller
             "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
             "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
             "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-            "tagent.slug as slug_agent",'fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
+            "tagent.slug as slug_agent",'etat_contrat','fammiliale','logement','tperso_affectation_agent.transport','sal_brut','sal_brut_imposable',
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','nom_contrat','code_contrat','dateSignatureContrat')
             ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
             ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')

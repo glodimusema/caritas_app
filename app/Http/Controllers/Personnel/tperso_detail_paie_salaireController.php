@@ -178,9 +178,10 @@ class tperso_detail_paie_salaireController extends Controller
             // ->join('villes' , 'villes.id','=','communes.idVille')
             // ->join('provinces' , 'provinces.id','=','villes.idProvince')
             // ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-            'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie',
-            'onem_paie','ipr_paie',
+            ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie',
+            // 'fammiliale_paie','logement_paie',
+            // 'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie',
+            // 'onem_paie','ipr_paie',
             "name_mois","name_annee","dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
             "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent','refPoste',
             'refLieuAffectation',
@@ -202,9 +203,21 @@ class tperso_detail_paie_salaireController extends Controller
             // 'refSousCompte','nom_ssouscompte','numero_ssouscompte',
             'salaire_prevu','avance_paie',
             'soins_paie','jourpreste_paie','salaire_horaire','heure_supp1_paie','heure_supp2_paie','heure_supp3_paie','assurances_paie')
-            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
-            ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie')  
-            ->selectRaw('(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)) as netPaieCash')
+            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+            ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')  
+            ->selectRaw('ROUND((((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)),2) as netPaieCash')
+            ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+            ROUND(fammiliale_paie,2) as fammiliale_paie,
+            ROUND(logement_paie,2) as logement_paie,
+            ROUND(transport_paie,2) as transport_paie,
+            ROUND(sal_brut_paie,2) as sal_brut_paie,
+            ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+            ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+            ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+            ROUND(cnss_paie,2) as cnss_paie,
+            ROUND(inpp_paie,2) as inpp_paie,
+            ROUND(onem_paie,2) as onem_paie,
+            ROUND(ipr_paie,2) as ipr_paie')
             ->where([
                 ['noms_agent', 'like', '%'.$query.'%'],
                 ['refFichePaie',$refFichePaie]
@@ -241,9 +254,10 @@ class tperso_detail_paie_salaireController extends Controller
             // ->join('villes' , 'villes.id','=','communes.idVille')
             // ->join('provinces' , 'provinces.id','=','villes.idProvince')
             // ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-            'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie',
-            'onem_paie','ipr_paie',
+            ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie',
+            // 'fammiliale_paie','logement_paie',
+            // 'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie',
+            // 'onem_paie','ipr_paie',
             "name_mois","name_annee","dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
             "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent','refPoste',
             'refLieuAffectation',
@@ -265,9 +279,21 @@ class tperso_detail_paie_salaireController extends Controller
             // 'refSousCompte','nom_ssouscompte','numero_ssouscompte',
             'salaire_prevu','avance_paie',
             'soins_paie','jourpreste_paie','salaire_horaire','heure_supp1_paie','heure_supp2_paie','heure_supp3_paie','assurances_paie')
-            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')   
-            ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie')  
-            ->selectRaw('(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)) as netPaieCash')
+            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+            ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')  
+            ->selectRaw('ROUND((((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)),2) as netPaieCash')
+            ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+            ROUND(fammiliale_paie,2) as fammiliale_paie,
+            ROUND(logement_paie,2) as logement_paie,
+            ROUND(transport_paie,2) as transport_paie,
+            ROUND(sal_brut_paie,2) as sal_brut_paie,
+            ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+            ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+            ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+            ROUND(cnss_paie,2) as cnss_paie,
+            ROUND(inpp_paie,2) as inpp_paie,
+            ROUND(onem_paie,2) as onem_paie,
+            ROUND(ipr_paie,2) as ipr_paie')
             ->Where('refFichePaie',$refFichePaie)    
             ->orderBy("tperso_detail_paie_salaire.id", "desc")
             ->paginate(10);
@@ -283,52 +309,69 @@ class tperso_detail_paie_salaireController extends Controller
     {
 
         $data = DB::table('tperso_detail_paie_salaire')            
-        ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
-        ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
-        ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
-        ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
-        ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
-        ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
-        ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-        ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-        ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
-        ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
-        ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-        ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
-        ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-        ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
-        ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
-        ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
-        ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
-        ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
-        ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
-        ->join('communes' , 'communes.id','=','quartiers.idCommune')
-        ->join('villes' , 'villes.id','=','communes.idVille')
-        ->join('provinces' , 'provinces.id','=','villes.idProvince')
-        ->join('pays' , 'pays.id','=','provinces.idPays')
-        ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie','fammiliale_paie','logement_paie',
-        'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie',
-        "name_mois","name_annee","dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
-        "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-        'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-        'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-        'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-        'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
-        "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
-        "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
-        "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
-        "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
-        'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
-        'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport',
-        'sal_brut','sal_brut_imposable','inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
-        "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
-        "adresse_org","contact_org","rccm_org", "idnat_org",'refBanque',
-        "tconf_banque.nom_banque","tconf_banque.numerocompte",'tconf_banque.nom_mode',"refSscompte",
-        'refSousCompte','nom_ssouscompte','numero_ssouscompte','salaire_prevu','avance_paie',
-        'soins_paie','jourpreste_paie','salaire_horaire','heure_supp1_paie','heure_supp2_paie','heure_supp3_paie','assurances_paie')
-        ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')  
-        ->selectRaw('((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie) as netPaie') 
-        ->selectRaw('(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)) as netPaieCash')
+            ->join('tperso_fiche_paie','tperso_fiche_paie.id','=','tperso_detail_paie_salaire.refFichePaie')
+            // ->join('tconf_banque' , 'tconf_banque.id','=','tperso_fiche_paie.refBanque')
+            // ->join('tfin_ssouscompte','tfin_ssouscompte.id','=','tconf_banque.refSscompte')
+            ->join('tperso_mois','tperso_mois.id','=', 'tperso_fiche_paie.refMois')
+            ->join('tperso_annee','tperso_annee.id','=', 'tperso_fiche_paie.refAnne')
+            ->join('tperso_affectation_agent','tperso_affectation_agent.id','=','tperso_detail_paie_salaire.refAffectation')
+            ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+            // ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+            // ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+            // ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
+            // ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
+            // ->join('tperso_mutuelle','tperso_mutuelle.id','=','tperso_affectation_agent.refMutuelle')
+            // ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+            // ->join('tperso_categorie_agent','tperso_categorie_agent.id','=','tperso_affectation_agent.refCategorieAgent')
+            // ->join('tperso_service_personnel','tperso_service_personnel.id','=','tperso_affectation_agent.refServicePerso')
+            // ->join('tperso_categorie_service','tperso_categorie_service.id','=','tperso_service_personnel.refCatService')
+            ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
+            // ->join('avenues' , 'avenues.id','=','tagent.refAvenue_agent')
+            // ->join('quartiers' , 'quartiers.id','=','avenues.idQuartier')
+            // ->join('communes' , 'communes.id','=','quartiers.idCommune')
+            // ->join('villes' , 'villes.id','=','communes.idVille')
+            // ->join('provinces' , 'provinces.id','=','villes.idProvince')
+            // ->join('pays' , 'pays.id','=','provinces.idPays')
+            ->select("tperso_detail_paie_salaire.id","refAffectation",'salaire_base_paie',
+            // 'fammiliale_paie','logement_paie',
+            // 'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie',
+            // 'onem_paie','ipr_paie',
+            "name_mois","name_annee","dateFiche","refAnne","refMois","dateAffectation","codeAgent","numCNSS","numcpteBanque",
+            "numImpot","BanqueAgant","autresDetail",'refFichePaie','refAgent','refServicePerso','refCategorieAgent','refPoste',
+            'refLieuAffectation',
+            'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+            'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+            'BanqueAgant','autresDetail','conge',"tperso_affectation_agent.author","matricule_agent","nummaison_agent",
+            "noms_agent","sexe_agent","datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
+            "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
+            "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent","tagent.photo as photo_agent",
+            "tagent.slug as slug_agent",
+            // "name_serv_perso","name_categorie_service","name_categorie_agent",
+            // 'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle',
+            // 'nom_contrat','code_contrat','param_salaire_id','fammiliale','logement','tperso_affectation_agent.transport',
+            // 'sal_brut','sal_brut_imposable','inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission',"categorie_id","projet_id","salaire_base",
+            // "partenaire_id","description_projet","chef_projet","date_debut_projet","date_fin_projet","nom_org",
+            // "adresse_org","contact_org","rccm_org", "idnat_org",'refBanque',
+            // "tconf_banque.nom_banque","tconf_banque.numerocompte",'tconf_banque.nom_mode',"refSscompte",
+            // 'refSousCompte','nom_ssouscompte','numero_ssouscompte',
+            'salaire_prevu','avance_paie',
+            'soins_paie','jourpreste_paie','salaire_horaire','heure_supp1_paie','heure_supp2_paie','heure_supp3_paie','assurances_paie')
+            ->selectRaw('TIMESTAMPDIFF(YEAR, datenaissance_agent, CURDATE()) as age_agent')
+            ->selectRaw('ROUND(((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie),2) as netPaie')  
+            ->selectRaw('ROUND((((salaire_base_paie +fammiliale_paie + logement_paie + transport_paie) - inss_qpo_paie - ipr_paie)-(avance_paie)-(soins_paie)),2) as netPaieCash')
+            ->selectRaw('ROUND(salaire_base_paie,2) as salaire_base_paie, 
+            ROUND(fammiliale_paie,2) as fammiliale_paie,
+            ROUND(logement_paie,2) as logement_paie,
+            ROUND(transport_paie,2) as transport_paie,
+            ROUND(sal_brut_paie,2) as sal_brut_paie,
+            ROUND(sal_brut_imposable_paie,2) as sal_brut_imposable_paie,
+            ROUND(inss_qpo_paie,2) as inss_qpo_paie,
+            ROUND(inss_qpp_paie,2) as inss_qpp_paie,
+            ROUND(cnss_paie,2) as cnss_paie,
+            ROUND(inpp_paie,2) as inpp_paie,
+            ROUND(onem_paie,2) as onem_paie,
+            ROUND(ipr_paie,2) as ipr_paie')
         ->where('tperso_detail_paie_salaire.id', $id)
         ->get();
 
@@ -796,6 +839,7 @@ class tperso_detail_paie_salaireController extends Controller
             
 
             $data2 = DB::table('tperso_affectation_agent')
+            ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
             ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
             ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
             ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
@@ -804,10 +848,11 @@ class tperso_detail_paie_salaireController extends Controller
             'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
             'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
             'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-            'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
-            ->where([
-                ['dateFin', '>=', $current]
-            ])
+            'BanqueAgant','autresDetail','conge','salaire_base',
+            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
+            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
+            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+            ->orWhere('code_contrat', '=', 'CDI')
             ->orderBy("tperso_affectation_agent.id", "asc")          
             ->get();
             foreach ($data2 as $list) {
@@ -949,18 +994,20 @@ class tperso_detail_paie_salaireController extends Controller
                 $ipr= 0;
     
                 $data2 = DB::table('tperso_affectation_agent')
-                ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-                ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-                ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
-                ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-                'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
-                'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-                'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-                'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-                'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
-                ->where([                    
-                    ['dateFin', '>=', $current]
-                 ])
+            ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+            ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+            ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+            ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+            ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
+            'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
+            'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+            'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+            'BanqueAgant','autresDetail','conge','salaire_base',
+            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
+            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
+            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+            ->orWhere('code_contrat', '=', 'CDI')
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {
@@ -1104,18 +1151,20 @@ class tperso_detail_paie_salaireController extends Controller
                 $ipr= 0;
     
                 $data2 = DB::table('tperso_affectation_agent')
-                ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-                ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-                ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
-                ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-                'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
-                'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-                'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-                'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-                'BanqueAgant','autresDetail','conge','salaire_base','tperso_affectation_agent.author')               
-                ->where([                 
-                    ['dateFin', '>=', $current]
-                ])
+            ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+            ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+            ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+            ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+            ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
+            'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
+            'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+            'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+            'BanqueAgant','autresDetail','conge','salaire_base',
+            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
+            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
+            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+            ->orWhere('code_contrat', '=', 'CDI')
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {

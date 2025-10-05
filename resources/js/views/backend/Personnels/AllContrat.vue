@@ -443,6 +443,7 @@
                   <th class="text-left">DuréeRestante</th>
                   <th class="text-left">Congé</th>
                   <th class="text-left">Contrat</th>
+                  <th class="text-left">MvtContrat</th>
                   <th class="text-left">Action</th>
                 </tr>
               </thead>
@@ -464,10 +465,21 @@
                           elevation="2"
                           x-small
                           class="white--text"
-                          :color="item.conge == 'NON' ? '#3DA60C' : item.conge <= 'OUI' ? '#F13D17' :'error'"
+                          :color="((item.conge == 'NON') && (item.dureerestante > 0 || item.code_contrat=='CDI')) ? '#3DA60C' 
+                          : ((item.conge <= 'OUI') && (item.dureerestante > 0 || item.code_contrat=='CDI')) ? '#F13D17'
+                          : ((item.conge <= 'NON') && (item.dureerestante <= 0)) ? '#F13D17' 
+                          : ((item.conge <= 'OUI') && (item.dureerestante <= 0)) ? '#F13D17'
+                          :'error'"
                           depressed                            
                           >
-                        {{ item.conge == 'NON' ? 'Actif' : item.conge == 'OUI' ? 'Congé' :'error' }}
+                        {{
+                        
+                          ((item.conge == 'NON') && (item.dureerestante > 0 || item.code_contrat=='CDI')) ? 'Actif' 
+                          : ((item.conge <= 'OUI') && (item.dureerestante > 0 || item.code_contrat=='CDI')) ? 'Congé'
+                          : ((item.conge <= 'NON') && (item.dureerestante <= 0)) ? 'Fin Contrat' 
+                          : ((item.conge <= 'OUI') && (item.dureerestante <= 0)) ? 'Fin Contrat'
+                          :'error'                        
+                        }}
                       </v-btn>
                   </td>
                   <td>
@@ -476,6 +488,17 @@
                       depressed>
                       {{ (item.dureerestante > 0 || item.code_contrat=='CDI') ? 'Encours' : item.dureerestante <= 0 ? 'Fin Contrat'
                         :'error' }} </v-btn>
+                  </td>
+                  <td>
+                    <v-btn elevation="2" x-small class="white--text"
+                        :color="((item.dureerestante > 0 || item.code_contrat=='CDI')) ? '#3DA60C' : 'error'"
+                        depressed>
+
+                        {{
+                        
+                          (item.etat_contrat != '') ? item.etat_contrat :'error'                        
+                        }} 
+                      </v-btn>
                   </td>
                   <td>
 

@@ -28,12 +28,12 @@ public function fetch_rapport_contrat_date(Request $request)
         // code...
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
-        
-        $html = $this->printRapportContratDate($date1, $date2);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDate($date1, $date2);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);             
 
     } else {
         // code...
@@ -440,12 +440,14 @@ public function fetch_rapport_fincontrat_date(Request $request)
         // code...
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
-        
-        $html = $this->printRapportFinContratDate($date1, $date2);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportFinContratDate($date1, $date2);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -851,12 +853,14 @@ public function fetch_rapport_contrat_date_typecontrat(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refTypeContrat = $request->get('refTypeContrat');
-        
-        $html = $this->printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateTypeContrat($date1, $date2, $refTypeContrat);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -1264,12 +1268,14 @@ public function fetch_rapport_contrat_date_poste(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refPoste = $request->get('refPoste');
-        
-        $html = $this->printRapportContratDatePoste($date1, $date2, $refPoste);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDatePoste($date1, $date2, $refPoste);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -1676,12 +1682,14 @@ public function fetch_rapport_contrat_date_LieuAffectation(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refLieuAffectation = $request->get('refLieuAffectation');
-        
-        $html = $this->printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectation);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateLieuAffectation($date1, $date2, $refLieuAffectation);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -2086,12 +2094,14 @@ public function fetch_rapport_contrat_date_mutuelle(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refMutuelle = $request->get('refMutuelle');
-        
-        $html = $this->printRapportContratDateMutuelle($date1, $date2, $refMutuelle);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateMutuelle($date1, $date2, $refMutuelle);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                    
 
     } else {
         // code...
@@ -2498,12 +2508,14 @@ public function fetch_rapport_contrat_date_projet(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $projet_id = $request->get('projet_id');
-        
-        $html = $this->printRapportContratDateProjet($date1, $date2, $projet_id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateProjet($date1, $date2, $projet_id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -2911,12 +2923,14 @@ public function fetch_rapport_contrat_date_sexe(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $sexe_agent = $request->get('sexe_agent');
-        
-        $html = $this->printRapportContratDateSexe($date1, $date2, $sexe_agent);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateSexe($date1, $date2, $sexe_agent);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -3324,12 +3338,14 @@ public function fetch_rapport_contrat_date_conge(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $conge = $request->get('conge');
-        
-        $html = $this->printRapportContratDateConge($date1, $date2, $conge);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+         $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportContratDateConge($date1, $date2, $conge);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                  
 
     } else {
         // code...
@@ -3735,12 +3751,14 @@ public function fetch_rapport_conge_encours_date(Request $request)
         // code...
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
-        
-        $html = $this->printRapportCongeEncoursDate($date1, $date2);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportCongeEncoursDate($date1, $date2);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -4149,12 +4167,14 @@ public function fetch_rapport_stagiaires_date(Request $request)
         // code...
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
-        
-        $html = $this->printRapportStagiairessDate($date1, $date2);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportStagiairessDate($date1, $date2);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -4559,12 +4579,14 @@ public function fetch_rapport_stagiaires_date_institution(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $institution_id = $request->get('institution_id');
-        
-        $html = $this->printRapportStagiairessDateInstitution($date1, $date2,$institution_id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportStagiairessDateInstitution($date1, $date2,$institution_id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -4972,12 +4994,14 @@ public function fetch_rapport_stagiaires_date_typestage(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $typestage_id = $request->get('typestage_id');
-        
-        $html = $this->printRapportStagiairessDateTypestage($date1, $date2,$typestage_id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportStagiairessDateTypestage($date1, $date2,$typestage_id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                    
 
     } else {
         // code...
@@ -5384,14 +5408,13 @@ function pdf_fiche_agent(Request $request)
     {
         $id = $request->get('id');
         $html = $this->GetFicheAgent($id);
-        $pdf = \App::make('dompdf.wrapper');
-
-        // echo($html);
 
 
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetFicheAgent($id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
         
     }
     else{
@@ -5967,15 +5990,12 @@ function pdf_contrat_prestation_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetContratPrestationAgent($id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        // echo($html);
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetContratPrestationAgent($id);       
+        $html .='<script>window.print()</script>';
 
-
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        echo($html);
         
     }
     else{
@@ -6526,15 +6546,12 @@ function pdf_notificationfin_contrat_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetNotificationFinContrat($id);
-        $pdf = \App::make('dompdf.wrapper');
+        
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetNotificationFinContrat($id);       
+        $html .='<script>window.print()</script>';
 
-        // echo($html);
-
-
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        echo($html);
         
     }
     else{
@@ -6871,12 +6888,12 @@ function pdf_checklist_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetCheckList($id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();        
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetCheckList($id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);       
     }
     else{
 
@@ -7252,15 +7269,12 @@ function pdf_contrat_travail_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetContratTravailAgent($id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        // echo($html);
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetContratTravailAgent($id);       
+        $html .='<script>window.print()</script>';
 
-
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        echo($html);
         
     }
     else{
@@ -8483,15 +8497,12 @@ function pdf_fiche_conge_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetFicheCongeAgent($id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        // echo($html);
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetFicheCongeAgent($id);       
+        $html .='<script>window.print()</script>';
 
-
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        echo($html);
         
     }
     else{
@@ -8696,7 +8707,8 @@ function GetFicheCongeAgent($id)
             ->selectRaw("DATE_FORMAT(date_debut_accord, '%d/%m/%Y') AS date_debut_accord")
             // ->selectRaw("DATE_FORMAT(date_fin_accord, '%d/%m/%Y') AS date_fin_accord") 
             ->selectRaw("DATE_FORMAT(dateAffectation, '%d/%m/%Y') AS dateAffectation") 
-            ->selectRaw("DATE_FORMAT(dateFin, '%d/%m/%Y') AS dateFin")  
+            ->selectRaw("DATE_FORMAT(dateFin, '%d/%m/%Y') AS dateFin")
+            ->selectRaw("DATE_FORMAT(date_reprise, '%d/%m/%Y') AS date_reprise")  
             
             ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
             ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")
@@ -8784,7 +8796,7 @@ function GetFicheCongeAgent($id)
     
             $output=' 
 
-                    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     <!-- saved from url=(0016)http://localhost -->
                     <html>
                     <head>
@@ -9060,7 +9072,7 @@ function GetFicheCongeAgent($id)
                             <td class="csE71035DC" colspan="5" style="width:172px;height:45px;line-height:15px;text-align:left;vertical-align:middle;"><nobr>Date&nbsp;pr&#233;vue&nbsp;pour&nbsp;le&nbsp;d&#233;part</nobr></td>
                             <td class="csAB3AA82A" colspan="3" style="width:177px;height:45px;line-height:15px;text-align:center;vertical-align:middle;">'.$date_depart.'</td>
                             <td class="cs82D98BB6" colspan="4" style="width:189px;height:45px;line-height:15px;text-align:left;vertical-align:middle;"><nobr>Date&nbsp;pr&#233;vue&nbsp;pour&nbsp;la&nbsp;reprise&nbsp;du</nobr><br/><nobr>travail</nobr></td>
-                            <td class="csAB3AA82A" colspan="3" style="width:93px;height:45px;line-height:15px;text-align:center;vertical-align:middle;"></td>
+                            <td class="csAB3AA82A" colspan="3" style="width:93px;height:45px;line-height:15px;text-align:center;vertical-align:middle;">'.$date_reprise.'</td>
                         </tr>
                         <tr style="vertical-align:top;">
                             <td style="width:0px;height:24px;"></td>
@@ -9284,12 +9296,15 @@ public function fetch_rapport_presence_date(Request $request)
         // code...
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
-        
-        $html = $this->printRapportPresenceDate($date1, $date2);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportPresenceDate($date1, $date2);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                  
 
     } else {
         // code...
@@ -9752,12 +9767,14 @@ public function fetch_rapport_presence_service_date(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refServicePerso = $request->get('refServicePerso');
-        
-        $html = $this->printRapportPresenceServiceDate($date1, $date2,$refServicePerso);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportPresenceServiceDate($date1, $date2,$refServicePerso);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                 
 
     } else {
         // code...
@@ -10222,12 +10239,14 @@ public function fetch_rapport_presence_lieu_date(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $refLieuAffectation = $request->get('refLieuAffectation');
-        
-        $html = $this->printRapportPresenceLieuDate($date1, $date2,$refLieuAffectation);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportPresenceLieuDate($date1, $date2,$refLieuAffectation);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
+        
+                   
 
     } else {
         // code...
@@ -10689,15 +10708,13 @@ function pdf_bulletin_paie_salire_agent(Request $request)
     if ($request->get('id')) 
     {
         $id = $request->get('id');
-        $html = $this->GetBulletinPaieSalaire($id);
-        $pdf = \App::make('dompdf.wrapper');
-
-        // echo($html);
 
 
-        $pdf->loadHTML($html);
-        $pdf->loadHTML($html)->setPaper('a4');
-        return $pdf->stream();
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->GetBulletinPaieSalaire($id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);
         
     }
     else{
@@ -11551,12 +11568,12 @@ public function fetch_rapport_time_sheet_date(Request $request)
         $date1 = $request->get('date1');
         $date2 = $request->get('date2');
         $affectation_id = $request->get('affectation_id');
-        
-        $html = $this->printRapportTimeSheetDate($date1, $date2,$affectation_id);
-        $pdf = \App::make('dompdf.wrapper');
 
-        $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        return $pdf->stream();            
+        $html ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+        $html .= $this->printRapportTimeSheetDate($date1, $date2,$affectation_id);       
+        $html .='<script>window.print()</script>';
+
+        echo($html);            
 
     } else {
         // code...
