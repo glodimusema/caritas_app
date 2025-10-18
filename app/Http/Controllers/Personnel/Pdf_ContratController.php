@@ -7624,14 +7624,97 @@ function GetContratTravailAgent($id)
          $data_duree = "";
          if($code_contrat == "CDD")
          {
-            $libelle_duree = "déterminée de ".$dureecontrat." Mois";
-            // $data_duree = "de '.$dureecontrat.' Mois";
+            $libelle_duree = "déterminée de ".$dureecontrat." Mois";            
          }
          else if($code_contrat == "CDI")
          {
             $libelle_duree = "indéterminée";
-            // $data_duree = "";
          }
+
+
+         $article_trois_quatre = '';
+
+         if($code_contrat == "CDD")
+         {
+            $article_trois_quatre = '<tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs9E712815" colspan="18" style="width:625px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;3&nbsp;:&nbsp;Dur&#233;e&nbsp;du&nbsp;contrat&nbsp;de&nbsp;travail</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:42px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.'.&nbsp;&#224;&nbsp;compter</nobr><br/><nobr>du&nbsp;.'.$dateAffectation.'.&nbsp;au&nbsp;.'.$dateFin.'.&nbsp;La&nbsp;p&#233;riode&nbsp;probatoire&nbsp;y&nbsp;comprise.</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs9E712815" colspan="18" style="width:624px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;4&nbsp;:&nbsp;P&#233;riode&nbsp;d'.$aps.'essai</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:58px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:58px;line-height:18px;text-align:left;vertical-align:top;"><nobr>La&nbsp;periode&nbsp;d'.$aps.'essai&nbsp;est&nbsp;de&nbsp;.'.$dureeessaie.'&nbsp;Mois.&nbsp;&#224;&nbsp;compter&nbsp;du&nbsp;.'.$dateDebutEssaie.'.&nbsp;au&nbsp;.'.$dateFinEssaie.'.&nbsp;Pendant&nbsp;cette</nobr><br/><nobr>p&#233;riode,&nbsp;chacune&nbsp;des&nbsp;parties&nbsp;peut&nbsp;mettre&nbsp;fin&nbsp;&#224;&nbsp;l'.$aps.'engagement&nbsp;moyennant&nbsp;un&nbsp;pr&#233;avis&nbsp;l&#233;gal&nbsp;de&nbsp;trois</nobr><br/><nobr>jours.</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>';            
+         }
+         else if($code_contrat == "CDI")
+         {
+            $article_trois_quatre = '<tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs9E712815" colspan="18" style="width:625px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;3&nbsp;:&nbsp;Dur&#233;e&nbsp;du&nbsp;contrat&nbsp;de&nbsp;travail</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:42px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.'.</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:21px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs9E712815" colspan="18" style="width:624px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;4&nbsp;:&nbsp;P&#233;riode&nbsp;d'.$aps.'essai</nobr></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="vertical-align:top;">
+                        <td style="width:0px;height:58px;"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:58px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Pas de période d'.$aps.'essaie pour les CDI</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>';
+         }
+
 
 
          $data_represente=0;
@@ -8081,43 +8164,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr style="vertical-align:top;">
-                        <td style="width:0px;height:21px;"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="cs9E712815" colspan="18" style="width:625px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;3&nbsp;:&nbsp;Dur&#233;e&nbsp;du&nbsp;contrat&nbsp;de&nbsp;travail</nobr></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr style="vertical-align:top;">
-                        <td style="width:0px;height:42px;"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.'.&nbsp;&#224;&nbsp;compter</nobr><br/><nobr>du&nbsp;.'.$dateAffectation.'.&nbsp;au&nbsp;.'.$dateFin.'.&nbsp;La&nbsp;p&#233;riode&nbsp;probatoire&nbsp;y&nbsp;comprise.</nobr></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr style="vertical-align:top;">
-                        <td style="width:0px;height:21px;"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="cs9E712815" colspan="18" style="width:624px;height:21px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Article&nbsp;4&nbsp;:&nbsp;P&#233;riode&nbsp;d'.$aps.'essai</nobr></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr style="vertical-align:top;">
-                        <td style="width:0px;height:58px;"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:58px;line-height:18px;text-align:left;vertical-align:top;"><nobr>La&nbsp;periode&nbsp;d'.$aps.'essai&nbsp;est&nbsp;de&nbsp;.'.$dureeessaie.'&nbsp;Mois.&nbsp;&#224;&nbsp;compter&nbsp;du&nbsp;.'.$dateDebutEssaie.'.&nbsp;au&nbsp;.'.$dateFinEssaie.'.&nbsp;Pendant&nbsp;cette</nobr><br/><nobr>p&#233;riode,&nbsp;chacune&nbsp;des&nbsp;parties&nbsp;peut&nbsp;mettre&nbsp;fin&nbsp;&#224;&nbsp;l'.$aps.'engagement&nbsp;moyennant&nbsp;un&nbsp;pr&#233;avis&nbsp;l&#233;gal&nbsp;de&nbsp;trois</nobr><br/><nobr>jours.</nobr></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    '.$article_trois_quatre.'
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
@@ -9283,15 +9330,10 @@ function GetFicheCongeAgent($id)
 }
 
 
-
-
-
 //==================== RAPPORT DES PRESENCES PAR DATE =======================================
 
 public function fetch_rapport_presence_date(Request $request)
 {
-    //refDepartement
-
     if ($request->get('date1') && $request->get('date2')) {
         // code...
         $date1 = $request->get('date1');

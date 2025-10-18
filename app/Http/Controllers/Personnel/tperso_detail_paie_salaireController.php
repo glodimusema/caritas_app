@@ -382,7 +382,7 @@ class tperso_detail_paie_salaireController extends Controller
     //'transport_paie','sal_brut_paie','sal_brut_imposable_paie','inss_qpo_paie','inss_qpp_paie','cnss_paie','inpp_paie','onem_paie','ipr_paie','author'
 
     function insert_data(Request $request)
-    { 
+    {
 
         $param_salaire_id=0;
         $categorie_id=0;
@@ -834,9 +834,8 @@ class tperso_detail_paie_salaireController extends Controller
             $cnss= 0;
             $inpp= 0;
             $onem= 0;
-            $ipr= 0;
+            $ipr= 0;           
 
-            
 
             $data2 = DB::table('tperso_affectation_agent')
             ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
@@ -849,10 +848,15 @@ class tperso_detail_paie_salaireController extends Controller
             'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
             'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
             'BanqueAgant','autresDetail','conge','salaire_base',
-            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
-            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
-            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
-            ->orWhere('code_contrat', '=', 'CDI')
+            'tperso_affectation_agent.author','nom_contrat','code_contrat')  
+            ->where([
+                ['code_contrat', '=', 'CDI'],
+                ['etat_contrat', '=', 'Encours']
+            ]) 
+            ->orWhere(function($query) {
+                $query->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+                    ->where('etat_contrat', '=', 'Encours');
+            })
             ->orderBy("tperso_affectation_agent.id", "asc")          
             ->get();
             foreach ($data2 as $list) {
@@ -972,11 +976,18 @@ class tperso_detail_paie_salaireController extends Controller
             ->join('villes' , 'villes.id','=','communes.idVille')
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_affectation_agent.id")   
+            ->select("tperso_affectation_agent.id") 
+
             ->where([
-                ['tperso_affectation_agent.refServicePerso',$refServicePerso],
-                ['dateFin', '>=', $current]
-            ])         
+                ['code_contrat', '=', 'CDI'],
+                ['etat_contrat', '=', 'Encours'],
+                ['tperso_affectation_agent.refServicePerso',$refServicePerso]
+            ]) 
+            ->orWhere(function($query) {
+                $query->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+                    ->where('etat_contrat', '=', 'Encours')
+                    ->where('tperso_affectation_agent.refServicePerso',$refServicePerso);
+            })                        
             ->get();
             foreach ($data2 as $list) {
                 $refAffectation=0;
@@ -994,20 +1005,29 @@ class tperso_detail_paie_salaireController extends Controller
                 $ipr= 0;
     
                 $data2 = DB::table('tperso_affectation_agent')
-            ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-            ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-            ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-            ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
-            ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-            'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
-            'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-            'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-            'BanqueAgant','autresDetail','conge','salaire_base',
-            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
-            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
-            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
-            ->orWhere('code_contrat', '=', 'CDI')
+                ->join('tperso_service_personnel','tperso_service_personnel.id','tperso_affectation_agent.refServicePerso')
+                ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+                ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+                ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+                ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+                ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
+                'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
+                'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+                'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+                'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+                'BanqueAgant','autresDetail','conge','salaire_base',
+                'tperso_affectation_agent.author','nom_contrat','code_contrat')   
+                ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
+                ->where([
+                    ['code_contrat', '=', 'CDI'],
+                    ['etat_contrat', '=', 'Encours'],
+                    ['tperso_affectation_agent.refServicePerso',$refServicePerso]
+                ]) 
+                ->orWhere(function($query) {
+                    $query->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+                        ->where('etat_contrat', '=', 'Encours')
+                        ->where('tperso_affectation_agent.refServicePerso',$refServicePerso);
+                })
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {
@@ -1129,11 +1149,18 @@ class tperso_detail_paie_salaireController extends Controller
             ->join('villes' , 'villes.id','=','communes.idVille')
             ->join('provinces' , 'provinces.id','=','villes.idProvince')
             ->join('pays' , 'pays.id','=','provinces.idPays')
-            ->select("tperso_affectation_agent.id")  
-            ->where([   
-                ['tperso_service_personnel.refCatService',$refCatService],                 
-                ['dateFin', '>=', $current]
-            ])         
+            ->select("tperso_affectation_agent.id")
+            
+            ->where([
+                ['code_contrat', '=', 'CDI'],
+                ['etat_contrat', '=', 'Encours'],
+                ['tperso_service_personnel.refCatService',$refCatService]
+            ]) 
+            ->orWhere(function($query) {
+                $query->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+                    ->where('etat_contrat', '=', 'Encours')
+                    ->where('tperso_service_personnel.refCatService',$refCatService);
+            })         
             ->get();
             foreach ($data2 as $list) {
                 $refAffectation=0;
@@ -1151,20 +1178,29 @@ class tperso_detail_paie_salaireController extends Controller
                 $ipr= 0;
     
                 $data2 = DB::table('tperso_affectation_agent')
-            ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
-            ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
-            ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
-            ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
-            ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
-            'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
-            'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
-            'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
-            'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
-            'BanqueAgant','autresDetail','conge','salaire_base',
-            'tperso_affectation_agent.author','nom_contrat','code_contrat')   
-            ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
-            ->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
-            ->orWhere('code_contrat', '=', 'CDI')
+                 ->join('tperso_service_personnel','tperso_service_personnel.id','tperso_affectation_agent.refServicePerso')
+                ->join('tperso_typecontrat','tperso_typecontrat.id','=','tperso_affectation_agent.refTypeContrat')
+                ->join('tperso_parametre_salairebase','tperso_parametre_salairebase.id','=','tperso_affectation_agent.param_salaire_id')
+                ->join('tperso_projets','tperso_projets.id','=','tperso_parametre_salairebase.projet_id')
+                ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
+                ->select("tperso_affectation_agent.id",'refAgent','refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
+                'refMutuelle','refTypeContrat','param_salaire_id','fammiliale','logement','transport','sal_brut','sal_brut_imposable',
+                'inss_qpo','inss_qpp','cnss','inpp','onem','ipr','mission','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
+                'dateFinEssaie','JourTrail1','JourTrail2','heureTrail1','heureTrail2','TempsPause','nbrConge','nbrCongeLettre',
+                'nomOffice','postnomOffice','qualifieOffice','codeAgent','directeur','numCNSS','numImpot','numcpteBanque',
+                'BanqueAgant','autresDetail','conge','salaire_base',
+                'tperso_affectation_agent.author','nom_contrat','code_contrat')   
+                ->selectRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) as dureerestante')            
+                ->where([
+                    ['code_contrat', '=', 'CDI'],
+                    ['etat_contrat', '=', 'Encours'],
+                    ['tperso_service_personnel.refCatService',$refCatService]
+                ]) 
+                ->orWhere(function($query) {
+                    $query->whereRaw('TIMESTAMPDIFF(MONTH, CURDATE(), dateFin) > 0')
+                        ->where('etat_contrat', '=', 'Encours')
+                        ->where('tperso_service_personnel.refCatService',$refCatService);
+                })
                 ->orderBy("tperso_affectation_agent.id", "asc")          
                 ->get();
                 foreach ($data2 as $list) {
