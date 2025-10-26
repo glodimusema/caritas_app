@@ -7676,7 +7676,8 @@ function GetContratTravailAgent($id)
          }
          else if($code_contrat == "CDI")
          {
-            $article_trois_quatre = '<tr style="vertical-align:top;">
+            $article_trois_quatre = '
+                <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
                         <td></td>
@@ -7690,7 +7691,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.'.</nobr></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Le&nbsp;present&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;est&nbsp;conclu&nbsp;pour&nbsp;une&nbsp;dur&#233;e&nbsp;'.$libelle_duree.' prenant effet à partir du '.$dateAffectation.'. </nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -7712,7 +7713,8 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr>';
+                    </tr>
+            ';
          }
 
 

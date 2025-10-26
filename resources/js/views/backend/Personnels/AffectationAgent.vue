@@ -35,7 +35,7 @@
                   <v-card :loading="loading">
                     <v-form ref="form" lazy-validation>
                       <v-card-title>
-                        Affectation Agent <v-spacer></v-spacer>
+                        Contrat de travail pour Agent <v-spacer></v-spacer>
                         <v-tooltip bottom color="black">
                           <template v-slot:activator="{ on, attrs }">
                             <span v-bind="attrs" v-on="on">
@@ -52,11 +52,20 @@
 
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
-                              <v-autocomplete label="Selectionnez le Type de Contrat" prepend-inner-icon="mdi-map"
-                                :rules="[(v) => !!v || 'Ce champ est requis']" :items="contratList"
-                                item-text="nom_contrat" item-value="id" dense outlined v-model="svData.refTypeContrat"
-                                chips clearable>
-                              </v-autocomplete>
+                              <v-autocomplete
+                                  label="Selectionnez le Type de Contrat"
+                                  prepend-inner-icon="mdi-map"
+                                  :rules="[(v) => !!v || 'Ce champ est requis']"
+                                  :items="contratList"
+                                  item-text="nom_contrat"
+                                  item-value="id"
+                                  dense
+                                  outlined
+                                  v-model="svData.refTypeContrat"
+                                  chips
+                                  clearable
+                                  @change="onTypeContratChange"
+                                ></v-autocomplete>
                             </div>
                           </v-flex>
                           <v-flex xs12 sm12 md6 lg6>
@@ -127,8 +136,25 @@
                             </div>
                           </v-flex>
 
-
                           <v-flex xs12 sm12 md6 lg6>
+                            <div class="mr-1">
+                              <v-text-field label="Heure de Pause/Jour (Ex: 12H00 à 12H30)"
+                                prepend-inner-icon="event" dense :rules="[(v) => !!v || 'Ce champ est requis']" outlined
+                                v-model="svData.TempsPause">
+                              </v-text-field>                              
+                            </div>
+                          </v-flex>
+                          <v-flex xs12 sm12 md6 lg6>
+                            <div class="mr-1">
+                              <v-text-field type="date" label="Date Engagement" prepend-inner-icon="event" dense
+                                :rules="[(v) => !!v || 'Ce champ est requis']" outlined
+                                v-model="svData.dateAffectation">
+                              </v-text-field>
+                            </div>
+                          </v-flex>
+
+
+                          <v-flex xs12 sm12 md6 lg6 v-if="!isCDI">
                             <div class="mr-1">
                               <v-text-field type="number" label="Durée du contrat (Mois)" prepend-inner-icon="event"
                                 dense outlined
@@ -136,7 +162,7 @@
                               </v-text-field>
                             </div>
                           </v-flex>
-                          <v-flex xs12 sm12 md6 lg6>
+                          <v-flex xs12 sm12 md6 lg6 v-if="!isCDI">
                             <div class="mr-1">
                               <v-text-field label="Durée en Lettre (Mois)" prepend-inner-icon="event" dense
                                  outlined v-model="svData.dureeLettre">
@@ -145,7 +171,7 @@
                           </v-flex>
 
 
-                          <v-flex xs12 sm12 md6 lg6>
+                          <v-flex xs12 sm12 md6 lg6 v-if="!isCDI">
                             <div class="mr-1">
                               <v-text-field type="date" label="Date debtut Essaie" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined
@@ -153,7 +179,7 @@
                               </v-text-field>
                             </div>
                           </v-flex>
-                          <v-flex xs12 sm12 md6 lg6>
+                          <v-flex xs12 sm12 md6 lg6 v-if="!isCDI">
                             <div class="mr-1">
                               <v-text-field type="date" label="Date fin Essaie" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.dateFinEssaie">
@@ -200,92 +226,16 @@
                             <div class="mr-1">
                               <v-text-field type="time" label="Heure de debut du travail/Jour" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.heureTrail1">
-                              </v-text-field>
-                              <!-- <v-autocomplete label="Heure de debut du travail/Jour" :items="[
-                                { designation: '08H00' },
-                                { designation: '09H00' },
-                                { designation: '10H00' },
-                                { designation: '11H00' },
-                                { designation: '12H00' },
-                                { designation: '13H00' },
-                                { designation: '14H00' },
-                                { designation: '15H00' },
-                                { designation: '16H00' },
-                                { designation: '17H00' },
-                                { designation: '18H00' },
-                                { designation: '19H00' },
-                                { designation: '20H00' },
-                                { designation: '21H00' },
-                                { designation: '22H00' },
-                                { designation: '23H00' },
-                                { designation: '24H00' },
-                                { designation: '01H00' },
-                                { designation: '02H00' },
-                                { designation: '03H00' },
-                                { designation: '04H00' },
-                                { designation: '05H00' },
-                                { designation: '06H00' },
-                                { designation: '07H00' },
-                              ]" prepend-inner-icon="extension" :rules="[(v) => !!v || 'Ce champ est requis']" outlined
-                                dense item-text="designation" item-value="designation"
-                                v-model="svData.heureTrail1"></v-autocomplete> -->
+                              </v-text-field>                              
                             </div>
                           </v-flex>
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field type="time" label="Heure de Fin de travail/Jour" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.heureTrail2">
-                              </v-text-field>
-                              <!-- <v-autocomplete label="Heure de Fin de travail/Jour" :items="[
-                                { designation: '08H00' },
-                                { designation: '09H00' },
-                                { designation: '10H00' },
-                                { designation: '11H00' },
-                                { designation: '12H00' },
-                                { designation: '13H00' },
-                                { designation: '14H00' },
-                                { designation: '15H00' },
-                                { designation: '16H00' },
-                                { designation: '17H00' },
-                                { designation: '18H00' },
-                                { designation: '19H00' },
-                                { designation: '20H00' },
-                                { designation: '21H00' },
-                                { designation: '22H00' },
-                                { designation: '23H00' },
-                                { designation: '24H00' },
-                                { designation: '01H00' },
-                                { designation: '02H00' },
-                                { designation: '03H00' },
-                                { designation: '04H00' },
-                                { designation: '05H00' },
-                                { designation: '06H00' },
-                                { designation: '07H00' },
-                              ]" prepend-inner-icon="extension" :rules="[(v) => !!v || 'Ce champ est requis']" outlined
-                                dense item-text="designation" item-value="designation"
-                                v-model="svData.heureTrail2"></v-autocomplete> -->
-                            </div>
-                          </v-flex>
-
-
-
-                          <v-flex xs12 sm12 md6 lg6>
-                            <div class="mr-1">
-                              <v-text-field label="Heure de Pause/Jour (Ex: 12H00 à 12H30)"
-                                prepend-inner-icon="event" dense :rules="[(v) => !!v || 'Ce champ est requis']" outlined
-                                v-model="svData.TempsPause">
                               </v-text-field>                              
                             </div>
                           </v-flex>
-                          <v-flex xs12 sm12 md6 lg6>
-                            <div class="mr-1">
-                              <v-text-field type="date" label="Date Engagement" prepend-inner-icon="event" dense
-                                :rules="[(v) => !!v || 'Ce champ est requis']" outlined
-                                v-model="svData.dateAffectation">
-                              </v-text-field>
-                            </div>
-                          </v-flex>
-
 
 
                           <v-flex xs12 sm12 md6 lg6>
@@ -338,8 +288,6 @@
                               </v-autocomplete>
                             </div>
                           </v-flex>
-
-
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="N° AGENT " prepend-inner-icon="event" dense
@@ -347,6 +295,9 @@
                               </v-text-field>
                             </div>
                           </v-flex>
+
+
+
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="N° CNSS" prepend-inner-icon="event" dense
@@ -354,8 +305,6 @@
                               </v-text-field>
                             </div>
                           </v-flex>
-
-
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="N° Impot" prepend-inner-icon="event" dense
@@ -363,6 +312,8 @@
                               </v-text-field>
                             </div>
                           </v-flex>
+
+
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="N° Compte Bancaire" prepend-inner-icon="event" dense
@@ -370,8 +321,6 @@
                               </v-text-field>
                             </div>
                           </v-flex>
-
-
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-autocomplete label="Selectionnez la Banque" prepend-inner-icon="mdi-map"
@@ -381,16 +330,16 @@
                               </v-autocomplete>
                             </div>
                           </v-flex>
+
+
+
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="Autres Détails(Pourcentage Temps de Travail)" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.autresDetail">
                               </v-text-field>
                             </div>
-                          </v-flex>
-
-
-                          
+                          </v-flex>                          
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field label="Indemnité de Transport" prepend-inner-icon="event" dense
@@ -398,6 +347,8 @@
                               </v-text-field>
                             </div>
                           </v-flex>
+
+
                           <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-autocomplete label="Etat du Contrat" :items="[
@@ -412,9 +363,7 @@
                                 v-model="svData.etat_contrat"></v-autocomplete>
                             </div>
                           </v-flex>
-
-
-                          <v-flex xs12 sm12 md12 lg12>
+                          <v-flex xs12 sm12 md6 lg6>
                             <div class="mr-1">
                               <v-text-field type="date" label="Date Signature Contrat" prepend-inner-icon="event" dense
                                 :rules="[(v) => !!v || 'Ce champ est requis']" outlined v-model="svData.dateSignatureContrat">
@@ -806,6 +755,7 @@ export default {
       agentList: [],
 
       projetList: [],
+      isCDI: false,
 
       lieuList: [],
       categorieList: [],
@@ -841,6 +791,23 @@ export default {
   methods: {
 
     ...mapActions(["getCategory"]),
+
+
+    onTypeContratChange(value) {
+      // Trouve le contrat sélectionné dans la liste
+      const contrat = this.contratList.find(c => c.id === value);
+      // Si le nom du contrat est "CDI", alors on cache les champs
+      if (contrat && contrat.code_contrat && contrat.code_contrat.toUpperCase() === "CDI") {
+        this.isCDI = true;
+        // Vide les champs inutiles pour éviter d’enregistrer de mauvaises données
+        this.svData.dureecontrat = 0;
+        this.svData.dureeLettre = "";
+        this.svData.dateDebutEssaie = '';
+        this.svData.dateFinEssaie = '';
+      } else {
+        this.isCDI = false;
+      }
+    },
 
     validate() {
       if (this.$refs.form.validate()) {
