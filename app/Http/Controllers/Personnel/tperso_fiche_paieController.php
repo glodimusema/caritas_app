@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Personnel\tperso_fiche_paie;
 use App\Models\Personnel\tperso_entete_paiement;
 use App\Models\Personnel\tperso_detail_paiement_sal;
+use App\Models\Personnel\tperso_detail_paie_salaire;
 use DB;
-//tperso_entete_paiement
-//tperso_detail_paiement_sal
+//
 
 class tperso_fiche_paieController extends Controller
 {
@@ -80,7 +80,6 @@ class tperso_fiche_paieController extends Controller
 
         return response($data, 200);
     }
-//
  
     function insert_global_data(Request $request)
     {
@@ -93,8 +92,6 @@ class tperso_fiche_paieController extends Controller
         foreach ($tauxList as $listTaux) {
             $taux= $listTaux->taux;
         }
-
-        //,'modepaie','refBanque'
 
         $data = tperso_fiche_paie::create([
             'dateFiche'       =>  date('Y-m-d'),
@@ -121,7 +118,7 @@ class tperso_fiche_paieController extends Controller
 
         if($check == 'TOUS')
         {
-            $refAffectation=0;
+            $refAffectation = 0;
 
             $data2 = DB::table('tperso_affectation_agent')
             ->join('tagent','tagent.id','=','tperso_affectation_agent.refAgent')
@@ -140,15 +137,12 @@ class tperso_fiche_paieController extends Controller
             foreach ($data2 as $list) {
                     $refAffectation= $list->id;
 
-
-
                     $data = tperso_entete_paiement::create([
                         'refAffectation'       =>  $refAffectation,
                         'refFichePaie'    =>  $idmax,
                         'author'    =>  $request->author
                     ]);
-
-                    //tperso_categorie_service
+                    
                     $idmax_entetepaie=0;
                     $maxid_entetepaie = DB::table('tperso_entete_paiement')     
                     ->selectRaw('MAX(tperso_entete_paiement.id) as code_entetepaie')
@@ -159,8 +153,6 @@ class tperso_fiche_paieController extends Controller
                     foreach ($maxid_entetepaie as $list_entetepaie) {
                         $idmax_entetepaie= $list_entetepaie->code_entetepaie;
                     }
-
-
 
                     $idDetailAffect=0;
                     $detail_list = DB::table('tperso_detail_affectation_ribrique')
@@ -396,74 +388,73 @@ class tperso_fiche_paieController extends Controller
             'data'  =>  "Modification  avec succès!!!",
         ]);
     }
- /**
-  * Show the form for creating a new resource.
-  *
-  * @return \Illuminate\Http\Response
-  */
- public function create()
- {
-     //
- }
+    /**
+     * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create()
+    {
+        //
+    }
 
- /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
- public function store(Request $request)
- {
-     //
- }
+    /**
+     * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function store(Request $request)
+    {
+        //
+    }
 
- /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
- public function show($id)
- {
-     //
- }
+    /**
+     * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function show($id)
+    {
+        //
+    }
+    /**
+     * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function edit($id)
+    {
+        //
+    }
 
- /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
- public function edit($id)
- {
-     //
- }
+    /**
+     * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
- /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
- public function update(Request $request, $id)
- {
-     //
- }
-
- /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
- public function destroy($id)
- {
-    $data2 = tperso_detail_paie_salaire::where('refFichePaie',$id)->delete(); 
-    $data = tperso_fiche_paie::where('id', $id)->delete();     
-     return response()->json([
-        'data'  =>  "suppression avec succès",
-    ]);
- }
+    /**
+     * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function destroy($id)
+    {
+        $data2 = tperso_detail_paie_salaire::where('refFichePaie',$id)->delete(); 
+        $data = tperso_fiche_paie::where('id', $id)->delete();     
+        return response()->json([
+            'data'  =>  "suppression avec succès",
+        ]);
+    }
 
 }

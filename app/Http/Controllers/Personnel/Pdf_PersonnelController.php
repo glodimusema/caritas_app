@@ -10401,7 +10401,7 @@ function printRapportPaiement($date1, $date2)
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:21px;"></td>
                     <td></td>
-                    <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                    <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Chargé(e) du personnel</nobr></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -10411,7 +10411,7 @@ function printRapportPaiement($date1, $date2)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Directeur : '.$directeur.'</td>
                 </tr>
                 <tr style="vertical-align:top;">
                     <td style="width:0px;height:31px;"></td>
@@ -10459,7 +10459,7 @@ function printRapportPaiement($date1, $date2)
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
+                    <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp; '.date('Y-m-d').'</td>
                 </tr>
             </table>
             </body>
@@ -11038,7 +11038,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
-                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Chargé(e) du personnel</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -11048,7 +11048,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur : '.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -11096,7 +11096,7 @@ function printRapportPaiementMois($refMois,$refAnne)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp; '.date('Y-m-d').'</td>
                     </tr>
                 </table>
                 </body>
@@ -11674,7 +11674,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
-                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Chargé(e) du personnel</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -11684,7 +11684,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur : '.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -11732,7 +11732,7 @@ function printRapportPaiementMoisPoste($refMois,$refAnne,$refPoste)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp; '.date('Y-m-d').'</td>
                     </tr>
                 </table>
                 </body>
@@ -11843,17 +11843,7 @@ public function fetch_rapport_paiement_date_mois_projet(Request $request)
         $html .= $this->printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id);       
         $html .='<script>window.print()</script>';
 
-        echo($html); 
-
-        // $html = $this->printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id);  
-        // $pdf = \App::make('dompdf.wrapper');
-        // $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        // return $pdf->download('ListingPaie.pdf');
-        
-        // $html = $this->printRapportPaiementMois($refMois,$refAnne);
-        // $pdf = \App::make('dompdf.wrapper');
-        // $pdf->loadHTML($html)->setPaper('a4', 'landscape');
-        // return $pdf->stream();            
+        echo($html);             
 
     } else {
         // code...
@@ -12225,7 +12215,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="csE93F7424" colspan="13" style="width:565px;height:27px;line-height:25px;text-align:center;vertical-align:top;"><nobr>FEUILLE&nbsp;DE&nbsp;PAIE&nbsp;DU&nbsp;MOIS&nbsp;DE&nbsp;:&nbsp;'.$name_mois.'&nbsp;'.$name_annee.' : '.$nom_projet.'</nobr></td>
+                        <td class="csE93F7424" colspan="13" style="width:565px;height:27px;line-height:25px;text-align:center;vertical-align:top;">FEUILLE&nbsp;DE&nbsp;PAIE&nbsp;DU&nbsp;MOIS&nbsp;DE&nbsp;:&nbsp;'.$name_mois.'&nbsp;'.$name_annee.' : '.$nom_projet.'</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -12308,7 +12298,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
-                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Chargé(e) du personnel</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -12318,7 +12308,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur : '.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -12366,7 +12356,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp; '.date('Y-m-d').'</td>
                     </tr>
                 </table>
                 </body>
@@ -12953,7 +12943,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:21px;"></td>
                         <td></td>
-                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp;'.date('Y-m-d').'</nobr></td>
+                        <td class="cs5B74C6EF" colspan="6" style="width:305px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Chargé(e) du personnel</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -12963,7 +12953,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>'.$directeur.'</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur : '.$directeur.'</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:31px;"></td>
@@ -13011,7 +13001,7 @@ function printRapportPaiementMoisCategorieService($refMois,$refAnne,$refCatServi
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;"><nobr>Directeur</nobr></td>
+                        <td class="cs95B50E2B" colspan="9" style="width:262px;height:21px;line-height:11px;text-align:center;vertical-align:middle;">Fais&nbsp;&#224;&nbsp;Goma,&nbsp;le&nbsp; '.date('Y-m-d').'</td>
                     </tr>
                 </table>
                 </body>

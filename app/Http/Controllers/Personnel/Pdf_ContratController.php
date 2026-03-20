@@ -7709,7 +7709,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:58px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Pas de période d'.$aps.'essaie pour les CDI</nobr></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:58px;line-height:18px;text-align:left;vertical-align:top;"><nobr>La&nbsp;periode&nbsp;d'.$aps.'essai&nbsp;est&nbsp;de&nbsp;.RAS &nbsp;Mois.&nbsp;&#224;&nbsp;compter&nbsp;du&nbsp;.RAS.&nbsp;au&nbsp;.RAS.&nbsp;Pendant&nbsp;cette</nobr><br/><nobr>p&#233;riode,&nbsp;chacune&nbsp;des&nbsp;parties&nbsp;peut&nbsp;mettre&nbsp;fin&nbsp;&#224;&nbsp;l'.$aps.'engagement&nbsp;moyennant&nbsp;un&nbsp;pr&#233;avis&nbsp;l&#233;gal&nbsp;de&nbsp;trois</nobr><br/><nobr>jours.</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8125,7 +8125,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:23px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="19" style="width:626px;height:23px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Ci-apr&#232;s&nbsp;d&#233;nomm&#233;&nbsp;(e)&nbsp;&#171;L'.$aps.'EMPLOYE.E&nbsp;&#187;</nobr></td>
+                        <td class="cs1698ECB3" colspan="19" style="width:626px;height:23px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Ci-apr&#232;s&nbsp;d&#233;nomm&#233;&nbsp;(e)&nbsp;&#171;L'.$aps.'EMPLOYE(E)&nbsp;&#187;</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -8162,7 +8162,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;.e&nbsp;est&nbsp;affect&#233;.e&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#233;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;(e)&nbsp;est&nbsp;affect&#233;(e)&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#233;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8181,7 +8181,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:76px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de .SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(.&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;(e)&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de .SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(.&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8324,7 +8324,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:41px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;.e&nbsp;s'.$aps.'engage&nbsp;&#224;&nbsp;travailler&nbsp;du&nbsp;'.$JourTrail1.'&nbsp;au&nbsp;'.$JourTrail2.'&nbsp;entre&nbsp;'.$heureTrail1.'&nbsp;heures&nbsp;et&nbsp;'.$heureTrail2.'&nbsp;avec&nbsp;une&nbsp;pause&nbsp;de</nobr><br/><nobr>trente&nbsp;minutes&nbsp;par&nbsp;jour.</nobr></td>
+                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:41px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;(e)&nbsp;s'.$aps.'engage&nbsp;&#224;&nbsp;travailler&nbsp;du&nbsp;'.$JourTrail1.'&nbsp;au&nbsp;'.$JourTrail2.'&nbsp;entre&nbsp;'.$heureTrail1.'&nbsp;heures&nbsp;et&nbsp;'.$heureTrail2.'&nbsp;avec&nbsp;une&nbsp;pause&nbsp;de</nobr><br/><nobr>trente&nbsp;minutes&nbsp;par&nbsp;jour.</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>
@@ -8337,7 +8337,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:41px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Si&nbsp;l'.$aps.'employ&#233;e&nbsp;est&nbsp;appel&#233;e&nbsp;&#224;&nbsp;effectuer&nbsp;des&nbsp;missions&nbsp;de&nbsp;service,&nbsp;son&nbsp;transport,&nbsp;son&nbsp;logement&nbsp;et&nbsp;ses</nobr><br/><nobr>repas&nbsp;seront&nbsp;pris&nbsp;en&nbsp;charge&nbsp;par&nbsp;l'.$aps.'employeur&nbsp;tel&nbsp;qu'.$aps.'indiqu&#233;&nbsp;par&nbsp;celui-ci.</nobr></td>
+                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:41px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Si&nbsp;l'.$aps.'employ&#233;(e)&nbsp;est&nbsp;appel&#233;(e)&nbsp;&#224;&nbsp;effectuer&nbsp;des&nbsp;missions&nbsp;de&nbsp;service,&nbsp;son&nbsp;transport,&nbsp;son&nbsp;logement&nbsp;et&nbsp;ses</nobr><br/><nobr>repas&nbsp;seront&nbsp;pris&nbsp;en&nbsp;charge&nbsp;par&nbsp;l'.$aps.'employeur&nbsp;tel&nbsp;qu'.$aps.'indiqu&#233;&nbsp;par&nbsp;celui-ci.</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:24px;"></td>

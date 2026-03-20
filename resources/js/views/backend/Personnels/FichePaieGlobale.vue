@@ -5,7 +5,6 @@
 
       <v-flex md12>
 
-        <EntetePaiementSalaire ref="EntetePaiementSalaire" />
         <PaiementSalaire ref="PaiementSalaire" />
 
         <v-dialog v-model="dialog" max-width="500px" persistent>
@@ -185,14 +184,6 @@
 
                             <v-list dense width="">
 
-                              <!-- <v-list-item link @click="showEntetePaiementSalaire(item.id, item.noms_agent)">
-                                <v-list-item-icon>
-                                  <v-icon color="  blue">description</v-icon>
-                                </v-list-item-icon>
-                                <v-list-item-title style="margin-left: -20px">Paiement Agent
-                                </v-list-item-title>
-                              </v-list-item> -->
-
                               <v-list-item link @click="showPaiementSalaire(item.id, item.name_mois)">
                                       <v-list-item-icon>
                                         <v-icon color="  blue">description</v-icon>
@@ -209,7 +200,7 @@
                                 </v-list-item-title>
                               </v-list-item>
 
-                              <v-list-item   link @click="desactiverData(item.id, item.author, item.created_at, item.dateFiche)">
+                              <v-list-item   link @click="deleteData(item.id, item.author, item.created_at, item.dateFiche)">
                                 <v-list-item-icon>
                                   <v-icon color="  red">delete</v-icon>
                                 </v-list-item-icon>
@@ -244,12 +235,10 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
-import EntetePaiementSalaire from './EntetePaiementSalaire.vue';
 import PaiementSalaire from "./PaiementSalaire.vue";
 
 export default {
   components: {
-    EntetePaiementSalaire,
     PaiementSalaire
   },
   data() {
@@ -475,25 +464,6 @@ export default {
           this.moisList = donnees;
         }
       );
-    },
-    showEntetePaiementSalaire(refFichePaie, name) {
-
-      if (refFichePaie != '') {
-
-        this.$refs.EntetePaiementSalaire.$data.etatModal = true;
-        this.$refs.EntetePaiementSalaire.$data.refFichePaie = refFichePaie;
-        this.$refs.EntetePaiementSalaire.$data.svData.refFichePaie = refFichePaie;
-        this.$refs.EntetePaiementSalaire.fetchDataList();
-        this.$refs.EntetePaiementSalaire.fetchListSelection();
-        this.fetchDataList();
-
-        this.$refs.EntetePaiementSalaire.$data.titleComponent =
-          "Paiement Salaire pour " + name;
-
-      } else {
-        this.showError("Personne n'a fait cette action");
-      }
-
     },
     fetchListCategorie() {
       this.editOrFetch(`${this.apiBaseURL}/fetch_categorie_service_personnel_2`).then(

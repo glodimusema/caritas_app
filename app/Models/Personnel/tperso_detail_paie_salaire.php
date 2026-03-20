@@ -13,10 +13,4 @@ class tperso_detail_paie_salaire extends Model
     'heure_supp2_paie','heure_supp3_paie','assurances_paie','author'];
     protected $table = 'tperso_detail_paie_salaire';
 }
-
-
-//avance_paie,soins_paie,jourpreste_paie,salaire_horaire,heure_supp1_paie,heure_supp2_paie,heure_supp3_paie,assurances_paie
-//tperso_detail_paie_salaire refFichePaie,refAffectation,salaire_base,fammiliale,logement,transport,sal_brut,sal_brut_imposable,inss_qpo,inss_qpp,cnss,inpp,onem,ipr,author
-
-
  
