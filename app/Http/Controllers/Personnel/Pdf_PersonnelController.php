@@ -11988,7 +11988,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
             $net_paie=$row->net_paie;                            
          }
 
-           
+         $nom_projet = '';  
          $name_annee='';
          $name_mois='';
          $directeur='';
@@ -12004,7 +12004,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
          ->join('tperso_partenaire','tperso_partenaire.id','=','tperso_projets.partenaire_id')
          ->join('tperso_poste','tperso_poste.id','=','tperso_affectation_agent.refPoste')
          ->join('tperso_lieuaffectation','tperso_lieuaffectation.id','=','tperso_affectation_agent.refLieuAffectation')
-          ->select("name_mois","name_annee","directeur")
+          ->select("name_mois","name_annee","directeur","description_projet")
          ->where([
             ['refMois','=', $refMois],
             ['refAnne','=', $refAnne],
@@ -12016,7 +12016,8 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
          {                                
             $name_annee=$data3->name_annee;
             $name_mois=$data3->name_mois; 
-            $directeur = $data3->directeur;                          
+            $directeur = $data3->directeur;  
+            $nom_projet = $data3->description_projet;                   
          }
 
 
@@ -12224,7 +12225,7 @@ function printRapportPaiementMoisProjet($refMois,$refAnne,$projet_id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="csE93F7424" colspan="13" style="width:565px;height:27px;line-height:25px;text-align:center;vertical-align:top;"><nobr>FEUILLE&nbsp;DE&nbsp;PAIE&nbsp;DU&nbsp;MOIS&nbsp;DE&nbsp;:&nbsp;'.$name_mois.'&nbsp;'.$name_annee.'</nobr></td>
+                        <td class="csE93F7424" colspan="13" style="width:565px;height:27px;line-height:25px;text-align:center;vertical-align:top;"><nobr>FEUILLE&nbsp;DE&nbsp;PAIE&nbsp;DU&nbsp;MOIS&nbsp;DE&nbsp;:&nbsp;'.$name_mois.'&nbsp;'.$name_annee.' : '.$nom_projet.'</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>

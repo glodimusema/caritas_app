@@ -129,7 +129,7 @@ class tperso_presences_agentController extends Controller
              "datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
              "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
              "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent",
-             "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.created_at",
+             "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.date_presence as created_at",
              "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
              'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
              ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 
@@ -215,7 +215,7 @@ class tperso_presences_agentController extends Controller
              "datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
              "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
              "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent",
-             "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.created_at",
+             "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.date_presence as created_at",
              "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
              'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
              ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 

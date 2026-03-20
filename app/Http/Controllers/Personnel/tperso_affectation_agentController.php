@@ -626,14 +626,17 @@ class tperso_affectation_agentController extends Controller
         {
             $ipr = (((((floatval($sal_brut_imposable) - 96))*15)/100)+2.88);
         }
-        else if($sal_brut_imposable >= 1067.1 && $sal_brut_imposable<=2133)
+        else if($sal_brut_imposable >= 1067.1 && $sal_brut_imposable<=1163)
+        {
+            $ipr = (((((floatval($sal_brut_imposable) - 96))*15)/100)+2.88);
+        }
+        else if($sal_brut_imposable >= 1163.1 && $sal_brut_imposable<=2133)
         {
             $ipr = (((((floatval($sal_brut_imposable) - 1163))*30)/100)+148.49);
         }
         else if($sal_brut_imposable >= 2133.1 && $sal_brut_imposable<=3600000)
         {
             $ipr = (((((floatval($sal_brut_imposable) - 1163))*30)/100)+148.49);
-            // $ipr = (((((floatval($sal_brut_imposable) - 3296))*40)/100)+468.51);
         }
         else if($sal_brut_imposable > 3600000)
         {            
@@ -770,7 +773,11 @@ class tperso_affectation_agentController extends Controller
         {
             $ipr = (((((floatval($sal_brut_imposable) - 96))*15)/100)+2.88);
         }
-        else if($sal_brut_imposable >= 1067.1 && $sal_brut_imposable<=2133)
+        else if($sal_brut_imposable >= 1067.1 && $sal_brut_imposable<=1163)
+        {
+            $ipr = (((((floatval($sal_brut_imposable) - 96))*15)/100)+2.88);
+        }
+        else if($sal_brut_imposable >= 1163.1 && $sal_brut_imposable<=2133)
         {
             $ipr = (((((floatval($sal_brut_imposable) - 1163))*30)/100)+148.49);
         }

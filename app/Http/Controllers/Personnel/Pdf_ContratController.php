@@ -7736,6 +7736,7 @@ function GetContratTravailAgent($id)
             $output=' 
 
                 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <!-- saved from url=(0016)http://localhost -->
                 <html>
                 <head>
@@ -7890,7 +7891,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs9E712815" colspan="12" style="width:433px;height:22px;line-height:18px;text-align:left;vertical-align:top;"><nobr>1.&nbsp;LA&nbsp;CARITAS-DEVELOPPEMENT/DIOCESE&nbsp;DE&nbsp;GOMA,</nobr></td>
+                        <td class="cs9E712815" colspan="12" style="width:433px;height:22px;line-height:18px;text-align:left;vertical-align:top;"><nobr>1.&nbsp;LA&nbsp;CARITAS DEVELOPPEMENT/DIOCESE&nbsp;DE&nbsp;GOMA,</nobr></td>
                         <td class="cs5DE5F832" colspan="6" style="width:187px;height:22px;line-height:18px;text-align:right;vertical-align:top;"><nobr>ici&nbsp;repr&#233;sent&#233;e&nbsp;par&nbsp;son</nobr></td>
                         <td></td>
                         <td></td>
@@ -8047,7 +8048,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:118px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fils/Fille&nbsp;de.'.$nomPere_agent.'&nbsp;et&nbsp;'.$nomMere_agent.'</nobr><br/><nobr>N&#233;e&nbsp;&#224;.&nbsp;'.$lieunaissnce_agent.'&nbsp;Le&nbsp;'.$datenaissance_agent.'..</nobr><br/><nobr>Etat&nbsp;civil&nbsp;:&nbsp;.'.$etatcivil_agent.' à '.$conjoint_agent.'.</nobr><br/><nobr>Nationalit&#233;&nbsp;:&nbsp;.'.$Nationalite_agent.'.</nobr><br/><nobr>Nombre&nbsp;d'.$aps.'enfants&nbsp;&#224;&nbsp;charge&nbsp;:&nbsp;.'.$nbrEnfant.'.</nobr><br/><nobr>Num&#233;ro&nbsp;CNSS&nbsp;:&nbsp;'.$numCNSS.'</nobr></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:118px;line-height:18px;text-align:left;vertical-align:top;"><nobr>Fils/Fille&nbsp;de.'.$nomPere_agent.'&nbsp;et&nbsp;'.$nomMere_agent.'</nobr><br/><nobr>N&#233;(e)&nbsp;&#224;.&nbsp;'.$lieunaissnce_agent.'&nbsp;Le&nbsp;'.$datenaissance_agent.'..</nobr><br/><nobr>Etat&nbsp;civil&nbsp;:&nbsp;.'.$etatcivil_agent.' à '.$conjoint_agent.'.</nobr><br/><nobr>Nationalit&#233;&nbsp;:&nbsp;.'.$Nationalite_agent.'.</nobr><br/><nobr>Nombre&nbsp;d'.$aps.'enfants&nbsp;&#224;&nbsp;charge&nbsp;:&nbsp;.'.$nbrEnfant.'.</nobr><br/><nobr>Num&#233;ro&nbsp;CNSS&nbsp;:&nbsp;'.$numCNSS.'</nobr></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -8142,7 +8143,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:113px;line-height:18px;text-align:left;vertical-align:top;"> L'.$aps.'employ&#233;, qui se déclare libre de toute obligation professionnelle, est engagé à la Caritas-Développement Diocèse de Goma en qualité de '.$nom_poste.', sous le contrôle de ses chefs hiérarchiques. Il est affecté au projet '.$description_projet.' financé par '.$nom_org.'. Il certifie avoir lu, compris et approuvé les termes et les conditions de la description de poste, le code de conduite et le Règlement du personnel de la Caritas-Développement Goma qui font partie intégrante du présent contrat. Il reconnait, par ailleurs, avoir pris connaissance du code de conduite du personnel et signé le formulaire de reconnaissance et d'.$aps.'acceptation des politiques de sauvegarde de la Caritas-Développement Diocèse de Goma. </td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:113px;line-height:18px;text-align:left;vertical-align:top;"> L'.$aps.'employ&#233;(e), qui se déclare libre de toute obligation professionnelle, est engagé à la Caritas Développement Diocèse de Goma en qualité de '.$nom_poste.', sous le contrôle de ses chefs hiérarchiques. Il(elle) est affecté(e) au projet '.$description_projet.' financé par '.$nom_org.'. Il(elle) certifie avoir lu, compris et approuvé les termes et les conditions de la description de poste, le code de conduite et le Règlement du personnel de la Caritas Développement Goma qui font partie intégrante du présent contrat. Il(elle) reconnait, par ailleurs, avoir pris connaissance du code de conduite du personnel et signé le formulaire de reconnaissance et d'.$aps.'acceptation des politiques de sauvegarde de la Caritas Développement Diocèse de Goma. </td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8161,7 +8162,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;.e&nbsp;est&nbsp;affect&#233;.e&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#233;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;.e&nbsp;est&nbsp;affect&#233;.e&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#233;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8180,7 +8181,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:76px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de.......SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(….&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de .SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(.&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8401,7 +8402,7 @@ function GetContratTravailAgent($id)
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:65px;"></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="22" style="width:628px;height:65px;line-height:18px;text-align:left;vertical-align:top;"><nobr>&nbsp;Pour&nbsp;des&nbsp;cas&nbsp;qui&nbsp;ne&nbsp;sont&nbsp;pr&#233;cis&#233;s&nbsp;dans&nbsp;le&nbsp;pr&#233;sent&nbsp;contrat&nbsp;de&nbsp;travail,&nbsp;les&nbsp;parties&nbsp;se&nbsp;r&#233;f&#233;reront&nbsp;aux</nobr><br/><nobr>dispositions&nbsp;l&#233;gales&nbsp;et&nbsp;r&#233;glementaires&nbsp;en&nbsp;vigueur&nbsp;en&nbsp;R&#233;publique&nbsp;d&#233;mocratique&nbsp;du&nbsp;Congo&nbsp;et&nbsp;au</nobr><br/><nobr>R&#232;glement&nbsp;d'.$aps.'ordre&nbsp;int&#233;rieur&nbsp;de&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma.</nobr></td>
+                        <td class="cs1698ECB3" colspan="22" style="width:628px;height:65px;line-height:18px;text-align:left;vertical-align:top;"><nobr>&nbsp;Pour&nbsp;des&nbsp;cas&nbsp;qui&nbsp;ne&nbsp;sont&nbsp;pr&#233;cis&#233;s&nbsp;dans&nbsp;le&nbsp;pr&#233;sent&nbsp;contrat&nbsp;de&nbsp;travail,&nbsp;les&nbsp;parties&nbsp;se&nbsp;r&#233;f&#233;reront&nbsp;aux</nobr><br/><nobr>dispositions&nbsp;l&#233;gales&nbsp;et&nbsp;r&#233;glementaires&nbsp;en&nbsp;vigueur&nbsp;en&nbsp;R&#233;publique&nbsp;d&#233;mocratique&nbsp;du&nbsp;Congo&nbsp;et&nbsp;au</nobr><br/><nobr>R&#232;glement&nbsp;d'.$aps.'ordre&nbsp;int&#233;rieur&nbsp;de&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma.</nobr></td>
                     </tr>
                     <tr style="vertical-align:top;">
                         <td style="width:0px;height:11px;"></td>
@@ -8435,8 +8436,8 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td class="cs1698ECB3" colspan="21" style="width:627px;height:148px;line-height:18px;text-align:left;vertical-align:top;">
                             <nobr>Fait&nbsp;&#224;&nbsp;Goma,&nbsp;Le&nbsp;'.$dateSignatureContrat.'<?php echo $dateSignatureContrat; ?></nobr><br/><br/>
-                            <nobr>Pour&nbsp;l<?php echo $aps; ?>employ&#233;e
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas-D&#233;veloppement&nbsp;Goma</nobr><br/><br/>
+                            <nobr>Pour&nbsp;l<?php echo $aps; ?>mploy&#233;(e)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma</nobr><br/><br/>
                             
                             <!-- Alignement à droite uniquement ici -->
                             <div style="text-align:right;">
@@ -9557,7 +9558,7 @@ function printRapportPresenceDate($date1, $date2)
                         <td style="width:0px;height:22px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="13" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>Website&nbsp;:&nbsp;www'.$siteEse.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="13" style="width:643px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr></nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -9566,7 +9567,7 @@ function printRapportPresenceDate($date1, $date2)
                         <td style="width:0px;height:12px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs5DE5F832" colspan="13" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                        <td class="cs5DE5F832" colspan="13" rowspan="2" style="width:643px;height:21px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$rccmEse.'</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -9733,7 +9734,7 @@ function showRapportPresenceDate($date1, $date2)
         ->join('communes' , 'communes.id','=','quartiers.idCommune')
         ->join('villes' , 'villes.id','=','communes.idVille')
         ->join('provinces' , 'provinces.id','=','villes.idProvince')
-        ->join('pays' , 'pays.id','=','provinces.idPays')
+        ->join('pays' , 'pays.id','=','provinces.idPays') 
         ->select("tperso_presences_agent.id", 'affectation_id', 'date_entree','date_sortie','refAgent',
         'refServicePerso','refCategorieAgent','refPoste','refLieuAffectation',
          'refMutuelle','refTypeContrat','dateAffectation','dureecontrat','dureeLettre','dateFin','dateDebutEssaie',
@@ -9743,14 +9744,14 @@ function showRapportPresenceDate($date1, $date2)
          "datenaissance_agent","lieunaissnce_agent","provinceOrigine_agent",
          "etatcivil_agent","refAvenue_agent","contact_agent","mail_agent","grade_agent","fonction_agent",
          "specialite_agent","Categorie_agent","niveauEtude_agent","anneeFinEtude_agent","Ecole_agent",
-         "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.created_at",
+         "tagent.photo as photo_agent","tperso_presences_agent.author","tperso_presences_agent.date_presence as created_at",
          "tagent.slug as slug_agent","name_serv_perso","name_categorie_service","name_categorie_agent",
          'nom_poste','description_poste','nom_lieu','description_lieu','nom_mutuelle','description_mutuelle')
          ->selectRaw('TIMESTAMPDIFF(HOUR, TIME(date_entree), TIME(date_sortie)) as nbr_heure') 
-         ->selectRaw("DATE_FORMAT(tperso_presences_agent.created_at,'%d/%m/%Y') as jour_presence")
+         ->selectRaw("DATE_FORMAT(tperso_presences_agent.date_presence,'%d/%m/%Y') as jour_presence")
          ->selectRaw("DATE_FORMAT(date_entree,'%H:%i:%s') as heure_entree") 
          ->selectRaw("DATE_FORMAT(date_sortie,'%H:%i:%s') as heure_sortie") 
-         ->selectRaw("DAYNAME(tperso_presences_agent.created_at) as jour_name")
+         ->selectRaw("DAYNAME(tperso_presences_agent.date_presence) as jour_name")
          ->selectRaw("CASE  
             WHEN TIMESTAMPDIFF(MINUTE, '".$heure1."', TIME(date_entree)) <=0 THEN 'BON'
             WHEN TIMESTAMPDIFF(MINUTE, '".$heure1."', TIME(date_entree)) >0 AND TIMESTAMPDIFF(MINUTE, TIME('".$heure1."'), TIME(date_entree)) <=15 THEN 'ASSEZ BON'
@@ -9763,12 +9764,13 @@ function showRapportPresenceDate($date1, $date2)
             ELSE NULL
         END as statut_sortie")     
         ->where([
-            ['tperso_presences_agent.created_at','>=', $date1],
-            ['tperso_presences_agent.created_at','<=', $date2],
+            ['tperso_presences_agent.date_presence','>=', $date1],
+            ['tperso_presences_agent.date_presence','<=', $date2],
             ['dateFin', '>=', $current],
             ['conge', '=', 'NON']
         ])
-        ->orderBy("tperso_presences_agent.created_at", "asc")
+        ->orderBy("noms_agent", "asc")
+        ->orderBy("tperso_presences_agent.date_presence", "asc")
         ->get();
         $output='';
  
@@ -9783,7 +9785,7 @@ function showRapportPresenceDate($date1, $date2)
                     <td class="cs86F8EF7F" style="width:29px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$count.'</nobr></td>
                     <td class="csD06EB5B2" colspan="4" style="width:199px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->noms_agent.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:148px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->name_serv_perso.'</td>
-                    <td class="csD06EB5B2" colspan="2" style="width:117px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">>'.$row->nom_lieu.'</td>
+                    <td class="csD06EB5B2" colspan="2" style="width:117px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->nom_lieu.'</td>
                     <td class="csD06EB5B2" style="width:61px;height:22px;line-height:10px;text-align:center;vertical-align:middle;"><nobr>'.$row->jour_presence.'</nobr></td>
                     <td class="csD06EB5B2" style="width:68px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->jour_name.'</td>
                     <td class="csD06EB5B2" colspan="2" style="width:63px;height:22px;line-height:10px;text-align:center;vertical-align:middle;">'.$row->heure_entree.'</td>
