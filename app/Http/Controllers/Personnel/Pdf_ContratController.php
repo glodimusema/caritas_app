@@ -7324,22 +7324,22 @@ function GetContratTravailAgent($id)
                 //
     
                 'provinces.nomProvince','pays.nomPays', 'entreprises.created_at')
-            ->get();
+            ->first();
             $output='';
-            foreach ($data1 as $row) 
+            if ($data1) 
             {                                
-                $nomEse=$row->nomEntreprise;
-                $adresseEse=$row->adresseEntreprise;
-                $Tel1Ese=$row->telephoneEntreprise;
-                $Tel2Ese=$row->telephone;
-                $siteEse=$row->siteweb;
-                $emailEse=$row->emailEntreprise;
-                $bp=$row->rccm;
-                $numImpotEse=$row->rccm;
-                $busnessName=$row->nomSecteur;
-                $rccmEse=$row->rccm;
+                $nomEse=$data1->nomEntreprise;
+                $adresseEse=$data1->adresseEntreprise;
+                $Tel1Ese=$data1->telephoneEntreprise;
+                $Tel2Ese=$data1->telephone;
+                $siteEse=$data1->siteweb;
+                $emailEse=$data1->emailEntreprise;
+                $bp=$data1->rccm;
+                $numImpotEse=$data1->rccm;
+                $busnessName=$data1->nomSecteur;
+                $rccmEse=$data1->rccm;
                 $pic = $this->displayImg("fichier", 'logo.png');
-                $siege=$row->nomForme;         
+                $siege=$data1->nomForme;         
             }
             //
             $idAgent=0;
@@ -7491,87 +7491,87 @@ function GetContratTravailAgent($id)
             ->selectRaw("DATE_FORMAT(dateSignatureContrat,'%d/%m/%Y') as dateSignatureContrat")
             ->selectRaw("DATE_FORMAT(tperso_affectation_agent.created_at,'%d/%m/%Y') as date_created")
             ->where('tperso_affectation_agent.id','=', $id)    
-            ->get(); 
+            ->first(); 
             $output='';
-            foreach ($data2 as $row) 
+            if ($data2) 
             {
-                $noms_agent=$row->noms_agent;
-                $datenaissance_agent=$row->datenaissance_agent;
-                $lieunaissnce_agent=$row->lieunaissnce_agent;
-                $provinceOrigine_agent=$row->provinceOrigine_agent;
-                $etatcivil_agent=$row->etatcivil_agent;
-                $contact_agent=$row->contact_agent;
-                $mail_agent=$row->mail_agent;
-                $specialite_agent=$row->specialite_agent;
-                $niveauEtude_agent=$row->niveauEtude_agent;
-                $conjoint_agent=$row->conjoint_agent;
-                $nomPere_agent=$row->nomPere_agent;
-                $nomMere_agent=$row->nomMere_agent;
-                $Nationalite_agent=$row->Nationalite_agent;
-                $Collectivite_agent=$row->Collectivite_agent;
-                $Territoire_agent=$row->Territoire_agent;
-                $EmployeurAnt_agent=$row->EmployeurAnt_agent;
-                $PersRef_agent=$row->PersRef_agent;
-                $photo= $this->displayImg("fichier", ''.$row->photo_agent.'');
-                $nomAvenue=$row->nomAvenue;
-                $nomQuartier=$row->nomQuartier;                
-                $nomCommune=$row->nomCommune;
-                $nomVille=$row->nomVille;
-                $nomProvince=$row->nomProvince;
-                $nomPays=$row->nomPays;
-                $codeBS=$row->age_agent;
-                $created_at=$row->created_at; 
-                $nummaison_agent=$row->nummaison_agent;
+                $noms_agent=$data2->noms_agent;
+                $datenaissance_agent=$data2->datenaissance_agent;
+                $lieunaissnce_agent=$data2->lieunaissnce_agent;
+                $provinceOrigine_agent=$data2->provinceOrigine_agent;
+                $etatcivil_agent=$data2->etatcivil_agent;
+                $contact_agent=$data2->contact_agent;
+                $mail_agent=$data2->mail_agent;
+                $specialite_agent=$data2->specialite_agent;
+                $niveauEtude_agent=$data2->niveauEtude_agent;
+                $conjoint_agent=$data2->conjoint_agent;
+                $nomPere_agent=$data2->nomPere_agent;
+                $nomMere_agent=$data2->nomMere_agent;
+                $Nationalite_agent=$data2->Nationalite_agent;
+                $Collectivite_agent=$data2->Collectivite_agent;
+                $Territoire_agent=$data2->Territoire_agent;
+                $EmployeurAnt_agent=$data2->EmployeurAnt_agent;
+                $PersRef_agent=$data2->PersRef_agent;
+                $photo= $this->displayImg("fichier", ''.$data2->photo_agent.'');
+                $nomAvenue=$data2->nomAvenue;
+                $nomQuartier=$data2->nomQuartier;                
+                $nomCommune=$data2->nomCommune;
+                $nomVille=$data2->nomVille;
+                $nomProvince=$data2->nomProvince;
+                $nomPays=$data2->nomPays;
+                $codeBS=$data2->age_agent;
+                $created_at=$data2->created_at; 
+                $nummaison_agent=$data2->nummaison_agent;
 
-                $nom_poste=$row->nom_poste;
-                $nom_lieu=$row->nom_lieu;
-                $description_lieu=$row->description_lieu;
-                $nom_mutuelle=$row->nom_mutuelle;
-                $code_contrat=$row->code_contrat;
-                $dateAffectation=$row->dateAffectation;
-                $dureecontrat=$row->dureecontrat;
-                $dateFin=$row->dateFin;
+                $nom_poste=$data2->nom_poste;
+                $nom_lieu=$data2->nom_lieu;
+                $description_lieu=$data2->description_lieu;
+                $nom_mutuelle=$data2->nom_mutuelle;
+                $code_contrat=$data2->code_contrat;
+                $dateAffectation=$data2->dateAffectation;
+                $dureecontrat=$data2->dureecontrat;
+                $dateFin=$data2->dateFin;
 
-                $dateDebutEssaie=$row->dateDebutEssaie;
-                $dateFinEssaie=$row->dateFinEssaie;
-                $dureeessaie=$row->dureeessaie;
-                $JourTrail1=$row->JourTrail1;
-                $JourTrail2=$row->JourTrail2;
-                $heureTrail1=$row->heureTrail1;
-                $heureTrail2=$row->heureTrail2;
-                $TempsPause=$row->TempsPause;
-                $nbrConge=$row->nbrConge;
-                $nbrCongeLettre=$row->nbrCongeLettre;
-                $nomOffice=$row->nomOffice;
-                $postnomOffice=$row->postnomOffice;
-                $qualifieOffice=$row->qualifieOffice;
-                $codeAgent=$row->codeAgent;
-                $directeur=$row->directeur;
-                $idAgent=$row->refAgent;
-                $numCNSS = $row->numCNSS;
+                $dateDebutEssaie=$data2->dateDebutEssaie;
+                $dateFinEssaie=$data2->dateFinEssaie;
+                $dureeessaie=$data2->dureeessaie;
+                $JourTrail1=$data2->JourTrail1;
+                $JourTrail2=$data2->JourTrail2;
+                $heureTrail1=$data2->heureTrail1;
+                $heureTrail2=$data2->heureTrail2;
+                $TempsPause=$data2->TempsPause;
+                $nbrConge=$data2->nbrConge;
+                $nbrCongeLettre=$data2->nbrCongeLettre;
+                $nomOffice=$data2->nomOffice;
+                $postnomOffice=$data2->postnomOffice;
+                $qualifieOffice=$data2->qualifieOffice;
+                $codeAgent=$data2->codeAgent;
+                $directeur=$data2->directeur;
+                $idAgent=$data2->refAgent;
+                $numCNSS = $data2->numCNSS;
 
-                $autresDetail = $row->autresDetail;
+                $autresDetail = $data2->autresDetail;
 
 
-                $salaire_base=$row->salaire_base;
-                $fammiliale= $row->fammiliale;
-                $logement= $row->logement;
-                $transport= $row->transport;
-                $sal_brut= $row->sal_brut;
-                $sal_brut_imposable= $row->sal_brut_imposable;
-                $inss_qpo= $row->inss_qpo;
-                $inss_qpp= $row->inss_qpp;
-                $cnss= $row->cnss;
-                $inpp= $row->inpp;
-                $onem= $row->onem;
-                $ipr= $row->ipr;
-                $netPaie=$row->netPaie;
+                $salaire_base=$data2->salaire_base;
+                $fammiliale= $data2->fammiliale;
+                $logement= $data2->logement;
+                $transport= $data2->transport;
+                $sal_brut= $data2->sal_brut;
+                $sal_brut_imposable= $data2->sal_brut_imposable;
+                $inss_qpo= $data2->inss_qpo;
+                $inss_qpp= $data2->inss_qpp;
+                $cnss= $data2->cnss;
+                $inpp= $data2->inpp;
+                $onem= $data2->onem;
+                $ipr= $data2->ipr;
+                $netPaie=$data2->netPaie;
 
-                $date_created = $row->date_created;
+                $date_created = $data2->date_created;
 
-                $description_projet = $row->description_projet;
-                $nom_org = $row->nom_org;
-                $dateSignatureContrat = $row->dateSignatureContrat;
+                $description_projet = $data2->description_projet;
+                $nom_org = $data2->nom_org;
+                $dateSignatureContrat = $data2->dateSignatureContrat;
                 
             }  
 
@@ -8162,7 +8162,7 @@ function GetContratTravailAgent($id)
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;(e)&nbsp;est&nbsp;affect&#233;(e)&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#233;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
+                        <td class="cs1698ECB3" colspan="17" style="width:624px;height:42px;line-height:18px;text-align:left;vertical-align:top;"><nobr>L'.$aps.'employ&#233;(e)&nbsp;est&nbsp;affect&#233;(e)&nbsp;&#224;&nbsp;.'.$nom_lieu.'.&nbsp;mais&nbsp;le&nbsp;lieu&nbsp;d'.$aps.'affectation&nbsp;pourrait&nbsp;&#234;tre</nobr><br/><nobr>chang&#233;&nbsp;par&nbsp;la&nbsp;Caritas D&#233;veloppement&nbsp;Goma&nbsp;selon&nbsp;l'.$aps.'exigence&nbsp;de&nbsp;ses&nbsp;activit&#233;s.</nobr></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8181,7 +8181,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:76px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;(e)&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de .SUS.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant</nobr><br/><nobr>(.&nbsp;&#224;&nbsp;.'.$autresDetail.'.%&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
+                        <td class="cs1698ECB3" colspan="18" style="width:624px;height:76px;line-height:18px;text-align:left;vertical-align:top;">L'.$aps.'employ&#233;(e)&nbsp;percevra&nbsp;un&nbsp;salaire&nbsp;mensuel&nbsp;net&nbsp;de .USD.'.$netPaie.'. '.$net_lettre.' dollars&nbsp;am&#233;ricains)&nbsp;correspondant &#224;</nobr><br/><nobr>('.$autresDetail.'%)&nbsp;du&nbsp;temps&nbsp;octroy&#233;&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et&nbsp;payable&nbsp;en&nbsp;francs&nbsp;congolais&nbsp;&#224;&nbsp;la&nbsp;fin&nbsp;de&nbsp;chaque</nobr><br/><nobr>mois&nbsp;r&#233;parti&nbsp;de&nbsp;la&nbsp;mani&#232;re&nbsp;suivante&nbsp;:<br/></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -8361,7 +8361,7 @@ function GetContratTravailAgent($id)
                         <td style="width:0px;height:396px;"></td>
                         <td></td>
                         <td></td>
-                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:396px;line-height:18px;text-align:left;vertical-align:top;"><nobr>&nbsp;Le&nbsp;pr&#233;sent&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;peut&nbsp;&#234;tre&nbsp;r&#233;sili&#233;&nbsp;de&nbsp;commun&nbsp;accord&nbsp;ou&nbsp;&#224;&nbsp;l'.$aps.'initiative&nbsp;de&nbsp;la&nbsp;partie</nobr><br/><nobr>diligente&nbsp;qui&nbsp;l'.$aps.'en&nbsp;notifiera&nbsp;&#224;&nbsp;l'.$aps.'autre&nbsp;dans&nbsp;le&nbsp;respect&nbsp;des&nbsp;dispositions&nbsp;l&#233;gales.&nbsp;Il&nbsp;est&nbsp;r&#233;put&#233;&nbsp;r&#233;sili&#233;&nbsp;de</nobr><br/><nobr>plein&nbsp;droit&nbsp;&#224;&nbsp;l'.$aps.'expiration&nbsp;du&nbsp;terme&nbsp;convenu.&nbsp;Toutefois,&nbsp;en&nbsp;cas&nbsp;de&nbsp;faute&nbsp;lourde,&nbsp;chacune&nbsp;des&nbsp;parties</nobr><br/><nobr>peut&nbsp;le&nbsp;rompre&nbsp;sans&nbsp;pr&#233;avis&nbsp;ni&nbsp;indemnit&#233;&nbsp;de&nbsp;licenciement.&nbsp;L'.$aps.'employ&#233;&nbsp;est&nbsp;reprochable&nbsp;de&nbsp;faute</nobr><br/><nobr>lourde&nbsp;pouvant&nbsp;entra&#238;ner&nbsp;la&nbsp;r&#233;siliation&nbsp;sans&nbsp;pr&#233;avis&nbsp;ni&nbsp;indemnit&#233;&nbsp;de&nbsp;son&nbsp;contrat&nbsp;de&nbsp;travail,&nbsp;dans&nbsp;les</nobr><br/><nobr>cas&nbsp;non&nbsp;exhaustifs&nbsp;ci-apr&#232;s&nbsp;:</nobr><br/><nobr>-&nbsp;Improbit&#233;,&nbsp;injures,&nbsp;voies&nbsp;de&nbsp;fait&nbsp;&#224;&nbsp;l'.$aps.'&#233;gard&nbsp;de&nbsp;l'.$aps.'employeur&nbsp;ou&nbsp;d'.$aps.'un&nbsp;membre&nbsp;du&nbsp;personnel</nobr><br/><nobr>-&nbsp;Usage&nbsp;d'.$aps.'alcool&nbsp;ou&nbsp;de&nbsp;drogue&nbsp;au&nbsp;lieu&nbsp;du&nbsp;travail</nobr><br/><nobr>-&nbsp;Fraude,&nbsp;malhonn&#234;tet&#233;.&nbsp;Falsification&nbsp;des&nbsp;documents</nobr><br/><nobr>-&nbsp;Menace.&nbsp;Bagarre&nbsp;et&nbsp;port&nbsp;d'.$aps.'armes</nobr><br/><nobr>-&nbsp;Se&nbsp;livrer&nbsp;&#224;&nbsp;des&nbsp;actions&nbsp;immorales&nbsp;au&nbsp;lieu&nbsp;du&nbsp;travail</nobr><br/><nobr>-&nbsp;S'.$aps.'approprier&nbsp;le&nbsp;mat&#233;riel&nbsp;de&nbsp;travail&nbsp;sans&nbsp;autorisation</nobr><br/><nobr>-&nbsp;Divulgation&nbsp;des&nbsp;secrets&nbsp;professionnels&nbsp;ou&nbsp;des&nbsp;informations&nbsp;internes&nbsp;&#224;&nbsp;la&nbsp;Caritas-</nobr><br/><nobr>D&#233;veloppement&nbsp;Goma</nobr><br/><nobr>-&nbsp;Abandon&nbsp;de&nbsp;poste&nbsp;ou&nbsp;absence&nbsp;prolong&#233;e&nbsp;pendant&nbsp;4&nbsp;jours&nbsp;cons&#233;cutifs&nbsp;:</nobr><br/><nobr>-&nbsp;Manque&nbsp;de&nbsp;discipline&nbsp;et&nbsp;d'.$aps.'application&nbsp;au&nbsp;travail&nbsp;de&nbsp;fa&#231;on&nbsp;r&#233;p&#233;titive&nbsp;;</nobr><br/><nobr>-&nbsp;Insuffisance&nbsp;ou&nbsp;inaptitude&nbsp;professionnelle&nbsp;av&#233;r&#233;e&nbsp;et&nbsp;notifi&#233;e&nbsp;d'.$aps.'un&nbsp;avertissement&nbsp;;</nobr><br/><nobr>-&nbsp;Comportement&nbsp;public&nbsp;dommageable&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et/ou&nbsp;&#224;&nbsp;son&nbsp;partenaire</nobr><br/><nobr>-&nbsp;D&#233;tournement&nbsp;des&nbsp;biens&nbsp;destin&#233;s&nbsp;&#224;&nbsp;l'.$aps.'organisation&nbsp;ou&nbsp;aux&nbsp;b&#233;n&#233;ficiaires</nobr><br/><nobr>-&nbsp;P&#233;dophilie,&nbsp;polygamie,</nobr><br/><nobr>-&nbsp;Non-respect&nbsp;de&nbsp;la&nbsp;PEAS&nbsp;(Pr&#233;vention&nbsp;contre&nbsp;I&nbsp;‘exploitation&nbsp;et&nbsp;les&nbsp;abus&nbsp;sexuels).</nobr></td>
+                        <td class="cs1698ECB3" colspan="20" style="width:626px;height:396px;line-height:18px;text-align:left;vertical-align:top;"><nobr>&nbsp;Le&nbsp;pr&#233;sent&nbsp;contrat&nbsp;de&nbsp;travail&nbsp;peut&nbsp;&#234;tre&nbsp;r&#233;sili&#233;&nbsp;de&nbsp;commun&nbsp;accord&nbsp;ou&nbsp;&#224;&nbsp;l'.$aps.'initiative&nbsp;de&nbsp;la&nbsp;partie</nobr><br/><nobr>diligente&nbsp;qui&nbsp;l'.$aps.'en&nbsp;notifiera&nbsp;&#224;&nbsp;l'.$aps.'autre&nbsp;dans&nbsp;le&nbsp;respect&nbsp;des&nbsp;dispositions&nbsp;l&#233;gales.&nbsp;Il&nbsp;est&nbsp;r&#233;put&#233;&nbsp;r&#233;sili&#233;&nbsp;de</nobr><br/><nobr>plein&nbsp;droit&nbsp;&#224;&nbsp;l'.$aps.'expiration&nbsp;du&nbsp;terme&nbsp;convenu.&nbsp;Toutefois,&nbsp;en&nbsp;cas&nbsp;de&nbsp;faute&nbsp;lourde,&nbsp;chacune&nbsp;des&nbsp;parties</nobr><br/><nobr>peut&nbsp;le&nbsp;rompre&nbsp;sans&nbsp;pr&#233;avis&nbsp;ni&nbsp;indemnit&#233;&nbsp;de&nbsp;licenciement.&nbsp;L'.$aps.'employ&#233;&nbsp;est&nbsp;reprochable&nbsp;de&nbsp;faute</nobr><br/><nobr>lourde&nbsp;pouvant&nbsp;entra&#238;ner&nbsp;la&nbsp;r&#233;siliation&nbsp;sans&nbsp;pr&#233;avis&nbsp;ni&nbsp;indemnit&#233;&nbsp;de&nbsp;son&nbsp;contrat&nbsp;de&nbsp;travail,&nbsp;dans&nbsp;les</nobr><br/><nobr>cas&nbsp;non&nbsp;exhaustifs&nbsp;ci-apr&#232;s&nbsp;:</nobr><br/><nobr>-&nbsp;Improbit&#233;,&nbsp;injures,&nbsp;voies&nbsp;de&nbsp;fait&nbsp;&#224;&nbsp;l'.$aps.'&#233;gard&nbsp;de&nbsp;l'.$aps.'employeur&nbsp;ou&nbsp;d'.$aps.'un&nbsp;membre&nbsp;du&nbsp;personnel</nobr><br/><nobr>-&nbsp;Usage&nbsp;d'.$aps.'alcool&nbsp;ou&nbsp;de&nbsp;drogue&nbsp;au&nbsp;lieu&nbsp;du&nbsp;travail</nobr><br/><nobr>-&nbsp;Fraude,&nbsp;malhonn&#234;tet&#233;.&nbsp;Falsification&nbsp;des&nbsp;documents</nobr><br/><nobr>-&nbsp;Menace.&nbsp;Bagarre&nbsp;et&nbsp;port&nbsp;d'.$aps.'armes</nobr><br/><nobr>-&nbsp;Se&nbsp;livrer&nbsp;&#224;&nbsp;des&nbsp;actions&nbsp;immorales&nbsp;au&nbsp;lieu&nbsp;du&nbsp;travail</nobr><br/><nobr>-&nbsp;S'.$aps.'approprier&nbsp;le&nbsp;mat&#233;riel&nbsp;de&nbsp;travail&nbsp;sans&nbsp;autorisation</nobr><br/><nobr>-&nbsp;Divulgation&nbsp;des&nbsp;secrets&nbsp;professionnels&nbsp;ou&nbsp;des&nbsp;informations&nbsp;internes&nbsp;&#224;&nbsp;la&nbsp;Caritas </nobr><br/><nobr>D&#233;veloppement&nbsp;Goma</nobr><br/><nobr>-&nbsp;Abandon&nbsp;de&nbsp;poste&nbsp;ou&nbsp;absence&nbsp;prolong&#233;e&nbsp;pendant&nbsp;4&nbsp;jours&nbsp;cons&#233;cutifs&nbsp;:</nobr><br/><nobr>-&nbsp;Manque&nbsp;de&nbsp;discipline&nbsp;et&nbsp;d'.$aps.'application&nbsp;au&nbsp;travail&nbsp;de&nbsp;fa&#231;on&nbsp;r&#233;p&#233;titive&nbsp;;</nobr><br/><nobr>-&nbsp;Insuffisance&nbsp;ou&nbsp;inaptitude&nbsp;professionnelle&nbsp;av&#233;r&#233;e&nbsp;et&nbsp;notifi&#233;e&nbsp;d'.$aps.'un&nbsp;avertissement&nbsp;;</nobr><br/><nobr>-&nbsp;Comportement&nbsp;public&nbsp;dommageable&nbsp;&#224;&nbsp;l'.$aps.'employeur&nbsp;et/ou&nbsp;&#224;&nbsp;son&nbsp;partenaire</nobr><br/><nobr>-&nbsp;D&#233;tournement&nbsp;des&nbsp;biens&nbsp;destin&#233;s&nbsp;&#224;&nbsp;l'.$aps.'organisation&nbsp;ou&nbsp;aux&nbsp;b&#233;n&#233;ficiaires</nobr><br/><nobr>-&nbsp;P&#233;dophilie,&nbsp;polygamie,</nobr><br/><nobr>-&nbsp;Non-respect&nbsp;de&nbsp;la&nbsp;PEAS&nbsp;(Pr&#233;vention&nbsp;contre&nbsp;I&nbsp;‘exploitation&nbsp;et&nbsp;les&nbsp;abus&nbsp;sexuels).</nobr></td>
                         <td></td>
                     </tr>
                     <tr style="vertical-align:top;">
@@ -8563,8 +8563,7 @@ function pdf_fiche_conge_agent(Request $request)
 }
 
 function GetFicheCongeAgent($id)
-{
-           
+{           
             $nomEse='';
             $adresseEse='';
             $Tel1Ese='';
@@ -8764,84 +8763,84 @@ function GetFicheCongeAgent($id)
             ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")
 
             ->where('tperso_demandeconge.id','=', $id)    
-            ->get(); 
+            ->first(); 
             $output='';
-            foreach ($data2 as $row) 
+            if ($data2) 
             {
-                $noms_agent=$row->noms_agent;
-                $datenaissance_agent=$row->datenaissance_agent;
-                $lieunaissnce_agent=$row->lieunaissnce_agent;
-                $provinceOrigine_agent=$row->provinceOrigine_agent;
-                $etatcivil_agent=$row->etatcivil_agent;
-                $contact_agent=$row->contact_agent;
-                $mail_agent=$row->mail_agent;
-                $specialite_agent=$row->specialite_agent;
-                $niveauEtude_agent=$row->niveauEtude_agent;
-                $conjoint_agent=$row->conjoint_agent;
-                $nomPere_agent=$row->nomPere_agent;
-                $nomMere_agent=$row->nomMere_agent;
-                $Nationalite_agent=$row->Nationalite_agent;
-                $Collectivite_agent=$row->Collectivite_agent;
-                $Territoire_agent=$row->Territoire_agent;
-                $EmployeurAnt_agent=$row->EmployeurAnt_agent;
-                $PersRef_agent=$row->PersRef_agent;
-                $photo= $this->displayImg("fichier", ''.$row->photo_agent.'');
-                $nomAvenue=$row->nomAvenue;
-                $nomQuartier=$row->nomQuartier;                
-                $nomCommune=$row->nomCommune;
-                $nomVille=$row->nomVille;
-                $nomProvince=$row->nomProvince;
-                $nomPays=$row->nomPays;
-                $codeBS=$row->age_agent;
-                $created_at=$row->created_at; 
-                $nummaison_agent=$row->nummaison_agent;
+                $noms_agent=$data2->noms_agent;
+                $datenaissance_agent=$data2->datenaissance_agent;
+                $lieunaissnce_agent=$data2->lieunaissnce_agent;
+                $provinceOrigine_agent=$data2->provinceOrigine_agent;
+                $etatcivil_agent=$data2->etatcivil_agent;
+                $contact_agent=$data2->contact_agent;
+                $mail_agent=$data2->mail_agent;
+                $specialite_agent=$data2->specialite_agent;
+                $niveauEtude_agent=$data2->niveauEtude_agent;
+                $conjoint_agent=$data2->conjoint_agent;
+                $nomPere_agent=$data2->nomPere_agent;
+                $nomMere_agent=$data2->nomMere_agent;
+                $Nationalite_agent=$data2->Nationalite_agent;
+                $Collectivite_agent=$data2->Collectivite_agent;
+                $Territoire_agent=$data2->Territoire_agent;
+                $EmployeurAnt_agent=$data2->EmployeurAnt_agent;
+                $PersRef_agent=$data2->PersRef_agent;
+                $photo= $this->displayImg("fichier", ''.$data2->photo_agent.'');
+                $nomAvenue=$data2->nomAvenue;
+                $nomQuartier=$data2->nomQuartier;                
+                $nomCommune=$data2->nomCommune;
+                $nomVille=$data2->nomVille;
+                $nomProvince=$data2->nomProvince;
+                $nomPays=$data2->nomPays;
+                $codeBS=$data2->age_agent;
+                $created_at=$data2->created_at; 
+                $nummaison_agent=$data2->nummaison_agent;
 
-                $nom_poste=$row->nom_poste;
-                $nom_lieu=$row->nom_lieu;
-                $description_lieu=$row->description_lieu;
-                $nom_mutuelle=$row->nom_mutuelle;
-                $code_contrat=$row->code_contrat;
-                $dateAffectation=$row->dateAffectation;
-                $dureecontrat=$row->dureecontrat;
-                $dateFin=$row->dateFin;
+                $nom_poste=$data2->nom_poste;
+                $nom_lieu=$data2->nom_lieu;
+                $description_lieu=$data2->description_lieu;
+                $nom_mutuelle=$data2->nom_mutuelle;
+                $code_contrat=$data2->code_contrat;
+                $dateAffectation=$data2->dateAffectation;
+                $dureecontrat=$data2->dureecontrat;
+                $dateFin=$data2->dateFin;
 
-                $dateDebutEssaie=$row->dateDebutEssaie;
-                $dateFinEssaie=$row->dateFinEssaie;
-                $dureeessaie=$row->dureeessaie;
-                $JourTrail1=$row->JourTrail1;
-                $JourTrail2=$row->JourTrail2;
-                $heureTrail1=$row->heureTrail1;
-                $heureTrail2=$row->heureTrail2;
-                $TempsPause=$row->TempsPause;
-                $nbrConge=$row->nbrjour_cirscons;
-                $nbrCongeLettre=$row->nbrCongeLettre;
-                $nomOffice=$row->nomOffice;
-                $postnomOffice=$row->postnomOffice;
-                $qualifieOffice=$row->qualifieOffice;
-                $codeAgent=$row->codeAgent;
-                $directeur=$row->directeur;
+                $dateDebutEssaie=$data2->dateDebutEssaie;
+                $dateFinEssaie=$data2->dateFinEssaie;
+                $dureeessaie=$data2->dureeessaie;
+                $JourTrail1=$data2->JourTrail1;
+                $JourTrail2=$data2->JourTrail2;
+                $heureTrail1=$data2->heureTrail1;
+                $heureTrail2=$data2->heureTrail2;
+                $TempsPause=$data2->TempsPause;
+                $nbrConge=$data2->nbrjour_cirscons;
+                $nbrCongeLettre=$data2->nbrCongeLettre;
+                $nomOffice=$data2->nomOffice;
+                $postnomOffice=$data2->postnomOffice;
+                $qualifieOffice=$data2->qualifieOffice;
+                $codeAgent=$data2->codeAgent;
+                $directeur=$data2->directeur;
 
 
-                $name_annee=$row->name_annee;
-                $date_demande=$row->date_demande;
-                $date_depart=$row->date_depart;
-                $nbr_joursollicite=$row->nbr_joursollicite;
-                $date_reprise=$row->date_reprise;
-                $superviseur_conge=$row->superviseur_conge;
-                $interimaire_conge=$row->interimaire_conge;
-                $resumetache_conge=$row->resumetache_conge;
-                $nom_circontstance=$row->nom_circontstance;
-                $rh_conge=$row->rh_conge;
-                $coordinateur_conge=$row->coordinateur_conge;
-                $directeur_conge=$row->directeur_conge;
-                $date_debut_accord=$row->date_debut_accord;
-                $date_fin_accord=$row->date_fin_accord;
-                $nbr_jouraccord=$row->nbr_jouraccord;
-                $cumul_conge_annee=$row->cumul_conge_annee;
-                $solde_conge_datedu=$row->solde_conge_datedu;
-                $solde_conge_reprise=$row->solde_conge_reprise;
-                $matricule_agent=$row->matricule_agent;   
-                $admin_fin_conge=$row->admin_fin_conge;             
+                $name_annee=$data2->name_annee;
+                $date_demande=$data2->date_demande;
+                $date_depart=$data2->date_depart;
+                $nbr_joursollicite=$data2->nbr_joursollicite;
+                $date_reprise=$data2->date_reprise;
+                $superviseur_conge=$data2->superviseur_conge;
+                $interimaire_conge=$data2->interimaire_conge;
+                $resumetache_conge=$data2->resumetache_conge;
+                $nom_circontstance=$data2->nom_circontstance;
+                $rh_conge=$data2->rh_conge;
+                $coordinateur_conge=$data2->coordinateur_conge;
+                $directeur_conge=$data2->directeur_conge;
+                $date_debut_accord=$data2->date_debut_accord;
+                $date_fin_accord=$data2->date_fin_accord;
+                $nbr_jouraccord=$data2->nbr_jouraccord;
+                $cumul_conge_annee=$data2->cumul_conge_annee;
+                $solde_conge_datedu=$data2->solde_conge_datedu;
+                $solde_conge_reprise=$data2->solde_conge_reprise;
+                $matricule_agent=$data2->matricule_agent;   
+                $admin_fin_conge=$data2->admin_fin_conge;             
             }        
     
             $output=' 
@@ -8986,7 +8985,7 @@ function GetFicheCongeAgent($id)
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="cs5DE5F832" colspan="9" style="width:477px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>BP.'.$bp.'</nobr></td>
+                            <td class="cs5DE5F832" colspan="9" style="width:477px;height:22px;line-height:18px;text-align:center;vertical-align:middle;"><nobr>'.$bp.'</nobr></td>
                             <td></td>
                             <td></td>
                         </tr>
