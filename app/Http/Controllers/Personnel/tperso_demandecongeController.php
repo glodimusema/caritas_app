@@ -83,7 +83,7 @@ class tperso_demandecongeController extends Controller
             ->selectRaw("DATE_FORMAT(DATE_SUB(date_reprise, INTERVAL 1 DAY),'%d/%m/%Y') as date_reprise")
             ->selectRaw("DATE_FORMAT(DATE_SUB(date_fin_accord, INTERVAL 1 DAY),'%d/%m/%Y') as date_fin_accord")
             ->where([
-                ['noms_agent', 'like', '%'.$query.'%']
+                ['noms_agent', 'like', '%'.$query.'%'] 
             ])               
             ->orderBy("tperso_demandeconge.id", "desc")          
             ->paginate(10);
